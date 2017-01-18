@@ -4,8 +4,10 @@
              xmlns:local="clr-namespace:StockEmulator"
              x:Class="StockEmulator.MainPage">
 
-  <Label Text="Welcome to Xamarin Forms!"
-           VerticalOptions="Center"
-           HorizontalOptions="Center" />
+  <StackLayout Orientation= "Vertical" HorizontalOptions = "Center" VerticalOptions="Center">
 
+    
+    <Button x:Name= "btbShowMe" Text="Buy" Clicked = "Show_Buy"/>
+    <Button x:Name= "btbShowAction" Text="Sell" Clicked = "Show_Sell"/>
+  </StackLayout>
 </ContentPage>

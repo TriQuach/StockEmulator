@@ -69,4 +69,3 @@ C:\project\StockEmulator\StockEmulator\StockEmulator.Droid\obj\Debug\android\ass
 C:\project\StockEmulator\StockEmulator\StockEmulator.Droid\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 C:\project\StockEmulator\StockEmulator\StockEmulator.Droid\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
 C:\project\StockEmulator\StockEmulator\StockEmulator.Droid\obj\Debug\StockEmulator.Droid.dll.mdb
-C:\project\StockEmulator\StockEmulator\StockEmulator.Droid\bin\Debug\StockEmulator.Droid.dll.mdb

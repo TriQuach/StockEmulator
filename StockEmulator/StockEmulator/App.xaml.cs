@@ -13,7 +13,7 @@ namespace StockEmulator
         {
             InitializeComponent();
 
-            MainPage = new StockEmulator.MainPage();
+            MainPage = new NavigationPage(new StockEmulator.MainPage());
         }
 
         protected override void OnStart()
