@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StockEmulator.Buy">
+  <StackLayout Padding="0,5,0,0">
+    
+    
+      <Label TextColor="#77d065" FontSize = "30" Text="Place Order" />
+    
+    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+      <Label FontSize = "15" Text="Apple Lnc." Margin="20"/>
+      <Label TextColor="#EB0921" FontSize = "15" Text="AAPL" Margin="20"/>
+      <Label TextColor="#09B4EB" FontSize = "15" Text="118.97" Margin="20"/>
+     </StackLayout>
+    
+    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+      <Label TextColor="#09B4EB" FontSize = "15" Text="Buy quantity" Margin="20"/>
+      <Entry HorizontalOptions="FillAndExpand" />
+    </StackLayout>
+    
+    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+      <Label TextColor="#09B4EB" FontSize = "15" Text="Available Funds" Margin="20"/>
+      <Label TextColor="#EB0921" FontSize = "15" Text="118,213.45" Margin="20"/>
+    </StackLayout>
+    
+    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+      <Label TextColor="#09B4EB" FontSize = "15" Text="Buying Capacity" Margin="20"/>
+      <Label TextColor="#EB0921" FontSize = "15" Text="155" Margin="20"/>
+    </StackLayout>
+    
+    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+      <Label TextColor="#09B4EB" FontSize = "15" Text="*Total debit" Margin="20"/>
+    </StackLayout>
+    
+    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+      <Label TextColor="#09B4EB" FontSize = "15" Text="*Transactions total includes trade commission fees" Margin="20"/>
+    </StackLayout>
+    
+    <StackLayout Orientation="Horizontal ">
+      <Button Text="Cancle" Margin ="0,0,0,20"/>
+	    <Button Text="Buy" Margin ="0,0,0,20"/>
+    </StackLayout>
+   
+  </StackLayout>
+</ContentPage>
