@@ -1,6 +1,7 @@
 StockEmulator/StockEmulator/StockEmulator/bin
 StockEmulator/StockEmulator/StockEmulator/obj
 StockEmulator/StockEmulator/StockEmulator.Droid/obj
+StockEmulator/StockEmulator/StockEmulator.Droid/bin
 StockEmulator/StockEmulator/StockEmulator.Windows/obj
 StockEmulator/StockEmulator/StockEmulator.iOS/bin
 StockEmulator/StockEmulator/StockEmulator.iOS/obj
