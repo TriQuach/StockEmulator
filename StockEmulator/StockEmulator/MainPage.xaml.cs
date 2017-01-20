@@ -20,7 +20,7 @@ namespace StockEmulator
         }
         async public void Show_Sell(object sender, EventArgs arg)
         {
-            await Navigation.PushAsync(new Buy());
+            await Navigation.PushAsync(new Sell());
         }
         
 
