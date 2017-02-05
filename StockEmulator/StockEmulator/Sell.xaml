@@ -38,7 +38,7 @@
     
     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
       <Button Text="Cancle" Margin ="0,0,0,20"/>
-	    <Button Text="Buy" Margin ="0,0,0,20"/>
+	    <Button Text="Sell" Margin ="0,0,0,20"/>
     </StackLayout>
    
   </StackLayout>

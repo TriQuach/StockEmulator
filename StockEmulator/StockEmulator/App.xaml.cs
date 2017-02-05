@@ -11,9 +11,10 @@ namespace StockEmulator
     {
         public App()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
-            MainPage = new NavigationPage(new StockEmulator.MainPage());
+
+            MainPage = new HomePage();
         }
 
         protected override void OnStart()
