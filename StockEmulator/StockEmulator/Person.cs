@@ -17,10 +17,11 @@ namespace StockEmulator
             Name = name;
             Age = age;
             Location = location;
-        }
+        }   
         public override string ToString()
         {
             return Name;
         }
     }
 }
+    

@@ -14,7 +14,16 @@ namespace StockEmulator
             //InitializeComponent();
 
 
-            MainPage = new HomePage();
+            MainPage = new TabbedPage
+            {
+                Children =
+                {
+                    new Portfolio(),
+                    new NavigationPage(new StockEmulator.MainPage())
+                }
+            }; 
+
+         //   MainPage = new NavigationPage(new StockEmulator.MainPage()); // in APP
         }
 
         protected override void OnStart()

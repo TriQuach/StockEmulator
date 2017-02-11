@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:StockEmulator"
-             x:Class="StockEmulator.MainPage">
+             x:Class="StockEmulator.MainPage"
+             Title="FindStocks">
 
   <StackLayout Orientation= "Vertical" HorizontalOptions = "Center" VerticalOptions="Center">
 
