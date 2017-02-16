@@ -19,7 +19,8 @@ namespace StockEmulator
                 Children =
                 {
                     new Portfolio(),
-                    new NavigationPage(new StockEmulator.MainPage())
+                    new NavigationPage(new StockEmulator.MainPage()),
+                    new MyAccount()
                 }
             }; 
 
