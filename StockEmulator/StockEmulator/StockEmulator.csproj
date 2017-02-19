@@ -43,6 +43,10 @@
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InsiderTrades.xaml.cs">
+      <DependentUpon>InsiderTrades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InsiderTrade_Class.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -60,12 +64,6 @@
     <Compile Include="Stock.cs" />
     <Compile Include="WatchList.xaml.cs">
       <DependentUpon>WatchList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WithDataTemplatePage.xaml.cs">
-      <DependentUpon>WithDataTemplatePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WithoutTemplate.xaml.cs">
-      <DependentUpon>WithoutTemplate.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -107,16 +105,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WithDataTemplatePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="WithoutTemplate.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -133,6 +121,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyAccount.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="InsiderTrades.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

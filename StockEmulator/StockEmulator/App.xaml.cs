@@ -20,7 +20,8 @@ namespace StockEmulator
                 {
                     new Portfolio(),
                     new NavigationPage(new StockEmulator.MainPage()),
-                    new MyAccount()
+                    new MyAccount(),
+                    new InsiderTrades()
                 }
             }; 
 
