@@ -19,8 +19,9 @@ namespace StockEmulator
                 Children =
                 {
                     new Portfolio(),
-                    new NavigationPage(new StockEmulator.FindStocks()),
+                    new NavigationPage(new FindStocks()),
                     new MyAccount(),
+                    new NavigationPage(new TransactionsTab()),
                     new InsiderTrades()
                 }
             }; 
