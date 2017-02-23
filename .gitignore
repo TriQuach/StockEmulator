@@ -214,3 +214,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+StockEmulator/StockEmulator/StockEmulator/obj
+StockEmulator/StockEmulator/StockEmulator/bin
