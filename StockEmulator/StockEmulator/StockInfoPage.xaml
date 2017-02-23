@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StockEmulator.StockInfoPage"
+             Title="StockInfo"
+             BackgroundColor="White">
+  <StackLayout>
+    <StackLayout Margin="5,5,5,5" Padding="5,5,5,5" BackgroundColor="#BBBBBB" VerticalOptions="Start">
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Alphabet Inc. (GOOGL)" Font="Bold,13" TextColor="Black"/>
+        <Label Text="NASDAQ" Font="11" TextColor="#5A5A5A" VerticalOptions="Center"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="840.03" Font="Bold, 23" TextColor="Black"/>
+        <Label Text="1.07" Font="Bold, 17" TextColor="Green" VerticalOptions="End"/>
+        <Label Text="0.13%" Font="Bold, 17" TextColor="Green" VerticalOptions="End"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="After Hours:" Font="11" TextColor="#5A5A5A" VerticalOptions="Center"/>
+        <Label Text="839.60" Font="Bold, 13" TextColor="Black"/>
+        <Label Text="-0.43 (-0.051%)" Font="11" TextColor="Maroon" VerticalOptions="Center"/>
+      </StackLayout>
+      <Label Text="Market Is Currently Closed" Font="11" TextColor="Maroon"/>
+    </StackLayout>
+    <StackLayout Spacing="0" Orientation="Horizontal">
+      <StackLayout Margin="5,0,5,0" Padding="5,0,5,0" Spacing="0" HorizontalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal">
+          <Label Text="High Price" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="842.00" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Open Price" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="839.77" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Change" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="1.07" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="52-week High" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="867.00" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Ask Price" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="840.28" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Ask Size" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="300" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="1 Yr Return" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="18.68%" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="P\E Ratio" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="30.75" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+      </StackLayout>
+
+      <StackLayout Margin="5,0,5,0" Padding="5,0,5,0" Spacing="0" HorizontalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Low Price" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="835.83" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Volume" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="1.40M" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Market Cap" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="572.20B" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="52-week Low" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="672.66" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Bid Price" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="837.00" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Bid Size" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="200" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Beta" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="0.91" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Dividend" Font="12" TextColor="#777777" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+          <Label Text="N\A" Font="Bold, 13" TextColor="#7A7A7A" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+        </StackLayout>
+      </StackLayout>
+    </StackLayout>
+    <BoxView Margin="5,0,5,0" HeightRequest="1" Color="#E5E5E5"/>
+    <Label Margin="10,0,10,0" Text="Disclaimer: Not all stocks will have all the data points above" Font="12" TextColor="#777777"/>
+  </StackLayout>
+</ContentPage>
