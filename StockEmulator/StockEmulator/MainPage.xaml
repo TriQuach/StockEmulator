@@ -1,14 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:StockEmulator"
+             xmlns:local="clr-namespace:StockEmulator;assembly=StockEmulator"
              x:Class="StockEmulator.MainPage"
-             Title="FindStocks">
+             Title="Stock Trainer">
 
-  <StackLayout Orientation= "Vertical" HorizontalOptions = "Center" VerticalOptions="Center">
+  <MasterDetailPage.Master>
+    <local:MasterPage x:Name="masterPage"/>
+  </MasterDetailPage.Master>
 
-    
-    <Button x:Name= "btbShowMe" Text="Buy" Clicked = "Show_Buy"/>
-    <Button x:Name= "btbShowAction" Text="Sell" Clicked = "Show_Sell"/>
-  </StackLayout>
-</ContentPage>
+  <MasterDetailPage.Detail>
+    <NavigationPage>
+      <x:Arguments>
+        <local:TabsWrapperDetailPage/>
+      </x:Arguments>
+    </NavigationPage>
+  </MasterDetailPage.Detail>
+
+</MasterDetailPage>

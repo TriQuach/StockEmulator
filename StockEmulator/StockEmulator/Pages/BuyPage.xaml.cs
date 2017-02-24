@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace StockEmulator
+namespace StockEmulator.Pages
 {
-    public partial class StockInfoPage : ContentPage
+    public partial class BuyPage : ContentPage
     {
-        public StockInfoPage()
+        public BuyPage()
         {
             InitializeComponent();
         }
+       
     }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace StockEmulator
+namespace StockEmulator.Pages
 {
-    public partial class HomePage : TabbedPage
+    public partial class StockInfoPage : ContentPage
     {
-        public HomePage()
+        public StockInfoPage()
         {
             InitializeComponent();
         }

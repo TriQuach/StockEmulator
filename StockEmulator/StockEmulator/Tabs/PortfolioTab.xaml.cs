@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockEmulator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,17 +7,17 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace StockEmulator
+namespace StockEmulator.Tabs
 {
-    public partial class Portfolio : ContentPage
+    public partial class PortfolioTab : ContentPage
     {
-        public Portfolio()
+        public PortfolioTab()
         {
             InitializeComponent();
 
-            lstView.ItemsSource = new List<Stock>
+            lstView.ItemsSource = new List<PortfolioListViewModel>
             {
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -29,7 +30,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -42,7 +43,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -55,7 +56,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -68,7 +69,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -81,7 +82,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -94,7 +95,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -107,7 +108,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -120,7 +121,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -133,7 +134,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -146,7 +147,7 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 },
-                new Stock
+                new PortfolioListViewModel
                 {
                     Ticker = "AAPL",
                     Price = 118.93,
@@ -159,6 +160,14 @@ namespace StockEmulator
                     PerCentCHG = 0.337
                  
                 }
+            };
+
+            lstView.ItemSelected += (sender, e) =>
+            {
+                var item = e.SelectedItem as PortfolioListViewModel;
+                if (item == null) return; // don't do anything if we just de-selected the row
+                                            // do something with e.SelectedItem
+                ((ListView)sender).SelectedItem = null; // de-select the row
             };
         }
     }

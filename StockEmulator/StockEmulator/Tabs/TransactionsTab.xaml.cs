@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockEmulator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace StockEmulator
+namespace StockEmulator.Tabs
 {
     public partial class TransactionsTab : ContentPage
     {
@@ -36,7 +37,7 @@ namespace StockEmulator
                 ContentPage page = null;    // do something with e.SelectedItem
                 if (object.Equals(item.Ticker, "GOOGL"))
                 {
-                    page = new StockInfoPage();
+                    page = new Pages.StockInfoPage();
                 }
                 page.BindingContext = item;
                 Navigation.PushAsync(page);

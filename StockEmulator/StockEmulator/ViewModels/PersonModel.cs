@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StockEmulator
+namespace StockEmulator.ViewModels
 {
-    public class Person
+    public class PersonModel
     {
         public string Name { get; private set; }
         public int Age { get; private set; }
         public string Location { get; private set; }
 
-        public Person(string name, int age, string location)
+        public PersonModel(string name, int age, string location)
         {
             Name = name;
             Age = age;
