@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StockEmulator
+namespace StockEmulator.ViewModels
 {
-    public class Stock
+    public class PortfolioListViewModel
     {
         public string Ticker { get;set; }
         public double Price { get; set; }

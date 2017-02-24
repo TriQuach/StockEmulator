@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace StockEmulator
+namespace StockEmulator.Tabs
 {
-    public partial class MyAccount : ContentPage
+    public partial class MyAccountTab : ContentPage
     {
-        public MyAccount()
+        public MyAccountTab()
         {
             InitializeComponent();
             label1.Text = "$200000.00";

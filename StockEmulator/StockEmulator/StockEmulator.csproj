@@ -37,43 +37,46 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Buy.xaml.cs">
-      <DependentUpon>Buy.xaml</DependentUpon>
+    <Compile Include="MasterPage.xaml.cs">
+      <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FindStocks.xaml.cs">
-      <DependentUpon>FindStocks.xaml</DependentUpon>
+    <Compile Include="Pages\BuyPage.xaml.cs">
+      <DependentUpon>BuyPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
+    <Compile Include="TabsWrapperDetailPage.xaml.cs">
+      <DependentUpon>TabsWrapperDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InsiderTrades.xaml.cs">
-      <DependentUpon>InsiderTrades.xaml</DependentUpon>
+    <Compile Include="Tabs\FindStocksTab.xaml.cs">
+      <DependentUpon>FindStocksTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InsiderTrade_Class.cs" />
+    <Compile Include="Tabs\InsiderTradesTab.xaml.cs">
+      <DependentUpon>InsiderTradesTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\InsiderTradesListViewModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyAccount.xaml.cs">
-      <DependentUpon>MyAccount.xaml</DependentUpon>
+    <Compile Include="Tabs\MyAccountTab.xaml.cs">
+      <DependentUpon>MyAccountTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs" />
-    <Compile Include="Portfolio.xaml.cs">
-      <DependentUpon>Portfolio.xaml</DependentUpon>
+    <Compile Include="ViewModels\PersonModel.cs" />
+    <Compile Include="Tabs\PortfolioTab.xaml.cs">
+      <DependentUpon>PortfolioTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sell.xaml.cs">
-      <DependentUpon>Sell.xaml</DependentUpon>
+    <Compile Include="Pages\SellPage.xaml.cs">
+      <DependentUpon>SellPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Stock.cs" />
-    <Compile Include="StockInfoPage.xaml.cs">
+    <Compile Include="ViewModels\PortfolioListViewModel.cs" />
+    <Compile Include="Pages\StockInfoPage.xaml.cs">
       <DependentUpon>StockInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TransactionListViewModel.cs" />
-    <Compile Include="TransactionsTab.xaml.cs">
+    <Compile Include="ViewModels\TransactionListViewModel.cs" />
+    <Compile Include="Tabs\TransactionsTab.xaml.cs">
       <DependentUpon>TransactionsTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WatchList.xaml.cs">
-      <DependentUpon>WatchList.xaml</DependentUpon>
+    <Compile Include="Tabs\WatchListTab.xaml.cs">
+      <DependentUpon>WatchListTab.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -105,53 +108,60 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Buy.xaml">
+    <EmbeddedResource Include="Pages\BuyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Sell.xaml">
+    <EmbeddedResource Include="Pages\SellPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="HomePage.xaml">
+    <EmbeddedResource Include="Tabs\PortfolioTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Portfolio.xaml">
+    <EmbeddedResource Include="Tabs\WatchListTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WatchList.xaml">
+    <EmbeddedResource Include="Tabs\MyAccountTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MyAccount.xaml">
+    <EmbeddedResource Include="Tabs\InsiderTradesTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="InsiderTrades.xaml">
+    <EmbeddedResource Include="Tabs\FindStocksTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FindStocks.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="TransactionsTab.xaml">
+    <EmbeddedResource Include="Tabs\TransactionsTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="StockInfoPage.xaml">
+    <EmbeddedResource Include="Pages\StockInfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TabsWrapperDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

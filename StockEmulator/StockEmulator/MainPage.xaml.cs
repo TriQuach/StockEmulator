@@ -8,21 +8,21 @@ using Xamarin.Forms;
 
 namespace StockEmulator
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : MasterDetailPage
     {
         public MainPage()
         {
             InitializeComponent();
-        }
-        async void Show_Buy(object sender, EventArgs arg)
-        {
-            await Navigation.PushAsync(new Buy());
-        }
-        async public void Show_Sell(object sender, EventArgs arg)
-        {
-            await Navigation.PushAsync(new Sell());
-        }
-        
 
+            masterPage.listView.ItemSelected += (sender, e) =>
+            {
+                var item = e.SelectedItem as string;
+                if (item == null) return; // don't do anything if we just de-selected the row
+
+                MessagingCenter.Send<MainPage, string>(this, "Switch Tab", item);// do something with e.SelectedItem
+                ((ListView)sender).SelectedItem = null; // de-select the row
+                this.IsPresented = false;
+            };
+        }
     }
 }

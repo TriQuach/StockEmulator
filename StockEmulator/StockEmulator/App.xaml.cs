@@ -11,22 +11,9 @@ namespace StockEmulator
     {
         public App()
         {
-            //InitializeComponent();
+            InitializeComponent();
 
-
-            MainPage = new TabbedPage
-            {
-                Children =
-                {
-                    new Portfolio(),
-                    new NavigationPage(new FindStocks()),
-                    new MyAccount(),
-                    new NavigationPage(new TransactionsTab()),
-                    new InsiderTrades()
-                }
-            }; 
-
-         //   MainPage = new NavigationPage(new StockEmulator.MainPage()); // in APP
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

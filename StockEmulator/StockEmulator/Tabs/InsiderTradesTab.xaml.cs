@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockEmulator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,16 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace StockEmulator
+namespace StockEmulator.Tabs
 {
-    public partial class InsiderTrades : ContentPage
+    public partial class InsiderTradesTab : ContentPage
     {
-        public InsiderTrades()
+        public InsiderTradesTab()
         {
             InitializeComponent();
-            lstView.ItemsSource = new List<InsiderTrade_Class>
+            lstView.ItemsSource = new List<InsiderTradesListViewModel>
             {
-                new InsiderTrade_Class
+                new InsiderTradesListViewModel
                 {
                     Tick = "OPK",
                     CompanyName = "Exegenics Lcn (OPK)",
@@ -27,7 +28,7 @@ namespace StockEmulator
                     Time = "06:25:35 2017-02-19"
                  
                 },
-                new InsiderTrade_Class
+                new InsiderTradesListViewModel
                 {
                     Tick = "OPK",
                     CompanyName = "Exegenics Lcn (OPK)",

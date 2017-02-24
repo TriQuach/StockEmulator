@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StockEmulator
+namespace StockEmulator.ViewModels
 {
-    public class InsiderTrade_Class
+    public class InsiderTradesListViewModel
     {
         public string Tick { get; set; }
         public string CompanyName { get; set; }
