@@ -56,3 +56,7 @@ C:\GitHub\StockEmulator\StockEmulator\StockEmulator\StockEmulator\obj\Debug\Stoc
 C:\GitHub\StockEmulator\StockEmulator\StockEmulator\StockEmulator\bin\Debug\StockEmulator.dll.mdb
 C:\GitHub\StockEmulator\StockEmulator\StockEmulator\StockEmulator\obj\Debug\StockEmulator.dll.mdb
 C:\GitHub\StockEmulator\StockEmulator\StockEmulator\StockEmulator\bin\Debug\StockEmulator.dll.mdb
+C:\GitHub\StockEmulator\StockEmulator\StockEmulator\StockEmulator\obj\Debug\StockEmulator.dll.mdb
+C:\GitHub\StockEmulator\StockEmulator\StockEmulator\StockEmulator\bin\Debug\StockEmulator.dll.mdb
+C:\GitHub\StockEmulator\StockEmulator\StockEmulator\StockEmulator\obj\Debug\StockEmulator.dll.mdb
+C:\GitHub\StockEmulator\StockEmulator\StockEmulator\StockEmulator\bin\Debug\StockEmulator.dll.mdb
