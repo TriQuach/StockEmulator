@@ -14,7 +14,7 @@ namespace StockEmulator.ViewModels
         public int Num { get; set;}
         public double Value { get; set; }
         public string EquityName { get; set; }
-        public double GOverL { get; set; }
+        public double GainLossMoney { get; set; }
         public double DollarCHG { get; set; }
         public double PerCentCHG { get; set; }
 
