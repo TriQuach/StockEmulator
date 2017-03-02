@@ -1,4 +1,5 @@
-﻿using StockEmulator.ViewModels;
+﻿using StockEmulator.Models;
+using StockEmulator.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,159 +15,36 @@ namespace StockEmulator.Tabs
         public PortfolioTab()
         {
             InitializeComponent();
+        }
 
-            lstView.ItemsSource = new List<PortfolioListViewModel>
+        protected async override void OnAppearing()
+        {
+            List<StockItem> items = await App.StockManager.GetTaskAsync();
+
+            List<PortfolioListViewModel> portfolioList = new List<PortfolioListViewModel>();
+            foreach (var item in items)
             {
-                new PortfolioListViewModel
+                portfolioList.Add(new PortfolioListViewModel
                 {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                },
-                new PortfolioListViewModel
-                {
-                    Ticker = "AAPL",
-                    Price = 118.93,
-                    Cost = 118.53,
-                    Num = 10,
-                    Value = 1189.30,
-                    EquityName = "Apple Lnc.",
-                    GOverL = 4,
-                    DollarCHG = 0.400,
-                    PerCentCHG = 0.337
-                 
-                }
-            };
+                    Ticker = item.Ticker,
+                    Price = item.Price,
+                    Cost = item.Cost,
+                    Num = item.NumStock,
+                    Value = item.Value,
+                    EquityName = item.Name,
+                    GainLossMoney = item.GainLossMoney,
+                    DollarCHG = item.ChangeMoney,
+                    PerCentCHG = item.ChangePercent
+                });
+            }
+
+            lstView.ItemsSource = portfolioList;
 
             lstView.ItemSelected += (sender, e) =>
             {
                 var item = e.SelectedItem as PortfolioListViewModel;
                 if (item == null) return; // don't do anything if we just de-selected the row
-                                            // do something with e.SelectedItem
+                                          // do something with e.SelectedItem
                 ((ListView)sender).SelectedItem = null; // de-select the row
             };
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockEmulator.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,13 @@ namespace StockEmulator
 {
     public partial class App : Application
     {
+        public static StockItemManager StockManager { get; private set; }
+
         public App()
         {
             InitializeComponent();
 
+            StockManager = new StockItemManager(new RestService());
             MainPage = new MainPage();
         }
 
