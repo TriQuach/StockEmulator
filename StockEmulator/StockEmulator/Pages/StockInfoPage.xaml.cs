@@ -14,5 +14,13 @@ namespace StockEmulator.Pages
         {
             InitializeComponent();
         }
+        async void Show_Buy(object sender, EventArgs arg)
+        {
+            await Navigation.PushAsync(new BuyPage());
+        }
+        async public void Show_Sell(object sender, EventArgs arg)
+        {
+            await Navigation.PushAsync(new SellPage());
+        }
     }
 }

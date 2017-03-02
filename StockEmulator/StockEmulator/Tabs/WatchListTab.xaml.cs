@@ -10,9 +10,14 @@ namespace StockEmulator.Tabs
 {
     public partial class WatchListTab : ContentPage
     {
+        
         public WatchListTab()
         {
             InitializeComponent();
+            
+            
         }
+        
+        
     }
 }

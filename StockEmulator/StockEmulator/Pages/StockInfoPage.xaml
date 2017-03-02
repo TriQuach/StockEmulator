@@ -95,5 +95,7 @@
     </StackLayout>
     <BoxView Margin="5,0,5,0" HeightRequest="1" Color="#E5E5E5"/>
     <Label Margin="10,0,10,0" Text="Disclaimer: Not all stocks will have all the data points above" Font="12" TextColor="#777777"/>
+    <Button x:Name= "btbShowMe" Text="Buy" Clicked = "Show_Buy"/>
+    <Button x:Name= "btbShowAction" Text="Sell" Clicked = "Show_Sell"/>
   </StackLayout>
 </ContentPage>

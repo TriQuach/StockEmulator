@@ -3,10 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StockEmulator.Tabs.FindStocksTab"
              Title="Find Stocks">
-  <StackLayout Orientation= "Vertical" HorizontalOptions = "Center" VerticalOptions="Center">
+
+  <StackLayout Orientation="Vertical">
+  
+  
+    <SearchBar x:Name="searchBar"
+               SearchButtonPressed="search_button"
+             />
+    <ListView x:Name="listView" />
 
 
-    <Button x:Name= "btbShowMe" Text="Buy" Clicked = "Show_Buy"/>
-    <Button x:Name= "btbShowAction" Text="Sell" Clicked = "Show_Sell"/>
+
+
+
+    
   </StackLayout>
+
+  
 </ContentPage>
