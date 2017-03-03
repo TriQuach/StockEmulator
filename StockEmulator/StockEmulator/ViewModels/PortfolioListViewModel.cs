@@ -11,7 +11,7 @@ namespace StockEmulator.ViewModels
         public string Ticker { get;set; }
         public double Price { get; set; }
         public double Cost { get; set; }
-        public int Num { get; set;}
+        public long Num { get; set;}
         public double Value { get; set; }
         public string EquityName { get; set; }
         public double GainLossMoney { get; set; }

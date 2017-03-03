@@ -9,6 +9,8 @@ namespace StockEmulator.Data
 {
     public interface IRestService
     {
-        Task<List<StockItem>> GetListStockDataAsync();
+
+        Task<List<Porfolio>> GetListPortfolioDataAsync();
+
     }
 }

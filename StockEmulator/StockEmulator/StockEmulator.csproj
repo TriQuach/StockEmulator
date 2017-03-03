@@ -44,7 +44,8 @@
     <Compile Include="MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\StockItem.cs" />
+    <Compile Include="Models\Porfolio.cs" />
+    <Compile Include="Models\TransactionsModel.cs" />
     <Compile Include="Pages\BuyPage.xaml.cs">
       <DependentUpon>BuyPage.xaml</DependentUpon>
     </Compile>

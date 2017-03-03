@@ -16,9 +16,11 @@ namespace StockEmulator.Data
             restService = service;
         }
 
-        public Task<List<StockItem>> GetTaskAsync()
+        
+
+        public Task<List<Porfolio>> GetTaskAsyncPorfolio()
         {
-            return restService.GetListStockDataAsync();
+            return restService.GetListPortfolioDataAsync();
         }
     }
 }

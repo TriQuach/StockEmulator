@@ -14,7 +14,8 @@ namespace StockEmulator.Data
     {
         HttpClient client;
 
-        public List<StockItem> StockItems { get; private set; }
+       
+        public List<Porfolio> PortfolioItems { get; private set; }
 
         public RestService()
         {
@@ -22,12 +23,12 @@ namespace StockEmulator.Data
             client.MaxResponseContentBufferSize = 256000;
         }
 
-        public async Task<List<StockItem>> GetListStockDataAsync()
+        public async Task<List<Porfolio>> GetListPortfolioDataAsync()
         {
-            StockItems = new List<StockItem>();
+            PortfolioItems = new List<Porfolio>();
 
-            // RestURL = http://lmtri.somee.com/api/stock{0}
-            var uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+            // RestURL = http://lmtri.somee.com/api/portfolio{0}
+            var uri = new Uri(string.Format(Constants.RestUrl, "?accountID=1"));
 
             try
             {
@@ -35,7 +36,7 @@ namespace StockEmulator.Data
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    StockItems = JsonConvert.DeserializeObject<List<StockItem>>(content);
+                    PortfolioItems = JsonConvert.DeserializeObject<List<Porfolio>>(content);
                 }
 
             }
@@ -44,7 +45,7 @@ namespace StockEmulator.Data
                 Debug.WriteLine(@"              ERROR {0}", ex.Message);
             }
 
-            return StockItems;
+            return PortfolioItems;
         }
     }
 }

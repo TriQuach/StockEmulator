@@ -19,7 +19,7 @@ namespace StockEmulator.Tabs
 
         protected async override void OnAppearing()
         {
-            List<StockItem> items = await App.StockManager.GetTaskAsync();
+            List<Porfolio> items = await App.StockManager.GetTaskAsyncPorfolio();
 
             List<PortfolioListViewModel> portfolioList = new List<PortfolioListViewModel>();
             foreach (var item in items)
@@ -29,7 +29,7 @@ namespace StockEmulator.Tabs
                     Ticker = item.Ticker,
                     Price = item.Price,
                     Cost = item.Cost,
-                    Num = item.NumStock,
+                    Num = item.NumStocks,
                     Value = item.Value,
                     EquityName = item.Name,
                     GainLossMoney = item.GainLossMoney,
@@ -44,9 +44,10 @@ namespace StockEmulator.Tabs
             {
                 var item = e.SelectedItem as PortfolioListViewModel;
                 if (item == null) return; // don't do anything if we just de-selected the row
-                                          // do something with e.SelectedItem
+                // do something with e.SelectedItem
                 ((ListView)sender).SelectedItem = null; // de-select the row
             };
         }
+
     }
 }
