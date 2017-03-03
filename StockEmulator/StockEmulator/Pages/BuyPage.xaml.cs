@@ -13,6 +13,15 @@ namespace StockEmulator.Pages
         public BuyPage()
         {
             InitializeComponent();
+            AvailableFunds.Text = "1234";
+        }
+        async void Show_Cancle(object sender, EventArgs arg)
+        {
+            await Navigation.PushAsync(new StockInfoPage());
+        }
+        async void Show_Buy(object sender, EventArgs arg)
+        {
+            await Navigation.PushAsync(new StockInfoPage());
         }
        
     }

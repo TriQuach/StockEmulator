@@ -1,9 +1,9 @@
 ﻿using StockEmulator.Data;
+using StockEmulator.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Xamarin.Forms;
 
 namespace StockEmulator
@@ -16,8 +16,8 @@ namespace StockEmulator
         {
             InitializeComponent();
 
-            StockManager = new StockItemManager(new RestService());
-            MainPage = new MainPage();
+           StockManager = new StockItemManager(new RestService());
+            MainPage = new NavigationPage(new Login());
         }
 
         protected override void OnStart()

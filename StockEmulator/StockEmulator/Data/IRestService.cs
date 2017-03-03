@@ -11,6 +11,6 @@ namespace StockEmulator.Data
     {
 
         Task<List<Porfolio>> GetListPortfolioDataAsync();
-
+        Task<bool> SendLoginInfo(Account myAccount);
     }
 }

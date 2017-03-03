@@ -21,7 +21,7 @@
     
     <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
       <Label TextColor="#09B4EB" FontSize = "15" Text="Available Funds" Margin="20"/>
-      <Label TextColor="#EB0921" FontSize = "15" Text="118,213.45" Margin="20"/>
+      <Label x:Name="AvailableFunds" TextColor="#EB0921" FontSize = "15" Margin="20"/>
     </StackLayout>
     
     <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
@@ -38,8 +38,8 @@
     </StackLayout>
     
     <StackLayout Orientation="Horizontal ">
-      <Button Text="Cancle" Margin ="0,0,0,20"/>
-	    <Button Text="Buy" Margin ="0,0,0,20"/>
+      <Button Text="Cancle" Margin ="0,0,0,20" Clicked = "Show_Cancle"/>
+	    <Button Text="Buy" Margin ="0,0,0,20" Clicked = "Show_Buy"/>
     </StackLayout>
    
   </StackLayout>

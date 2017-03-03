@@ -22,5 +22,10 @@ namespace StockEmulator.Data
         {
             return restService.GetListPortfolioDataAsync();
         }
+
+        public Task<bool> Login(Account myAccount)
+        {
+            return restService.SendLoginInfo(myAccount);
+        }
     }
 }

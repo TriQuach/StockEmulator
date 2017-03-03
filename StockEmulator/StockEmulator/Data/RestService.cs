@@ -47,5 +47,29 @@ namespace StockEmulator.Data
 
             return PortfolioItems;
         }
+
+        public async Task<bool> SendLoginInfo(Account myAccount)
+        {
+
+            // RestURL = http://lmtri.somee.com/api/portfolio{0}
+            var uri = new Uri(string.Format(Constants.RestUrl, "?Username=abc&Password=1234"));
+            bool valid = false;
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    valid = JsonConvert.DeserializeObject<bool>(content);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"              ERROR {0}", ex.Message);
+            }
+
+            return valid;
+        }
     }
 }

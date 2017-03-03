@@ -9,6 +9,6 @@ namespace StockEmulator
     public class Constants
     {
         //URL of REST service
-        public static string RestUrl = "http://lmtri.somee.com/api/portfolio{0}";
+        public static string RestUrl = "http://lmtri.somee.com/api/account{0}";
     }
 }
