@@ -17,7 +17,8 @@ namespace StockEmulator
             InitializeComponent();
 
            StockManager = new StockItemManager(new RestService());
-            MainPage = new NavigationPage(new Login());
+         // MainPage = new NavigationPage(new Login());
+          MainPage = new MainPage();
         }
 
         protected override void OnStart()

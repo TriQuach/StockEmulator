@@ -28,7 +28,7 @@ namespace StockEmulator.Data
             PortfolioItems = new List<Porfolio>();
 
             // RestURL = http://lmtri.somee.com/api/portfolio{0}
-            var uri = new Uri(string.Format(Constants.RestUrl, "?accountID=1"));
+            var uri = new Uri(string.Format(Constants.RestUrl_Portfolio, "?accountID=1"));
 
             try
             {
@@ -52,7 +52,7 @@ namespace StockEmulator.Data
         {
 
             // RestURL = http://lmtri.somee.com/api/portfolio{0}
-            var uri = new Uri(string.Format(Constants.RestUrl, "?Username=abc&Password=1234"));
+            var uri = new Uri(string.Format(Constants.RestUrl_Account, "?Username=abc&Password=1234"));
             bool valid = false;
             try
             {
