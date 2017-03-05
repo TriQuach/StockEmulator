@@ -20,12 +20,12 @@ namespace StockEmulator.Tabs
             TransListView = new ObservableCollection<TransactionListViewModel>();
 
             TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 0f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
+            TransListView.Add(new TransactionListViewModel { Ticker = "AAA", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
             TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
             TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
             TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
-            TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
-            TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
-            TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
+            TransListView.Add(new TransactionListViewModel { Ticker = "BBC", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
+            TransListView.Add(new TransactionListViewModel { Ticker = "AAPL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
             TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
 
             listTransaction.ItemsSource = TransListView;
@@ -35,10 +35,9 @@ namespace StockEmulator.Tabs
                 if (item == null) return; // don't do anything if we just de-selected the row
 
                 ContentPage page = null;    // do something with e.SelectedItem
-                if (object.Equals(item.Ticker, "GOOGL"))
-                {
-                    page = new Pages.StockInfoPage();
-                }
+                
+                    page = new Pages.StockInfoPage(item.Ticker);
+                
                 page.BindingContext = item;
                 Navigation.PushAsync(page);
                 ((ListView)sender).SelectedItem = null; // de-select the row

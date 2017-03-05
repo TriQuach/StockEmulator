@@ -7,7 +7,7 @@
   <StackLayout>
     <StackLayout Margin="5,5,5,5" Padding="5,5,5,5" BackgroundColor="#BBBBBB" VerticalOptions="Start">
       <StackLayout Orientation="Horizontal">
-        <Label Text="Alphabet Inc. (GOOGL)" Font="Bold,13" TextColor="Black"/>
+        <Label x:Name="Ticker" Font="Bold,13" TextColor="Black"/>
         <Label Text="NASDAQ" Font="11" TextColor="#5A5A5A" VerticalOptions="Center"/>
       </StackLayout>
       <StackLayout Orientation="Horizontal">

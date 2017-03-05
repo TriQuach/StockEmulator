@@ -17,11 +17,11 @@ namespace StockEmulator.Pages
         }
         async void Show_Cancle(object sender, EventArgs arg)
         {
-            await Navigation.PushAsync(new StockInfoPage());
+            await Navigation.PushAsync(new StockInfoPage(null));
         }
         async void Show_Buy(object sender, EventArgs arg)
         {
-            await Navigation.PushAsync(new StockInfoPage());
+            await Navigation.PushAsync(new StockInfoPage(null));
         }
        
     }

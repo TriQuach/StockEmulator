@@ -25,10 +25,9 @@ namespace StockEmulator.Tabs
                     if (item == null) return; // don't do anything if we just de-selected the row
 
                     ContentPage page = null;    // do something with e.SelectedItem
-                    if (object.Equals(item, "AAA"))
-                    {
-                        page = new Pages.StockInfoPage();
-                    }
+                    
+                        page = new Pages.StockInfoPage(item);
+                    
                     page.BindingContext = item;
                     Navigation.PushAsync(page);
                     ((ListView)sender).SelectedItem = null; // de-select the row

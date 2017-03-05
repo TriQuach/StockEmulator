@@ -10,9 +10,10 @@ namespace StockEmulator.Pages
 {
     public partial class StockInfoPage : ContentPage
     {
-        public StockInfoPage()
+        public StockInfoPage(string param)
         {
             InitializeComponent();
+            Ticker.Text = param;
         }
         async void Show_Buy(object sender, EventArgs arg)
         {

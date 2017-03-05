@@ -53,6 +53,9 @@
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\StockInfoPage_Transactions.xaml.cs">
+      <DependentUpon>StockInfoPage_Transactions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabsWrapperDetailPage.xaml.cs">
       <DependentUpon>TabsWrapperDetailPage.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Login.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\StockInfoPage_Transactions.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
