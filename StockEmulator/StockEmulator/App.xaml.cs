@@ -1,4 +1,6 @@
 ﻿using StockEmulator.Data;
+using StockEmulator.Data.AccountRestService;
+using StockEmulator.Data.PortfolioRestService;
 using StockEmulator.Pages;
 using System;
 using System.Collections.Generic;
@@ -10,15 +12,17 @@ namespace StockEmulator
 {
     public partial class App : Application
     {
-        public static StockItemManager StockManager { get; private set; }
+        public static PortfolioRestServiceManager portfolioRestServiceManager { get; private set; }
+        public static AccountRestServiceManager accountRestServiceManager { get; private set; }
 
         public App()
         {
             InitializeComponent();
 
-           StockManager = new StockItemManager(new RestService());
-         // MainPage = new NavigationPage(new Login());
-          MainPage = new MainPage();
+            accountRestServiceManager = new AccountRestServiceManager(new AccountRestService());
+            portfolioRestServiceManager = new PortfolioRestServiceManager(new PortfolioRestService());
+            // MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

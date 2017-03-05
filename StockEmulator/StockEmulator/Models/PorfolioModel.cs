@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockEmulator.Models
 {
-    public class Porfolio
+    public class PorfolioModel
     {
         public string Ticker { get; set; }
         public string Name { get; set; }

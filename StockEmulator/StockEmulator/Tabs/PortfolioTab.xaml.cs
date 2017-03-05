@@ -19,7 +19,7 @@ namespace StockEmulator.Tabs
 
         protected async override void OnAppearing()
         {
-            List<Porfolio> items = await App.StockManager.GetTaskAsyncPorfolio();
+            List<PorfolioModel> items = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
 
             List<PortfolioListViewModel> portfolioList = new List<PortfolioListViewModel>();
             foreach (var item in items)

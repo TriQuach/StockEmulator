@@ -38,23 +38,24 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="Data\IRestService.cs" />
-    <Compile Include="Data\RestService.cs" />
-    <Compile Include="Data\StockItemManager.cs" />
+    <Compile Include="Data\AccountRestService\AccountRestService.cs" />
+    <Compile Include="Data\AccountRestService\AccountRestServiceManager.cs" />
+    <Compile Include="Data\AccountRestService\IAccountRestService.cs" />
+    <Compile Include="Data\PortfolioRestService\IPortfolioRestService.cs" />
+    <Compile Include="Data\PortfolioRestService\PortfolioRestService.cs" />
+    <Compile Include="Data\PortfolioRestService\PortfolioRestServiceManager.cs" />
     <Compile Include="MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\Porfolio.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\PorfolioModel.cs" />
     <Compile Include="Models\TransactionsModel.cs" />
     <Compile Include="Pages\BuyPage.xaml.cs">
       <DependentUpon>BuyPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\StockInfoPage_Transactions.xaml.cs">
-      <DependentUpon>StockInfoPage_Transactions.xaml</DependentUpon>
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TabsWrapperDetailPage.xaml.cs">
       <DependentUpon>TabsWrapperDetailPage.xaml</DependentUpon>
@@ -187,12 +188,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Login.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\StockInfoPage_Transactions.xaml">
+    <EmbeddedResource Include="Pages\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

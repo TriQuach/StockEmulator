@@ -9,21 +9,22 @@ using Xamarin.Forms;
 
 namespace StockEmulator.Pages
 {
-    public partial class Login : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        public Login()
+        public LoginPage()
         {
             InitializeComponent();
         }
         async public void Show_Login(object sender, EventArgs arg)
         {
-            Account myAccount = new Account()
+            LoginModel thisUser = new LoginModel()
             {
                 Username = username.Text,
                 Password = password.Text
             };
+            Constants.currentUsername = thisUser.Username;
 
-            bool valid = await App.StockManager.Login(myAccount);
+            bool valid = await App.accountRestServiceManager.SendLoginInfo(thisUser);
             if (valid)
             {
                 await Navigation.PushAsync(new MainPage());

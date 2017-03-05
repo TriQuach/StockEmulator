@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockEmulator.Models
 {
-    public class Account
+    public class LoginModel
     {
         public string Username { get; set; }
         public string Password { get; set; }

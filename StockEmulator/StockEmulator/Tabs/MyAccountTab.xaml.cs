@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockEmulator.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,17 +14,20 @@ namespace StockEmulator.Tabs
         public MyAccountTab()
         {
             InitializeComponent();
-            label1.Text = "$200000.00";
-            label2.Text = "$1419.30";
-            label3.Text = "$1419.30";
-            label4.Text = "$1419.30";
-            label5.Text = "$1419.30";
-            label6.Text = "2";
-            label7.Text = "0";
-            label8.Text = "0";
-            
+        }
 
+        protected async override void OnAppearing()
+        {
+            AccountModel accountInfo = await App.accountRestServiceManager.GetAccountInfoByUsernameAsync(Constants.currentUsername);
 
+            startingInvestment.Text = accountInfo.Investment.ToString();
+            stocksValue.Text = "Stocks Value?";
+            availableCash.Text = accountInfo.AvailableCash.ToString();
+            totalValue.Text = "Total Value?";
+            position.Text = "Position?";
+            totalTransactions.Text = accountInfo.TotalTrans.ToString();
+            positiveTransactions.Text = accountInfo.PositiveTrans.ToString();
+            negativeTransactions.Text = accountInfo.NegativeTrans.ToString();
         }
     }
 }
