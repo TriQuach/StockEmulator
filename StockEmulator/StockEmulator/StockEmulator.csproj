@@ -89,9 +89,6 @@
     <Compile Include="Tabs\TransactionsTab.xaml.cs">
       <DependentUpon>TransactionsTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tabs\WatchListTab.xaml.cs">
-      <DependentUpon>WatchListTab.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -140,11 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tabs\PortfolioTab.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tabs\WatchListTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -4,7 +4,7 @@
              x:Class="StockEmulator.Tabs.MyAccountTab"
              Title="My Account">
 
-  <StackLayout Padding="0,5,0,0">
+  <StackLayout Orientation="Vertical">
     <Label TextColor="#ABD314" FontSize = "20" Margin="10,10,10,10" Text="TriQuach's Account Summary" />
 
     <StackLayout Orientation="Horizontal" Margin="10,40,0,0"  >

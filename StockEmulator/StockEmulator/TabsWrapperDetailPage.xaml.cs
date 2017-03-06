@@ -15,7 +15,6 @@ namespace StockEmulator
             InitializeComponent();
 
             Children.Add(new Tabs.PortfolioTab());
-            Children.Add(new Tabs.WatchListTab());
             Children.Add(new Tabs.FindStocksTab());
             Children.Add(new Tabs.MyAccountTab());
             Children.Add(new Tabs.TransactionsTab());
@@ -33,21 +32,18 @@ namespace StockEmulator
             {
                 case "Portfolio":
                     CurrentPage = Children[0];
-                    break;
-                case "Watchlist":
+                    break;               
+                case "Find Stocks":
                     CurrentPage = Children[1];
                     break;
-                case "Find Stocks":
+                case "My Account":
                     CurrentPage = Children[2];
                     break;
-                case "My Account":
+                case "Transactions":
                     CurrentPage = Children[3];
                     break;
-                case "Transactions":
-                    CurrentPage = Children[4];
-                    break;
                 case "Insider Trades":
-                    CurrentPage = Children[5];
+                    CurrentPage = Children[4];
                     break;
                 default:
                     break;

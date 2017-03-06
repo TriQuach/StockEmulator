@@ -19,12 +19,9 @@ namespace StockEmulator
             listMenu.ItemsSource = new string[]
             {
                 "Portfolio",
-                "Watchlist",
-                "Find Stocks",
-                "Top Movers",
+                "Find Stocks",               
                 "My Account",
-                "Transactions",
-                "Cramer's Picks",
+                "Transactions",               
                 "Insider Trades",
             };
         }

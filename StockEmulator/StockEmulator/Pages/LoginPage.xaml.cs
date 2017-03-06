@@ -29,6 +29,10 @@ namespace StockEmulator.Pages
             {
                 await Navigation.PushAsync(new MainPage());
             }        
+            else
+            {
+                DisplayAlert("Login Failed !", "Wrong USERNAME or PASSWORD !!", "OK");
+            }
 //            Debug.WriteLine(valid);
         }
     }
