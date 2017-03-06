@@ -29,6 +29,7 @@ namespace StockEmulator.Tabs
             TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
 
             listTransaction.ItemsSource = TransListView;
+            int count = 0;
             listTransaction.ItemSelected += (sender, e) =>
             {
                 var item = e.SelectedItem as TransactionListViewModel;
@@ -41,6 +42,7 @@ namespace StockEmulator.Tabs
                 page.BindingContext = item;
                 Navigation.PushAsync(page);
                 ((ListView)sender).SelectedItem = null; // de-select the row
+                count++;
             };
         }
     }

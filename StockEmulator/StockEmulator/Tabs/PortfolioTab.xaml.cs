@@ -15,6 +15,25 @@ namespace StockEmulator.Tabs
         public PortfolioTab()
         {
             InitializeComponent();
+            lstView.ItemSelected += (sender, e) =>
+            {
+
+                var item = e.SelectedItem as PortfolioListViewModel;
+
+                if (item == null) return; // don't do anything if we just de-selected the row
+
+                ContentPage page = null;    // do something with e.SelectedItem
+
+                page = new Pages.StockInfoPage(item.Ticker);
+
+                page.BindingContext = item;
+                Navigation.PushAsync(page);
+
+
+                ((ListView)sender).SelectedItem = null; // de-select the row
+
+
+            };
         }
 
         protected async override void OnAppearing()
@@ -39,15 +58,11 @@ namespace StockEmulator.Tabs
             }
 
             lstView.ItemsSource = portfolioList;
-
-            lstView.ItemSelected += (sender, e) =>
-            {
-                var item = e.SelectedItem as PortfolioListViewModel;
-                if (item == null) return; // don't do anything if we just de-selected the row
-                // do something with e.SelectedItem
-                ((ListView)sender).SelectedItem = null; // de-select the row
-            };
+           
+           
+            
         }
 
+       
     }
 }

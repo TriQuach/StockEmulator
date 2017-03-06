@@ -22,5 +22,6 @@ namespace StockEmulator
         public static string InsertNewPortfolioRequest = "?username={0}&ticker={1}&cost={2}&num={3}";
         public static string DeletePortfolioByUsernameRequest = "?username={0}";
         public static string DeletePortfolioByUsernameAndTicker = "?username={0}&ticker={1}";
+        public static int count=0;
     }
 }
