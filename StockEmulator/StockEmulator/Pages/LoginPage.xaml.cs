@@ -15,7 +15,7 @@ namespace StockEmulator.Pages
         {
             InitializeComponent();
         }
-        async public void Show_Login(object sender, EventArgs arg)
+        async public void PressLogin(object sender, EventArgs arg)
         {
             LoginModel thisUser = new LoginModel()
             {
@@ -27,8 +27,11 @@ namespace StockEmulator.Pages
             bool valid = await App.accountRestServiceManager.SendLoginInfo(thisUser);
             if (valid)
             {
-              await Navigation.PushModalAsync(new MainPage());
-              
+                var page = new MainPage();
+                NavigationPage.SetHasNavigationBar(page, false);
+                Navigation.InsertPageBefore(page, this);
+                await Navigation.PopAsync();
+
             }        
             else
             {

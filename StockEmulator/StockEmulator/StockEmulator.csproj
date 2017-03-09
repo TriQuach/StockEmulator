@@ -44,13 +44,16 @@
     <Compile Include="Data\PortfolioRestService\IPortfolioRestService.cs" />
     <Compile Include="Data\PortfolioRestService\PortfolioRestService.cs" />
     <Compile Include="Data\PortfolioRestService\PortfolioRestServiceManager.cs" />
+    <Compile Include="Data\TransactionRestService\ITransactionRestService.cs" />
+    <Compile Include="Data\TransactionRestService\TransactionRestService.cs" />
+    <Compile Include="Data\TransactionRestService\TransactionRestServiceManager.cs" />
     <Compile Include="MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\PorfolioModel.cs" />
-    <Compile Include="Models\TransactionsModel.cs" />
+    <Compile Include="Models\PortfolioModel.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Pages\BuyPage.xaml.cs">
       <DependentUpon>BuyPage.xaml</DependentUpon>
     </Compile>
@@ -73,7 +76,6 @@
     <Compile Include="Tabs\MyAccountTab.xaml.cs">
       <DependentUpon>MyAccountTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\PersonModel.cs" />
     <Compile Include="Tabs\PortfolioTab.xaml.cs">
       <DependentUpon>PortfolioTab.xaml</DependentUpon>
     </Compile>
@@ -81,11 +83,9 @@
     <Compile Include="Pages\SellPage.xaml.cs">
       <DependentUpon>SellPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\PortfolioListViewModel.cs" />
     <Compile Include="Pages\StockInfoPage.xaml.cs">
       <DependentUpon>StockInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\TransactionListViewModel.cs" />
     <Compile Include="Tabs\TransactionsTab.xaml.cs">
       <DependentUpon>TransactionsTab.xaml</DependentUpon>
     </Compile>

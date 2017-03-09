@@ -14,7 +14,7 @@ namespace StockEmulator.Data.PortfolioRestService
     {
         HttpClient client;
 
-        public List<PorfolioModel> PortfolioItems { get; private set; }
+        public List<PortfolioModel> PortfolioItems { get; private set; }
 
         public PortfolioRestService()
         {
@@ -22,9 +22,9 @@ namespace StockEmulator.Data.PortfolioRestService
             client.MaxResponseContentBufferSize = 256000;
         }
 
-        public async Task<List<PorfolioModel>> GetPortfolioListByUsernameAsync(string username)
+        public async Task<List<PortfolioModel>> GetPortfolioListByUsernameAsync(string username)
         {
-            PortfolioItems = new List<PorfolioModel>();
+            PortfolioItems = new List<PortfolioModel>();
 
             // RestURL_Portfolio = "http://lmtri.somee.com/api/portfolio{0}"
             // GetPortfolioListByUsernameRequest = "?username={0}"
@@ -37,7 +37,7 @@ namespace StockEmulator.Data.PortfolioRestService
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    PortfolioItems = JsonConvert.DeserializeObject<List<PorfolioModel>>(content);
+                    PortfolioItems = JsonConvert.DeserializeObject<List<PortfolioModel>>(content);
                 }
 
             }
