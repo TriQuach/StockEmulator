@@ -16,7 +16,7 @@ namespace StockEmulator.Data.PortfolioRestService
             this.portfolioRestService = portfolioRestService;
         }
 
-        public Task<List<PorfolioModel>> GetPortfolioListByUsernameTaskAsync(string username)
+        public Task<List<PortfolioModel>> GetPortfolioListByUsernameTaskAsync(string username)
         {
             return portfolioRestService.GetPortfolioListByUsernameAsync(username);
         }

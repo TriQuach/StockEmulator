@@ -18,7 +18,7 @@ namespace StockEmulator.Tabs
             lstView.ItemSelected += (sender, e) =>
             {
 
-                var item = e.SelectedItem as PortfolioListViewModel;
+                var item = e.SelectedItem as PortfolioModel;
 
                 if (item == null) return; // don't do anything if we just de-selected the row
 
@@ -31,36 +31,36 @@ namespace StockEmulator.Tabs
 
 
                 ((ListView)sender).SelectedItem = null; // de-select the row
-
-
             };
+            loadingPortfolio.IsVisible = true;
+            loadingPortfolio.IsRunning = true;
         }
 
         protected async override void OnAppearing()
         {
-            List<PorfolioModel> items = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
-            loading.IsRunning = false;
-            List<PortfolioListViewModel> portfolioList = new List<PortfolioListViewModel>();
-            foreach (var item in items)
-            {
-                portfolioList.Add(new PortfolioListViewModel
-                {
-                    Ticker = item.Ticker,
-                    Price = item.Price,
-                    Cost = item.Cost,
-                    Num = item.NumStocks,
-                    Value = item.Value,
-                    EquityName = item.Name,
-                    GainLossMoney = item.GainLossMoney,
-                    DollarCHG = item.ChangeMoney,
-                    PerCentCHG = item.ChangePercent
-                });
-            }
+            List<PortfolioModel> items = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
 
-            lstView.ItemsSource = portfolioList;
-           
-           
-            
+            //List<PortfolioListViewModel> portfolioList = new List<PortfolioListViewModel>();
+            //foreach (var item in items)
+            //{
+            //    portfolioList.Add(new PortfolioListViewModel
+            //    {
+            //        Ticker = item.Ticker,
+            //        Price = item.Price,
+            //        Cost = item.Cost,
+            //        Num = item.NumStocks,
+            //        Value = item.Value,
+            //        EquityName = item.Name,
+            //        GainLossMoney = item.GainLossMoney,
+            //        DollarCHG = item.ChangeMoney,
+            //        PerCentCHG = item.ChangePercent
+            //    });
+            //}
+
+            lstView.ItemsSource = items;
+
+            loadingPortfolio.IsRunning = false;
+            loadingPortfolio.IsVisible = false;
         }
 
        

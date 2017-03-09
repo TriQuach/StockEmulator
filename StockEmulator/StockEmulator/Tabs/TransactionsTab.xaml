@@ -4,7 +4,7 @@
              x:Class="StockEmulator.Tabs.TransactionsTab"
              Title="Transactions">
   <StackLayout BackgroundColor="White">
-
+    <ActivityIndicator x:Name="loadingTransaction" Color="Green"/>
     <StackLayout Orientation="Horizontal" HorizontalOptions="Start" BackgroundColor="#FFC107">
       <StackLayout Spacing="0" WidthRequest="90" Margin="5,0,0,0">
         <Label Text="Ticker" FontSize="11" VerticalOptions="Center" TextColor="#007FFF"/>
@@ -34,22 +34,22 @@
             <StackLayout Orientation="Horizontal">
               <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="90" Margin="5,0,0,0">
                 <Label Text="{Binding Ticker}" FontSize="12" VerticalOptions="Center" TextColor="#007FFF"/>
-                <Label Text="{Binding EnquityName}" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
+                <Label Text="{Binding EquityName}" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
               </StackLayout>
               <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="90">
-                <Label Text="{Binding TransactionDate}" FontSize="10" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
-                <Label Text="{Binding GainsLossesMoney, StringFormat='${0:0.000}'}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
+                <Label Text="{Binding Date, StringFormat='{0:dd-MM-yyyy}'}" FontSize="10" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+                <Label Text="{Binding GainLossMoney, StringFormat='${0:0.000}'}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
               </StackLayout>
               <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="70">
-                <Label Text="{Binding TransactionType}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+                <Label Text="{Binding Type}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
               </StackLayout>
               <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="80">
-                <Label Text="{Binding NumOfStocks}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
-                <Label Text="{Binding GainsLossesPercent}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
+                <Label Text="{Binding NumStocks}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+                <Label Text="{Binding GainLossPercent}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
               </StackLayout>
               <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="90" Margin="0,0,5,0">
-                <Label Text="{Binding UnitPrice}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" TextColor="#000000"/>
-                <Label Text="{Binding TotalPrice}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#000000"/>
+                <Label Text="{Binding Price}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" TextColor="#000000"/>
+                <Label Text="{Binding Total}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#000000"/>
               </StackLayout>
             </StackLayout>
           </ViewCell>

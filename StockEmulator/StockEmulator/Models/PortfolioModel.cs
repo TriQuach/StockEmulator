@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockEmulator.Models
 {
-    public class PorfolioModel
+    public class PortfolioModel
     {
         public string Ticker { get; set; }
         public string Name { get; set; }
@@ -17,7 +17,5 @@ namespace StockEmulator.Models
         public double ChangeMoney { get; set; }
         public double Value { get; set; }
         public double ChangePercent { get; set; }
-
-
     }
 }

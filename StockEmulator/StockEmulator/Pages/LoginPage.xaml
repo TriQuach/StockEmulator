@@ -5,10 +5,12 @@
 
   <StackLayout Padding="0,5,0,0">
   <StackLayout Orientation="Vertical">
+    <Label Text="Username"/>
     <Entry x:Name="username" Placeholder="email@gmail.com" />
-    <Entry x:Name="password" Placeholder="password" />
+    <Label Text="Password"/>
+    <Entry x:Name="password" IsPassword="True" Placeholder="Password" />
 
-    <Button x:Name= "btbShowAction" Text="Login" Clicked="Show_Login"/>
+    <Button Text="Login" Clicked="PressLogin"/>
   </StackLayout>
   </StackLayout>
 </ContentPage>
