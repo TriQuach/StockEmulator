@@ -4,7 +4,10 @@
              x:Class="StockEmulator.Tabs.PortfolioTab"
              Title="Portfolio">
 
+  
   <StackLayout Margin="0,0,0,10">
+
+    <ActivityIndicator x:Name="loading" Color="Black" IsRunning="true" />
     <StackLayout BackgroundColor="#FFC107" >
       <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Spacing="0">
         <Label FontSize = "14" TextColor="#09B4EB" Text="Ticker" Margin="15"/>

@@ -27,7 +27,8 @@ namespace StockEmulator.Pages
             bool valid = await App.accountRestServiceManager.SendLoginInfo(thisUser);
             if (valid)
             {
-                await Navigation.PushAsync(new MainPage());
+              await Navigation.PushModalAsync(new MainPage());
+              
             }        
             else
             {

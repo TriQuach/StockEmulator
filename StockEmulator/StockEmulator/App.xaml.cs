@@ -21,7 +21,6 @@ namespace StockEmulator
 
             accountRestServiceManager = new AccountRestServiceManager(new AccountRestService());
             portfolioRestServiceManager = new PortfolioRestServiceManager(new PortfolioRestService());
-            // MainPage = new NavigationPage(new Login());
             MainPage = new NavigationPage(new LoginPage());
         }
 
