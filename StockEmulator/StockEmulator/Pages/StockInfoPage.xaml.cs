@@ -8,12 +8,15 @@ using Xamarin.Forms;
 
 namespace StockEmulator.Pages
 {
+
     public partial class StockInfoPage : ContentPage
     {
         public interface IBaseUrl { string Get(); }
+        public string ticker_name;
         public StockInfoPage(string param)
         {
             InitializeComponent();
+            ticker_name = param;
             Ticker.Text = param;
 
             var htmlSource = new HtmlWebViewSource();
@@ -67,7 +70,7 @@ namespace StockEmulator.Pages
         }
         async void Show_Buy(object sender, EventArgs arg)
         {
-            await Navigation.PushAsync(new BuyPage());
+            await Navigation.PushAsync(new BuyPage(ticker_name));
         }
         async public void Show_Sell(object sender, EventArgs arg)
         {
