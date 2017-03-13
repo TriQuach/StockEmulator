@@ -1,11 +1,6 @@
 ﻿using StockEmulator.Models;
-using StockEmulator.ViewModels;
-using System;
+using StockEmulator.Utilities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
 namespace StockEmulator.Tabs

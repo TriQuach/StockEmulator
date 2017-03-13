@@ -37,7 +37,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Constants.cs" />
+    <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Data\AccountRestService\AccountRestService.cs" />
     <Compile Include="Data\AccountRestService\AccountRestServiceManager.cs" />
     <Compile Include="Data\AccountRestService\IAccountRestService.cs" />
