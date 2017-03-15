@@ -10,6 +10,11 @@ namespace StockEmulator.Pages
         public LoginPage()
         {
             InitializeComponent();
+            SignUp.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() =>Navigation.PushModalAsync(new SignUpPage()))
+            });
+
         }
         async public void PressLogin(object sender, EventArgs arg)
         {
