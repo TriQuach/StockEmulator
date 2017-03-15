@@ -15,8 +15,39 @@ namespace StockEmulator.Models
         public long NumStocks { get; set; }
         public double Price { get; set; }
         public double AvgBuyPrice { get; set; }
-        public double? GainLossMoney { get; set; } = 0;
-        public double? GainLossPercent { get; set; } = 0;
-        public double Total { get; set; } = 0;
+
+        double? default1 = 0;
+        public double? GainLossMoney {
+            get
+            {
+                return default1;
+            }
+            set
+            {
+                default1 = value;
+            }
+        }
+        public double? GainLossPercent {
+            get
+            {
+                return default1;
+            }
+            set
+            {
+                default1 = value;
+            }
+        }
+
+        double default2 = 0;
+        public double Total {
+            get
+            {
+                return default2;
+            }
+            set
+            {
+                default2 = value;
+            }
+        }
     }
 }

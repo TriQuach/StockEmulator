@@ -10,7 +10,7 @@
     
     <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
       <Label FontSize = "15" Text="Apple Lnc." Margin="20"/>
-      <Label TextColor="#EB0921" FontSize = "15" Text="AAPL" Margin="20"/>
+      <Label x:Name="Ticker" TextColor="#EB0921" FontSize = "15" Margin="20"/>
       <Label TextColor="#09B4EB" FontSize = "15" Text="118.97" Margin="20"/>
      </StackLayout>
     

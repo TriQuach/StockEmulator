@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using StockEmulator.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using StockEmulator.Utilities;
 
 namespace StockEmulator.Data.AccountRestService
 {

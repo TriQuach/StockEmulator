@@ -11,6 +11,7 @@ namespace StockEmulator.Tabs
 {
     public partial class FindStocksTab : ContentPage
     {
+        
         private List<string> source = new List<string>()
         {
             "AAA","AAC","BBC","BBE","CTD"
