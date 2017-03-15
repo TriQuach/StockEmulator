@@ -1,5 +1,5 @@
 ﻿using StockEmulator.Pages;
-using StockEmulator.ViewModels;
+using StockEmulator.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
