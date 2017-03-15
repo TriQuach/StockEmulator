@@ -1,4 +1,4 @@
-﻿using StockEmulator.ViewModels;
+﻿using StockEmulator.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace StockEmulator.Tabs
         public InsiderTradesTab()
         {
             InitializeComponent();
-            lstView.ItemsSource = new List<InsiderTradesListViewModel>
+            lstView.ItemsSource = new List<InsiderTradeModel>
             {
-                new InsiderTradesListViewModel
+                new InsiderTradeModel
                 {
                     Tick = "OPK",
                     CompanyName = "Exegenics Lcn (OPK)",
@@ -28,7 +28,7 @@ namespace StockEmulator.Tabs
                     Time = "06:25:35 2017-02-19"
                  
                 },
-                new InsiderTradesListViewModel
+                new InsiderTradeModel
                 {
                     Tick = "OPK",
                     CompanyName = "Exegenics Lcn (OPK)",

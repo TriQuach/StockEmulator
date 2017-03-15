@@ -37,6 +37,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChartDataModel.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Data\AccountRestService\AccountRestService.cs" />
     <Compile Include="Data\AccountRestService\AccountRestServiceManager.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Tabs\InsiderTradesTab.xaml.cs">
       <DependentUpon>InsiderTradesTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\InsiderTradesListViewModel.cs" />
+    <Compile Include="Models\InsiderTradeModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -89,6 +90,8 @@
     <Compile Include="Tabs\TransactionsTab.xaml.cs">
       <DependentUpon>TransactionsTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\CustomDateTime.cs" />
+    <Compile Include="Utilities\HTMLChartBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
