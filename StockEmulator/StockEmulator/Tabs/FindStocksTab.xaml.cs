@@ -27,7 +27,7 @@ namespace StockEmulator.Tabs
 
                     ContentPage page = null;    // do something with e.SelectedItem
                     
-                        page = new Pages.StockInfoPage(item);
+                    page = new StockInfoPage(item);
                     
                     page.BindingContext = item;
                     Navigation.PushAsync(page);

@@ -1,4 +1,5 @@
 ﻿using StockEmulator.Models;
+using StockEmulator.Pages;
 using StockEmulator.Utilities;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -19,7 +20,7 @@ namespace StockEmulator.Tabs
 
                 ContentPage page = null;    // do something with e.SelectedItem
 
-                page = new Pages.StockInfoPage(item.Ticker);
+                page = new StockInfoPage(item.Ticker);
 
                 page.BindingContext = item;
                 Navigation.PushAsync(page);

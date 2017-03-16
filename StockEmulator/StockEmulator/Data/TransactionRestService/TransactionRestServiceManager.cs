@@ -20,5 +20,10 @@ namespace StockEmulator.Data.TransactionRestService
         {
             return transactionRestService.GetTransactionListByUsernameAsync(username);
         }
+
+        public Task<bool> BuyStockByUsernameTickerNumStocksTaskAsync(BuyStockModel buyingInfo)
+        {
+            return transactionRestService.BuyStockByUsernameTickerNumStocksAsync(buyingInfo);
+        }
     }
 }

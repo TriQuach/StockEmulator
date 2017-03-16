@@ -23,7 +23,8 @@ namespace StockEmulator.Utilities
         public static string DeletePortfolioByUsernameRequest = "?username={0}";
         public static string DeletePortfolioByUsernameAndTicker = "?username={0}&ticker={1}";
 
-        public static string RestUrl_Transactions = "http://lmtri.somee.com/api/transactions{0}";
+        public static string RestUrl_Transaction = "http://lmtri.somee.com/api/transaction{0}";
         public static string GetTransactionListByUsernameRequest = "?username={0}";
+        public static string BuyStockByUsernameTickerNumStocksRequest = "?username={0}&ticker={1}&numstocks={2}";
     }
 }
