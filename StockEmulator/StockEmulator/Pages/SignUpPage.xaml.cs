@@ -26,6 +26,15 @@ namespace StockEmulator.Pages
             firstquestion.Items.Add("how are you?");
             firstquestion.Items.Add("where are you from?");
 
+            secondquestion.Items.Add("your child hood hero?");
+            secondquestion.Items.Add("your favourite color?");
+            secondquestion.Items.Add("your superstar?");
+
+            loginpage.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => Navigation.PushModalAsync(new LoginPage()))
+            });
+
 
 
         }
