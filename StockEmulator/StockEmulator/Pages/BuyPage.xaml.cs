@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StockEmulator.Models;
+using StockEmulator.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,24 +13,31 @@ namespace StockEmulator.Pages
     
     public partial class BuyPage : ContentPage
     {
-        string ticker_name;
+        string ticker;
         public BuyPage(string param)
         {
             InitializeComponent();
-            ticker_name = param;
+            ticker = param;
             AvailableFunds.Text = "1234";
+            EquityName.Text = "Apple Inc.";
             Ticker.Text = param;
-            
+
         }
-        async void Show_Cancle(object sender, EventArgs arg)
+        async void ClickCancel(object sender, EventArgs arg)
         {
-            //TODO with ticker_name;
-            await Navigation.PushAsync(new StockInfoPage(null));
+            await Navigation.PopAsync();
         }
-        async void Show_Buy(object sender, EventArgs arg)
+        async void ClickBuy(object sender, EventArgs arg)
         {
-            //TODO with ticker_name;
-            await Navigation.PushAsync(new StockInfoPage(null));
+            //TODO with ticker;
+            long buyQuantity = long.Parse(BuyQuantity.Text);
+            BuyStockModel buyingInfo = new BuyStockModel { Username = Constants.currentUsername, Ticker = ticker, NumStocks = buyQuantity };
+            bool success = await App.transactionRestServiceManager.BuyStockByUsernameTickerNumStocksTaskAsync(buyingInfo);
+
+            if (success)
+            {
+                await Navigation.PopAsync();
+            }
         }
        
     }

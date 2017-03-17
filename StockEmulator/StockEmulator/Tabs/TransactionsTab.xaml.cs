@@ -1,5 +1,7 @@
 ﻿using StockEmulator.Models;
+using StockEmulator.Pages;
 using StockEmulator.Utilities;
+using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
@@ -31,7 +33,7 @@ namespace StockEmulator.Tabs
 
                 ContentPage page = null;    // do something with e.SelectedItem
                 
-                    page = new Pages.StockInfoPage(item.Ticker);
+                page = new StockInfoPage(item.Ticker);
                 
                 page.BindingContext = item;
                 Navigation.PushAsync(page);
@@ -44,8 +46,10 @@ namespace StockEmulator.Tabs
 
         protected async override void OnAppearing()
         {
-            List<TransactionModel> items = await App.transactionRestServiceManager.GetTransactionListByUsernameTaskAsync(Constants.currentUsername);
+            //List<TransactionModel> items = await App.transactionRestServiceManager.GetTransactionListByUsernameTaskAsync(Constants.currentUsername);
 
+            List<TransactionModel> items = new List<TransactionModel>();
+            items.Add(new TransactionModel { Ticker = "GOOGL", EquityName = "Alphabet Inc.", Date = new DateTime(2017, 2, 14), Type = "Sell", NumStocks = 3, GainLossPercent = 0.323f, Price = 837.32f, Total = 2501.96f });
             foreach (var item in items)
             {
                 item.Total = item.Price * item.NumStocks;

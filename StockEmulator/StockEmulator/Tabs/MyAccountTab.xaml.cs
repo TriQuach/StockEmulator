@@ -62,7 +62,7 @@ namespace StockEmulator.Tabs
         {
             AccountModel accountInfo = await App.accountRestServiceManager.GetAccountInfoByUsernameAsync(Constants.currentUsername);
 
-            startingInvestment.Text = accountInfo.Investment.ToString();
+            startingInvestment.Text = accountInfo.StartingInvestment.ToString();
             stocksValue.Text = "Stocks Value?";
             availableCash.Text = accountInfo.AvailableCash.ToString();
             totalValue.Text = "Total Value?";

@@ -6,17 +6,17 @@
   <StackLayout Padding="0,5,0,0">
     
     
-      <Label TextColor="#77d065" FontSize = "30" Text="Place Order" />
+      <Label Text="Place Order" TextColor="#77d065" FontSize="30" />
     
     <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label FontSize = "15" Text="Apple Lnc." Margin="20"/>
+      <Label x:Name="EquityName" FontSize = "15" Margin="20"/>
       <Label x:Name="Ticker" TextColor="#EB0921" FontSize = "15" Margin="20"/>
       <Label TextColor="#09B4EB" FontSize = "15" Text="118.97" Margin="20"/>
      </StackLayout>
     
     <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
       <Label TextColor="#09B4EB" FontSize = "15" Text="Buy quantity" Margin="20"/>
-      <Entry HorizontalOptions="FillAndExpand" />
+      <Entry x:Name="BuyQuantity" HorizontalOptions="FillAndExpand" />
     </StackLayout>
     
     <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
@@ -38,8 +38,8 @@
     </StackLayout>
     
     <StackLayout Orientation="Horizontal ">
-      <Button Text="Cancle" Margin ="0,0,0,20" Clicked = "Show_Cancle"/>
-	    <Button Text="Buy" Margin ="0,0,0,20" Clicked = "Show_Buy"/>
+      <Button Text="Cancel" Margin ="0,0,0,20" Clicked = "ClickCancel"/>
+	    <Button Text="Buy" Margin ="0,0,0,20" Clicked = "ClickBuy"/>
     </StackLayout>
    
   </StackLayout>

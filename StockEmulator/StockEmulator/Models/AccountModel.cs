@@ -9,7 +9,7 @@ namespace StockEmulator.Models
     public class AccountModel
     {
         public string Username { get; set; }
-        public double Investment { get; set; }
+        public double StartingInvestment { get; set; }
         public double AvailableCash { get; set; }
         public long TotalTrans { get; set; }
         public long PositiveTrans { get; set; }

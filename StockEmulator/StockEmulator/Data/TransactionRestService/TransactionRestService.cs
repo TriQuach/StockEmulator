@@ -6,6 +6,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using StockEmulator.Utilities;
+using System.Text;
 
 namespace StockEmulator.Data.TransactionRestService
 {
@@ -25,10 +26,10 @@ namespace StockEmulator.Data.TransactionRestService
         {
             TransactionItems = new List<TransactionModel>();
 
-            // RestURL_Portfolio = "http://lmtri.somee.com/api/portfolio{0}"
+            // RestUrl_Transactions = "http://lmtri.somee.com/api/transaction{0}"
             // GetTransactionListByUsernameRequest = "?username={0}"
             string GetTransactionListByUsernameRequest = string.Format(Constants.GetTransactionListByUsernameRequest, username);
-            var uri = new Uri(string.Format(Constants.RestUrl_Transactions, GetTransactionListByUsernameRequest));
+            var uri = new Uri(string.Format(Constants.RestUrl_Transaction, GetTransactionListByUsernameRequest));
 
             try
             {
@@ -46,6 +47,34 @@ namespace StockEmulator.Data.TransactionRestService
             }
 
             return TransactionItems;
+        }
+
+        public async Task<bool> BuyStockByUsernameTickerNumStocksAsync(BuyStockModel buyingInfo)
+        {
+            // RestUrl_Transactions = "http://lmtri.somee.com/api/transaction{0}"
+            // BuyStockByUsernameTickerNumStocksRequest = "?username={0}&ticker={1}&numstocks={2}"
+            string BuyStockByUsernameTickerNumStocksRequest = string.Format(Constants.BuyStockByUsernameTickerNumStocksRequest, buyingInfo.Username, buyingInfo.Ticker, buyingInfo.NumStocks);
+            var uri = new Uri(string.Format(Constants.RestUrl_Transaction, BuyStockByUsernameTickerNumStocksRequest));
+
+            bool success = false;
+            try
+            {
+                var json = JsonConvert.SerializeObject(buyingInfo);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(uri, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    success = JsonConvert.DeserializeObject<bool>(responseContent);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"              ERROR {0}", ex.Message);
+            }
+
+            return success;
         }
     }
 }
