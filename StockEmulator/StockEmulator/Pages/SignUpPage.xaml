@@ -17,7 +17,7 @@
     <Label Text="Second Security Question" />
     <Picker x:Name="secondquestion" />
     <Entry Placeholder="Answer to above question" />
-    <Button x:Name="signup" Text="REGISTER NEW ACCOUNT" Margin="20,0,20,0" BackgroundColor="#2196f3" />
+    <Button x:Name="signup" Text="REGISTER NEW ACCOUNT" Margin="20,0,20,0" BackgroundColor="#2196f3" Clicked="Register"/>
     <Label x:Name="loginpage" Text="Already Registered? Click to Login" TextColor="#2196f3"/>
   </StackLayout>
 </ContentPage>

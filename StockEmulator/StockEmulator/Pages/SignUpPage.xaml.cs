@@ -32,11 +32,17 @@ namespace StockEmulator.Pages
 
             loginpage.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => Navigation.PushModalAsync(new LoginPage()))
+                Command = new Command(() => Navigation.PopModalAsync())
             });
 
+            
 
-
+        }
+        async void Register(object sender, EventArgs arg)
+        {
+            //name = fullname.Text; // muon lay entry nao, chi can qua SignUp.xaml tim x:Name tuong ung roi goi ham .Text
+            //name = firstquestion.Items[firstquestion.SelectedIndex]; // tuong tu voi picker
+            await Navigation.PopModalAsync();
         }
     }
 }
