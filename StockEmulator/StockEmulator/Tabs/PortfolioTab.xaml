@@ -7,21 +7,25 @@
   
   <StackLayout Margin="0,0,0,0">
     <ActivityIndicator x:Name="loadingPortfolio" Color="Green"/>
-    <StackLayout BackgroundColor="#FFC107" >
-      <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Spacing="0">
-        <Label FontSize = "14" TextColor="#09B4EB" Text="Ticker" Margin="15"/>
-        <Label FontSize = "14" FontAttributes="Bold" Text="Price" Margin="15"/>
-        <Label FontSize = "14" Text="Cost" Margin="15"/>
-        <Label FontSize = "14" Text="Num" Margin="15"/>
-        <Label FontSize = "14" Text="Value" Margin="15"/>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="Start" BackgroundColor="#FFC107">
+      <StackLayout Spacing="0" WidthRequest="90" Margin="5,0,0,0">
+        <Label Text="Ticker" FontSize="11" VerticalOptions="Center" TextColor="#007FFF"/>
+        <Label Text="Equity Name" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
       </StackLayout>
-
-      <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Margin="0,-30,0,0" Spacing="0" >
-        <Label FontSize = "14" TextColor="#09B4EB" Text="EquityName" Margin="15"/>
-        <Label FontSize = "14" FontAttributes="Bold" Margin="15"/>
-        <Label FontSize = "14" Text="G\L" Margin="15"/>
-        <Label FontSize = "14" Text="$CHG" Margin="15"/>
-        <Label FontSize = "14" Text="%CHG" Margin="15"/>
+      <StackLayout Spacing="0" WidthRequest="90">
+        <Label Text="Price" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+        <Label Text="G\L" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
+      </StackLayout>
+      <StackLayout Spacing="0" WidthRequest="70">
+        <Label Text="Cost" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+      </StackLayout>
+      <StackLayout Spacing="0" WidthRequest="80">
+        <Label Text="Num" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+        <Label Text="$CHG" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
+      </StackLayout>
+      <StackLayout Spacing="0" WidthRequest="90" Margin="0,0,5,0">
+        <Label Text="Value" FontSize="11" VerticalOptions="Center" HorizontalOptions="End" TextColor="#000000"/>
+        <Label Text="%CHG" FontSize="11" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#000000"/>
       </StackLayout>
     </StackLayout>
     <ListView x:Name="lstView"
@@ -29,24 +33,26 @@
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-
-            <StackLayout Orientation="Vertical">
-              
-              <StackLayout Orientation="Horizontal">
-                <Label Margin="15,0,0,0" Text="{Binding Ticker}" />
-                <Label Margin="35,0,0,0" Text="{Binding Price}" />
-                <Label Margin="20,0,0,0" Text="{Binding Cost}" />
-                <Label Margin="20,0,0,0" Text="{Binding Num}" />
-                <Label TextColor="#33CC33" Margin="20,0,0,0" Text="{Binding Value}" />
+            <StackLayout Orientation="Horizontal">
+              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="90" Margin="5,0,0,0">
+                <Label Text="{Binding Ticker}" FontSize="12" VerticalOptions="Center" TextColor="#007FFF"/>
+                <Label Text="{Binding EquityName}" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
               </StackLayout>
-
-              <StackLayout Orientation="Horizontal">
-                <Label Margin="15,0,0,0" Text="{Binding EquityName}" />
-                <Label TextColor="#33CC33" Margin="80,0,0,0" Text="{Binding GainLossMoney}" />
-                <Label TextColor="#33CC33" Margin="50,0,0,0" Text="{Binding DollarCHG}" />
-                <Label TextColor="#33CC33" Margin="30,0,0,0" Text="{Binding PerCentCHG}" />          
+              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="150">
+                <Label Text="{Binding Price}" FontSize="10" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+                <Label Text="{Binding GainLossMoney, StringFormat='${0:0.000}'}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
               </StackLayout>
-              
+              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="70">
+                <Label Text="{Binding Cost}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+              </StackLayout>
+              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="80">
+                <Label Text="{Binding Num}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+                <Label Text="{Binding DollarCHG}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
+              </StackLayout>
+              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="90" Margin="0,0,5,0">
+                <Label Text="{Binding Value}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" TextColor="#000000"/>
+                <Label Text="{Binding PerCentCHG}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#000000"/>
+              </StackLayout>
             </StackLayout>
           </ViewCell>
         </DataTemplate>
