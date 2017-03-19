@@ -13,7 +13,7 @@
         <Label Text="Equity Name" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
       </StackLayout>
       <StackLayout Spacing="0" WidthRequest="90">
-        <Label Text="Price" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+        <Label Text="Price" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" FontAttributes="Bold"/>
         <Label Text="G\L" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
       </StackLayout>
       <StackLayout Spacing="0" WidthRequest="70">
@@ -39,19 +39,19 @@
                 <Label Text="{Binding EquityName}" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
               </StackLayout>
               <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="150">
-                <Label Text="{Binding Price}" FontSize="10" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
-                <Label Text="{Binding GainLossMoney, StringFormat='${0:0.000}'}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
+                <Label Text="{Binding Price}" FontSize="10" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" FontAttributes="Bold"/>
+                <Label Text="{Binding GainLossMoney, StringFormat='${0:0.000}'}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#7A7A7A"/>
               </StackLayout>
               <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="70">
                 <Label Text="{Binding Cost}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
               </StackLayout>
               <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="80">
                 <Label Text="{Binding Num}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
-                <Label Text="{Binding DollarCHG}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
+                <Label Text="{Binding DollarCHG}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#7A7A7A"/>
               </StackLayout>
               <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="90" Margin="0,0,5,0">
                 <Label Text="{Binding Value}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" TextColor="#000000"/>
-                <Label Text="{Binding PerCentCHG}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#000000"/>
+                <Label Text="{Binding PerCentCHG}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#7A7A7A"/>
               </StackLayout>
             </StackLayout>
           </ViewCell>
