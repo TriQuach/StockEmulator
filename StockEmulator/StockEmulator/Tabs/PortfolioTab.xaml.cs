@@ -11,7 +11,7 @@ namespace StockEmulator.Tabs
         public PortfolioTab()
         {
             InitializeComponent();
-            lstView.ItemSelected += (sender, e) =>
+            listView.ItemSelected += (sender, e) =>
             {
 
                 var item = e.SelectedItem as PortfolioModel;
@@ -53,7 +53,7 @@ namespace StockEmulator.Tabs
             //    });
             //}
 
-            lstView.ItemsSource = items;
+            listView.ItemsSource = items;
 
             loadingPortfolio.IsRunning = false;
             loadingPortfolio.IsVisible = false;

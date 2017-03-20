@@ -4,54 +4,55 @@
              x:Class="StockEmulator.Tabs.PortfolioTab"
              Title="Portfolio">
 
-  
   <StackLayout Margin="0,0,0,0">
+    
     <ActivityIndicator x:Name="loadingPortfolio" Color="Green"/>
-    <StackLayout Orientation="Horizontal" HorizontalOptions="Start" BackgroundColor="#FFC107">
-      <StackLayout Spacing="0" WidthRequest="90" Margin="5,0,0,0">
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="#FFC107">
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="5,0,0,0">
         <Label Text="Ticker" FontSize="11" VerticalOptions="Center" TextColor="#007FFF"/>
         <Label Text="Equity Name" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
+        <Label Text="Market Is Currently Closed" FontSize="11" VerticalOptions="Center" TextColor="#b22222" IsVisible="false"/>
       </StackLayout>
-      <StackLayout Spacing="0" WidthRequest="90">
-        <Label Text="Price" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" FontAttributes="Bold"/>
-        <Label Text="G\L" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
+        <Label Text="Price" Font="Bold,11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
       </StackLayout>
-      <StackLayout Spacing="0" WidthRequest="70">
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
         <Label Text="Cost" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+        <Label Text="G\L" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
       </StackLayout>
-      <StackLayout Spacing="0" WidthRequest="80">
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
         <Label Text="Num" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
-        <Label Text="$CHG" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
+        <Label Text="$ CHG" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
       </StackLayout>
-      <StackLayout Spacing="0" WidthRequest="90" Margin="0,0,5,0">
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="0,0,5,0">
         <Label Text="Value" FontSize="11" VerticalOptions="Center" HorizontalOptions="End" TextColor="#000000"/>
-        <Label Text="%CHG" FontSize="11" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#000000"/>
+        <Label Text="% CHG" FontSize="11" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#000000"/>
       </StackLayout>
     </StackLayout>
-    <ListView x:Name="lstView"
-            >
+    
+    <ListView x:Name="listView">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout Orientation="Horizontal">
-              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="90" Margin="5,0,0,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="5,0,0,0">
                 <Label Text="{Binding Ticker}" FontSize="12" VerticalOptions="Center" TextColor="#007FFF"/>
                 <Label Text="{Binding EquityName}" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
               </StackLayout>
-              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="150">
-                <Label Text="{Binding Price}" FontSize="10" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" FontAttributes="Bold"/>
-                <Label Text="{Binding GainLossMoney, StringFormat='${0:0.000}'}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#7A7A7A"/>
+              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
+                <Label Text="{Binding Price}" Font="Bold,11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
               </StackLayout>
-              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="70">
-                <Label Text="{Binding Cost}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
+                <Label Text="{Binding Cost}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+                <Label Text="{Binding GainLossMoney}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
               </StackLayout>
-              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="80">
-                <Label Text="{Binding Num}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
-                <Label Text="{Binding DollarCHG}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#7A7A7A"/>
+              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
+                <Label Text="{Binding NumStocks}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+                <Label Text="{Binding ChangeMoney}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
               </StackLayout>
-              <StackLayout Orientation="Vertical" Spacing="0" WidthRequest="90" Margin="0,0,5,0">
-                <Label Text="{Binding Value}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" TextColor="#000000"/>
-                <Label Text="{Binding PerCentCHG}" FontSize="12" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#7A7A7A"/>
+              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="0,0,5,0">
+                <Label Text="{Binding Value}" FontSize="11" VerticalOptions="Center" HorizontalOptions="End" TextColor="#000000"/>
+                <Label Text="{Binding ChangePercent}" FontSize="11" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#000000"/>
               </StackLayout>
             </StackLayout>
           </ViewCell>

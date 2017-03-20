@@ -23,11 +23,12 @@ namespace StockEmulator.Pages
                 Username = username.Text,
                 Password = password.Text
             };
-            Constants.currentUsername = thisUser.Username;
 
-            bool valid = await App.accountRestServiceManager.SendLoginInfo(thisUser);
+            bool valid = await App.accountRestServiceManager.LoginTaskAsync(thisUser);
             if (valid)
             {
+                Constants.currentUsername = thisUser.Username;
+
                 var page = new MainPage();
                 NavigationPage.SetHasNavigationBar(page, false);
                 Navigation.InsertPageBefore(page, this);
@@ -36,7 +37,7 @@ namespace StockEmulator.Pages
             }        
             else
             {
-                DisplayAlert("Login Failed !", "Wrong USERNAME or PASSWORD !!", "OK");
+                await DisplayAlert("Login Failed!", "Wrong USERNAME or PASSWORD!", "OK");
             }
 //            Debug.WriteLine(valid);
         }

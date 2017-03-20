@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StockEmulator.Models;
+using StockEmulator.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,15 +24,15 @@ namespace StockEmulator.Pages
             country.Items.Add("Australia");
 
 
-            firstquestion.Items.Add("what's your name?");
-            firstquestion.Items.Add("how are you?");
-            firstquestion.Items.Add("where are you from?");
+            firstQuestion.Items.Add("what's your name?");
+            firstQuestion.Items.Add("how are you?");
+            firstQuestion.Items.Add("where are you from?");
 
-            secondquestion.Items.Add("your child hood hero?");
-            secondquestion.Items.Add("your favourite color?");
-            secondquestion.Items.Add("your superstar?");
+            secondQuestion.Items.Add("your child hood hero?");
+            secondQuestion.Items.Add("your favourite color?");
+            secondQuestion.Items.Add("your superstar?");
 
-            loginpage.GestureRecognizers.Add(new TapGestureRecognizer
+            loginPage.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => Navigation.PopModalAsync())
             });
@@ -40,9 +42,42 @@ namespace StockEmulator.Pages
         }
         async void Register(object sender, EventArgs arg)
         {
-            //name = fullname.Text; // muon lay entry nao, chi can qua SignUp.xaml tim x:Name tuong ung roi goi ham .Text
-            //name = firstquestion.Items[firstquestion.SelectedIndex]; // tuong tu voi picker
-            await Navigation.PopModalAsync();
+            if (confirmPassword.Text != password.Text)
+            {
+                await DisplayAlert("Register Failed!", "Confirmed Password Does NOT Match Your Password!", "OK");
+                return;
+            }
+
+            SignUpModel signUpInfo = new SignUpModel()
+            {
+                Username = username.Text,
+                Password = password.Text,
+                FullName = fullname.Text,
+                FirstSecurityQuestion = firstQuestion.Items[firstQuestion.SelectedIndex],
+                FirstSecurityAnswer = firstAnswer.Text,
+                SecondSecurityQuestion = secondQuestion.Items[secondQuestion.SelectedIndex],
+                SecondSecurityAnswer = secondAnswer.Text
+            };
+
+            bool success = await App.accountRestServiceManager.SignUpTaskAsync(signUpInfo);
+
+            if (success)
+            {
+                Constants.currentUsername = signUpInfo.Username;
+
+                //await Navigation.PopModalAsync();
+
+                //var page = new MainPage();
+                //NavigationPage.SetHasNavigationBar(page, false);
+                //Navigation.InsertPageBefore(page, Navigation.NavigationStack[0]);
+                //await Navigation.PopAsync();
+                await Navigation.PushModalAsync(new MainPage());
+            }
+            else
+            {
+                await DisplayAlert("Register Failed!", "Username Existed!", "OK");
+                return;
+            }
         }
     }
 }

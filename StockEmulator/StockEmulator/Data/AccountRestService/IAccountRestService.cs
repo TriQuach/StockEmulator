@@ -9,7 +9,8 @@ namespace StockEmulator.Data.AccountRestService
 {
     public interface IAccountRestService
     {
-        Task<bool> SendLoginInfo(LoginModel thisUser);
+        Task<bool> SignUp(SignUpModel signUpInfo);
+        Task<bool> Login(LoginModel thisUser);
         Task<AccountModel> GetAccountInfoByUsernameAsync(string username);
     }
 }
