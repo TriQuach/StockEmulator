@@ -4,24 +4,25 @@
              x:Class="StockEmulator.Tabs.TransactionsTab"
              Title="Transactions">
   <StackLayout BackgroundColor="White">
+    
     <ActivityIndicator x:Name="loadingTransaction" Color="Green"/>
-    <StackLayout Orientation="Horizontal" HorizontalOptions="Start" BackgroundColor="#FFC107">
-      <StackLayout Spacing="0" WidthRequest="90" Margin="5,0,0,0">
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="#FFC107">
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="5,0,0,0">
         <Label Text="Ticker" FontSize="11" VerticalOptions="Center" TextColor="#007FFF"/>
         <Label Text="Equity Name" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
       </StackLayout>
-      <StackLayout Spacing="0" WidthRequest="90">
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
         <Label Text="Date" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
         <Label Text="G\L" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
       </StackLayout>
-      <StackLayout Spacing="0" WidthRequest="70">
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
         <Label Text="Type" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
       </StackLayout>
-      <StackLayout Spacing="0" WidthRequest="80">
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
         <Label Text="Num" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
         <Label Text="G\L %" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
       </StackLayout>
-      <StackLayout Spacing="0" WidthRequest="90" Margin="0,0,5,0">
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="0,0,5,0">
         <Label Text="$\share" FontSize="11" VerticalOptions="Center" HorizontalOptions="End" TextColor="#000000"/>
         <Label Text="Total" FontSize="11" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#000000"/>
       </StackLayout>

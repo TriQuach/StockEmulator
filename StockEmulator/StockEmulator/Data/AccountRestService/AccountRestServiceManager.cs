@@ -16,9 +16,15 @@ namespace StockEmulator.Data.AccountRestService
             this.accountRestService = accountRestService;
         }
 
-        public Task<bool> SendLoginInfo(LoginModel thisUser)
+        public Task<bool> SignUpTaskAsync(SignUpModel signUpInfo)
         {
-            return accountRestService.SendLoginInfo(thisUser);
+            Task<bool> task = accountRestService.SignUp(signUpInfo);
+            return task;
+        }
+
+        public Task<bool> LoginTaskAsync(LoginModel thisUser)
+        {
+            return accountRestService.Login(thisUser);
         }
 
         public Task<AccountModel> GetAccountInfoByUsernameAsync(string username)

@@ -46,10 +46,10 @@ namespace StockEmulator.Tabs
 
         protected async override void OnAppearing()
         {
-            //List<TransactionModel> items = await App.transactionRestServiceManager.GetTransactionListByUsernameTaskAsync(Constants.currentUsername);
+            List<TransactionModel> items = await App.transactionRestServiceManager.GetTransactionListByUsernameTaskAsync(Constants.currentUsername);
 
-            List<TransactionModel> items = new List<TransactionModel>();
-            items.Add(new TransactionModel { Ticker = "GOOGL", EquityName = "Alphabet Inc.", Date = new DateTime(2017, 2, 14), Type = "Sell", NumStocks = 3, GainLossPercent = 0.323f, Price = 837.32f, Total = 2501.96f });
+            //List<TransactionModel> items = new List<TransactionModel>();
+            //items.Add(new TransactionModel { Ticker = "GOOGL", EquityName = "Alphabet Inc.", Date = new DateTime(2017, 2, 14), Type = "Sell", NumStocks = 3, GainLossPercent = 0.323f, Price = 837.32f, Total = 2501.96f });
             foreach (var item in items)
             {
                 item.Total = item.Price * item.NumStocks;

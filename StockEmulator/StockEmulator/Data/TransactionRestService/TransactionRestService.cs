@@ -68,13 +68,13 @@ namespace StockEmulator.Data.TransactionRestService
                     var responseContent = await response.Content.ReadAsStringAsync();
                     success = JsonConvert.DeserializeObject<bool>(responseContent);
                 }
+                return success;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(@"              ERROR {0}", ex.Message);
+                return success;
             }
-
-            return success;
         }
     }
 }
