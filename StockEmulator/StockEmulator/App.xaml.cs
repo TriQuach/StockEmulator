@@ -24,7 +24,7 @@ namespace StockEmulator
             accountRestServiceManager = new AccountRestServiceManager(new AccountRestService());
             portfolioRestServiceManager = new PortfolioRestServiceManager(new PortfolioRestService());
             transactionRestServiceManager = new TransactionRestServiceManager(new TransactionRestService());
-            var page = new LoginPage();
+            var page = new MainPage();
             NavigationPage.SetHasNavigationBar(page, false);
             MainPage = new NavigationPage(page);
         }

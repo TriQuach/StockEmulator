@@ -5,53 +5,37 @@
              Title="My Account">
 
   <StackLayout Orientation="Vertical" >
-    <Label TextColor="#ABD314" FontSize = "20" Margin="10,10,10,10" Text="TriQuach's Account Summary" />
+    <Label TextColor="#297c29" FontSize = "20" Margin="10,10,10,10" Text="TriQuach's Account Summary" />
     <ScrollView>
-      <StackLayout>
-        <StackLayout Orientation="Horizontal" Margin="10,40,0,0" HorizontalOptions="FillAndExpand" >
-          <Label TextColor="#11A9E6" FontSize = "15" Text="Starting Investement"  HorizontalOptions="Start"   />
-          <Label x:Name="startingInvestment" TextColor="#11A9E6"  HorizontalOptions="End" Margin="0,0,30,0" />     
+     <StackLayout Orientation="Vertical">
+      <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Vertical" Margin="10,0,0,0">
+          <Label TextColor="#11A9E6" FontSize = "15" Text="Starting Investement"  VerticalOptions="Center"   />
+          <Label FontSize = "15" Text="Stocks Value" VerticalOptions="Center" />
+          <Label TextColor="#11A9E6" FontSize = "15" Text="Available cash" VerticalOptions="Center"/>
+          <Label FontSize = "15" Text="Total value" VerticalOptions="Center"/>
+          <Label TextColor="#11A9E6" FontSize = "15" Text="Position" VerticalOptions="Center"/>
+          <Label FontSize = "15" Text="Total Transactions" VerticalOptions="Center"/>
+          <Label TextColor="#11A9E6" FontSize = "15" Text="Positive Transactions" VerticalOptions="Center"/>
+          <Label FontSize = "15" Text="Negative Transactions" VerticalOptions="Center"/>
         </StackLayout>
-    
-        <StackLayout Orientation="Horizontal" Margin="10,5,0,0">
-          <Label FontSize = "15" Margin="0,0,30,0" Text="Stocks Value" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" />
-          <Label x:Name="stocksValue" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Margin="0,0,30,0" />
+
+        <StackLayout Orientation="Vertical" Margin="40,0,0,0">
+          <Label x:Name="startingInvestment" TextColor="#11A9E6" VerticalOptions="Center" FontSize = "15"/>
+          <Label x:Name="stocksValue" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize = "15"/>
+          <Label x:Name="availableCash" TextColor="#11A9E6" VerticalOptions="Center" FontSize = "15"/>
+          <Label x:Name="totalValue" VerticalOptions="Center" FontSize = "15"/>
+          <Label x:Name="position" TextColor="#11A9E6" VerticalOptions="Center" FontSize = "15"/>
+          <Label x:Name="totalTransactions" VerticalOptions="Center" FontSize = "15"/>
+          <Label x:Name="positiveTransactions" TextColor="#11A9E6" VerticalOptions="Center" FontSize = "15"/>
+          <Label x:Name="negativeTransactions" VerticalOptions="Center" FontSize = "15"/>
         </StackLayout>
-    
-        <StackLayout Orientation="Horizontal" Margin="10,5,0,0">
-          <Label TextColor="#11A9E6" FontSize = "15" Margin="0,0,30,0" Text="Available cash" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
-          <Label x:Name="availableCash" TextColor="#11A9E6" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Margin="0,0,30,0"/>
-        </StackLayout>
-    
-        <StackLayout Orientation="Horizontal" Margin="10,5,0,0" >
-          <Label FontSize = "15" Margin="0,0,30,0" Text="Total value" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
-          <Label x:Name="totalValue" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Margin="0,0,30,0"/>
-        </StackLayout>
-    
-        <StackLayout Orientation="Horizontal" Margin="10,5,0,0">
-          <Label TextColor="#11A9E6" FontSize = "15" Margin="0,0,30,0" Text="Position" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
-          <Label x:Name="position" TextColor="#11A9E6" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Margin="0,0,30,0"/>
-        </StackLayout>
-    
-        <StackLayout Orientation="Horizontal" Margin="10,5,0,0">
-          <Label FontSize = "15" Margin="0,0,30,0" Text="Total Transactions" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
-          <Label x:Name="totalTransactions" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Margin="0,0,30,0"/>
-        </StackLayout>
-    
-        <StackLayout Orientation="Horizontal" Margin="10,5,0,0">
-          <Label TextColor="#11A9E6" FontSize = "15" Margin="0,0,30,0" Text="Positive Transactions" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
-          <Label x:Name="positiveTransactions" TextColor="#11A9E6" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Margin="0,0,30,0"/>
-        </StackLayout>
-    
-        <StackLayout Orientation="Horizontal" Margin="10,5,0,0">
-          <Label FontSize = "15" Margin="0,0,30,0" Text="Negative Transactions" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
-          <Label x:Name="negativeTransactions" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" Margin="0,0,30,0"/>
-        </StackLayout>
-    
-        <StackLayout Margin="20, 0, 0, 0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-          <WebView x:Name="ChartView" HeightRequest="300" WidthRequest="1000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-        </StackLayout>
+       
       </StackLayout>
+      <StackLayout Orientation="Vertical" Margin="0,20,0,0">
+        <WebView x:Name="ChartView" HeightRequest="300" WidthRequest="1000"/>
+      </StackLayout>
+    </StackLayout>   
     </ScrollView>
  
   </StackLayout>
