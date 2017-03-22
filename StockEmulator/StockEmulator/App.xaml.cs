@@ -1,6 +1,7 @@
 ﻿using StockEmulator.Data;
 using StockEmulator.Data.AccountRestService;
 using StockEmulator.Data.PortfolioRestService;
+using StockEmulator.Data.StockRestService;
 using StockEmulator.Data.TransactionRestService;
 using StockEmulator.Pages;
 using System;
@@ -14,6 +15,7 @@ namespace StockEmulator
     public partial class App : Application
     {
         public static PortfolioRestServiceManager portfolioRestServiceManager { get; private set; }
+        public static StockRestServiceManager stockRestServiceManager { get; private set; }
         public static AccountRestServiceManager accountRestServiceManager { get; private set; }
         public static TransactionRestServiceManager transactionRestServiceManager { get; private set; }
 
@@ -21,10 +23,12 @@ namespace StockEmulator
         {
             InitializeComponent();
 
-            accountRestServiceManager = new AccountRestServiceManager(new AccountRestService());
             portfolioRestServiceManager = new PortfolioRestServiceManager(new PortfolioRestService());
+            stockRestServiceManager = new StockRestServiceManager(new StockRestService());
+            accountRestServiceManager = new AccountRestServiceManager(new AccountRestService());
             transactionRestServiceManager = new TransactionRestServiceManager(new TransactionRestService());
-            var page = new MainPage();
+
+            var page = new LoginPage();
             NavigationPage.SetHasNavigationBar(page, false);
             MainPage = new NavigationPage(page);
         }
