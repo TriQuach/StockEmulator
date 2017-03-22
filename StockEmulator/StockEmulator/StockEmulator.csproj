@@ -37,9 +37,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\StockRestService\IStockRestService.cs" />
+    <Compile Include="Data\StockRestService\StockRestService.cs" />
+    <Compile Include="Data\StockRestService\StockRestServiceManager.cs" />
     <Compile Include="Models\BuyStockModel.cs" />
     <Compile Include="Models\ChartDataModel.cs" />
     <Compile Include="Models\SignUpModel.cs" />
+    <Compile Include="Models\StockModel.cs" />
     <Compile Include="Pages\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>

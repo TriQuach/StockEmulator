@@ -11,15 +11,18 @@ namespace StockEmulator.Tabs
 {
     public partial class FindStocksTab : ContentPage
     {
-        
-        private List<string> source = new List<string>()
-        {
-            "AAA","AAC","BBC","BBE","CTD"
-        };
+
+        //private List<string> source = new List<string>()
+        //{
+        //    "AAA","AAC","BBC","BBE","CTD"
+        //};
+        List<string> source = new List<string>();
+        StockModel stock = new StockModel();
+
         public FindStocksTab()
         {
             InitializeComponent();
-            listView.ItemsSource = source;
+            //listView.ItemsSource = source;
             listView.ItemSelected += (sender, e) =>
                 {
                     var item = e.SelectedItem as string;
@@ -36,14 +39,24 @@ namespace StockEmulator.Tabs
 
         }
         
-        private void search_button(object sender, EventArgs e)
+        async void search_button(object sender, EventArgs e)
         {
-            string search_text = searchBar.Text.ToLower();
-            IEnumerable<string> result = source.Where(x => x.ToLower().Contains(search_text));
-            if (result.Count() > 0)
-                listView.ItemsSource = result;
+            string searchText = searchBar.Text.ToUpper();
+            //IEnumerable<string> result = source.Where(x => x.ToLower().Contains(search_text));
+            //if (result.Count() > 0)
+            //    listView.ItemsSource = result;
+            //else
+            //    listView.ItemsSource = new List<string>() { "Not found" };
+
+            stock = await App.stockRestServiceManager.GetStockTaskAsync(searchText);
+            if (stock != null)
+            {
+                listView.ItemsSource = new List<string>() { stock.Ticker };
+            }
             else
-                listView.ItemsSource = new List<string>() { "Not found" };
+            {
+                await DisplayAlert("Search", string.Format("NOT FOUND {0}!", searchText), "OK");
+            }
         }
     }
 }
