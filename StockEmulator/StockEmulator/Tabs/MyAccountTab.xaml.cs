@@ -11,14 +11,14 @@ namespace StockEmulator.Tabs
         public MyAccountTab()
         {
             InitializeComponent();
-            startingInvestment.Text = "1234";
-            stocksValue.Text = "Stocks Value?";
-            availableCash.Text = "1234";
-            totalValue.Text = "Total Value?";
-            position.Text = "Position?";
-            totalTransactions.Text = "1234";
-            positiveTransactions.Text = "1234";
-            negativeTransactions.Text = "1234";
+            //startingInvestment.Text = "1234";
+            //stocksValue.Text = "Stocks Value?";
+            //availableCash.Text = "1234";
+            //totalValue.Text = "Total Value?";
+            //position.Text = "Position?";
+            //totalTransactions.Text = "1234";
+            //positiveTransactions.Text = "1234";
+            //negativeTransactions.Text = "1234";
 
             var htmlSource = new HtmlWebViewSource();
 
@@ -71,14 +71,14 @@ namespace StockEmulator.Tabs
         {
             AccountModel accountInfo = await App.accountRestServiceManager.GetAccountInfoByUsernameAsync(Constants.currentUsername);
 
-            //startingInvestment.Text = accountInfo.StartingInvestment.ToString();
-            //stocksValue.Text = "Stocks Value?";
-            //availableCash.Text = accountInfo.AvailableCash.ToString();
-            //totalValue.Text = "Total Value?";
-            //position.Text = "Position?";
-            //totalTransactions.Text = accountInfo.TotalTrans.ToString();
-            //positiveTransactions.Text = accountInfo.PositiveTrans.ToString();
-            //negativeTransactions.Text = accountInfo.NegativeTrans.ToString();
+            startingInvestment.Text = accountInfo.StartingInvestment.ToString();
+            stocksValue.Text = "Stocks Value?";
+            availableCash.Text = accountInfo.AvailableCash.ToString();
+            totalValue.Text = "Total Value?";
+            position.Text = "Position?";
+            totalTransactions.Text = accountInfo.TotalTrans.ToString();
+            positiveTransactions.Text = accountInfo.PositiveTrans.ToString();
+            negativeTransactions.Text = accountInfo.NegativeTrans.ToString();
 
             
 

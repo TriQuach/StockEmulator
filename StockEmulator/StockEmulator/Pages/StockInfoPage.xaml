@@ -99,8 +99,20 @@
         </StackLayout>
         <BoxView Margin="5,0,5,0" HeightRequest="1" Color="#E5E5E5"/>
         <Label Margin="10,0,10,0" Text="Disclaimer: Not all stocks will have all the data points above" Font="12" TextColor="#777777"/>
-        
 
+        <ScrollView Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" Margin="5,0,5,0" Spacing="0">
+          <Button Text="1d" BackgroundColor="#2196f3" WidthRequest = "60" HeightRequest = "40" Clicked="show_1d"/>
+          <Button Text="1w" BackgroundColor="#2196f3" WidthRequest = "60" HeightRequest = "40" Clicked="show_1w"/>
+          <Button Text="1m" BackgroundColor="#2196f3" WidthRequest = "60" HeightRequest = "40" Clicked="show_1m"/>
+          <Button Text="3m" BackgroundColor="#2196f3" WidthRequest = "60" HeightRequest = "40" Clicked="show_3m"/>
+          <Button Text="6m" BackgroundColor="#2196f3" WidthRequest = "60" HeightRequest = "40" Clicked="show_6m"/>
+          <Button Text="1y" BackgroundColor="#2196f3" WidthRequest = "60" HeightRequest = "40" Clicked="show_1y"/>
+          <Button Text="2y" BackgroundColor="#2196f3" WidthRequest = "60" HeightRequest = "40" Clicked="show_2y"/>
+          <Button Text="5y" BackgroundColor="#2196f3" WidthRequest = "60" HeightRequest = "40" Clicked="show_5y"/>
+          <Button Text="max" BackgroundColor="#2196f3" WidthRequest = "60" HeightRequest = "40" Clicked="show_max"/>
+        </StackLayout>
+        </ScrollView>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
           <WebView x:Name="ChartView" HeightRequest="250" WidthRequest="500" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
         </StackLayout>
