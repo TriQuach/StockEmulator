@@ -23,11 +23,11 @@ namespace StockEmulator.Pages
             Ticker.Text = param;
 
         }
-        async void ClickCancel(object sender, EventArgs arg)
+        async void PressCancel(object sender, EventArgs arg)
         {
             await Navigation.PopAsync();
         }
-        async void ClickBuy(object sender, EventArgs arg)
+        async void PressBuy(object sender, EventArgs arg)
         {
             //TODO with ticker;
             long buyQuantity = long.Parse(BuyQuantity.Text);

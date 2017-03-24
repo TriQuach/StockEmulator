@@ -9,6 +9,7 @@ namespace StockEmulator.Data.StockRestService
 {
     public interface IStockRestService
     {
-        Task<StockModel> GetStockByTickerAsync(string ticker);
+        Task<List<StockModel>> SearchStockByTickerOrEquityNameAsync(string searchData);
+        Task<StockModel> GetStockDataByTickerAsync(string ticker);
     }
 }

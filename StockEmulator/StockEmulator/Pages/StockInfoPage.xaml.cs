@@ -10,16 +10,30 @@ using Xamarin.Forms;
 
 namespace StockEmulator.Pages
 {
-
     public partial class StockInfoPage : ContentPage
     {
         public interface IBaseUrl { string Get(); }
-        public string ticker_name;
-        public StockInfoPage(string param)
+
+        string ticker;
+        List<Button> listHistoryOptionButton = new List<Button>();
+
+        public StockInfoPage(StockModel stockModel)
         {
             InitializeComponent();
-            ticker_name = param;
-            Ticker.Text = param;
+            ticker = stockModel.Ticker;
+            Ticker.Text = stockModel.Ticker;
+
+            listHistoryOptionButton.Add(Button1Day);
+            listHistoryOptionButton.Add(Button1Week);
+            listHistoryOptionButton.Add(Button1Month);
+            listHistoryOptionButton.Add(Button3Months);
+            listHistoryOptionButton.Add(Button6Months);
+            listHistoryOptionButton.Add(Button1Year);
+            listHistoryOptionButton.Add(Button2Years);
+            listHistoryOptionButton.Add(Button5Years);
+            listHistoryOptionButton.Add(ButtonMax);
+
+            ChangeClickedButtonColor(Button1Day);
 
             var htmlSource = new HtmlWebViewSource();
 
@@ -87,51 +101,75 @@ namespace StockEmulator.Pages
 
             ChartView.Source = htmlSource;
         }
-        async void Show_Buy(object sender, EventArgs arg)
+
+        void ChangeClickedButtonColor(Button clickedButton)
         {
-            await Navigation.PushAsync(new BuyPage(ticker_name));
+            foreach (var button in listHistoryOptionButton)
+            {
+                if (button == clickedButton)
+                {
+                    button.BackgroundColor = Color.Yellow;
+                }
+                else
+                {
+                    button.BackgroundColor = Color.FromHex("#2196F3");
+                }
+            }
         }
-        async public void Show_Sell(object sender, EventArgs arg)
+
+        async void PressBuy(object sender, EventArgs arg)
+        {
+            await Navigation.PushAsync(new BuyPage(ticker));
+        }
+
+        async public void PressSell(object sender, EventArgs arg)
         {
             await Navigation.PushAsync(new SellPage());
         }
-        async void show_1d(object sender, EventArgs arg)
-        {
-           
-        }
-        async void show_1w(object sender, EventArgs arg)
-        {
 
-        }
-        async void show_1m(object sender, EventArgs arg)
+        async void Show1DayHistoryLineChart(object sender, EventArgs arg)
         {
-
-        }
-        async void show_3m(object sender, EventArgs arg)
-        {
-
-        }
-        async void show_6m(object sender, EventArgs arg)
-        {
-
-        }
-        async void show_1y(object sender, EventArgs arg)
-        {
-
-        }
-        async void show_2y(object sender, EventArgs arg)
-        {
-
-        }
-        async void show_5y(object sender, EventArgs arg)
-        {
-
-        }
-        async void show_max(object sender, EventArgs arg)
-        {
-
+            ChangeClickedButtonColor(Button1Day);
         }
 
+        async void Show1WeekHistoryLineChart(object sender, EventArgs arg)
+        {
+            ChangeClickedButtonColor(Button1Week);
+        }
 
+        async void Show1MonthHistoryLineChart(object sender, EventArgs arg)
+        {
+            ChangeClickedButtonColor(Button1Month);
+        }
+
+        async void Show3MonthsHistoryLineChart(object sender, EventArgs arg)
+        {
+            ChangeClickedButtonColor(Button3Months);
+        }
+
+        async void Show6MonthsHistoryLineChart(object sender, EventArgs arg)
+        {
+            ChangeClickedButtonColor(Button6Months);
+        }
+
+        async void Show1YearHistoryLineChart(object sender, EventArgs arg)
+        {
+            ChangeClickedButtonColor(Button1Year);
+        }
+
+        async void Show2YearsHistoryLineChart(object sender, EventArgs arg)
+        {
+            ChangeClickedButtonColor(Button2Years);
+        }
+
+        async void Show5YearsHistoryLineChart(object sender, EventArgs arg)
+        {
+            ChangeClickedButtonColor(Button5Years);
+        }
+
+        async void ShowMaxHistoryLineChart(object sender, EventArgs arg)
+        {
+            ChangeClickedButtonColor(ButtonMax);
+        }
     }
 }

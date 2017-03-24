@@ -40,7 +40,7 @@ namespace StockEmulator.Pages
             
 
         }
-        async void Register(object sender, EventArgs arg)
+        async void PressRegister(object sender, EventArgs arg)
         {
             if (confirmPassword.Text != password.Text)
             {

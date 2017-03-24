@@ -16,9 +16,14 @@ namespace StockEmulator.Data.StockRestService
             this.stockRestService = stockRestService;
         }
 
-        public Task<StockModel> GetStockTaskAsync(string ticker)
+        public Task<List<StockModel>> SearchStockByTickerOrEquityNameTaskAsync(string searchData)
         {
-            return stockRestService.GetStockByTickerAsync(ticker);
+            return stockRestService.SearchStockByTickerOrEquityNameAsync(searchData);
+        }
+
+        public Task<StockModel> GetStockDataByTickerTaskAsync(string ticker)
+        {
+            return stockRestService.GetStockDataByTickerAsync(ticker);
         }
     }
 }

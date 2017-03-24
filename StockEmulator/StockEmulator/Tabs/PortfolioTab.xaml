@@ -30,7 +30,7 @@
       </StackLayout>
     </StackLayout>
     
-    <ListView x:Name="listView">
+    <ListView x:Name="listPortfolios">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>

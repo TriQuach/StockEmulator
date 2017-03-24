@@ -4,20 +4,20 @@
              x:Class="StockEmulator.Tabs.FindStocksTab"
              Title="Find Stocks">
 
-  <StackLayout Orientation="Vertical">
-  
-  
-    <SearchBar x:Name="searchBar"
-               SearchButtonPressed="search_button"
-             />
-    <ListView x:Name="listView" />
-
-
-
-
-
-    
+  <StackLayout>
+    <SearchBar x:Name="searchBar" SearchButtonPressed="PressSearch"/>
+    <ListView x:Name="listResults">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,0">
+              <Label Text="{Binding Ticker}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" TextColor="#B62F2F"/>
+              <Label Text="{Binding EquityName}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" TextColor="#1976D2"/>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
   </StackLayout>
 
-  
 </ContentPage>
