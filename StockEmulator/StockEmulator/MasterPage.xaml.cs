@@ -24,6 +24,11 @@ namespace StockEmulator
                 "Transactions",               
                 "Insider Trades",
             };
+            listMore.ItemsSource = new string[]
+            {
+                "Privacy Policy and Discaimer",
+                "About us"
+            };
         }
     }
 }
