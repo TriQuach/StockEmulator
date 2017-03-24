@@ -95,5 +95,43 @@ namespace StockEmulator.Pages
         {
             await Navigation.PushAsync(new SellPage());
         }
+        async void show_1d(object sender, EventArgs arg)
+        {
+           
+        }
+        async void show_1w(object sender, EventArgs arg)
+        {
+
+        }
+        async void show_1m(object sender, EventArgs arg)
+        {
+
+        }
+        async void show_3m(object sender, EventArgs arg)
+        {
+
+        }
+        async void show_6m(object sender, EventArgs arg)
+        {
+
+        }
+        async void show_1y(object sender, EventArgs arg)
+        {
+
+        }
+        async void show_2y(object sender, EventArgs arg)
+        {
+
+        }
+        async void show_5y(object sender, EventArgs arg)
+        {
+
+        }
+        async void show_max(object sender, EventArgs arg)
+        {
+
+        }
+
+
     }
 }

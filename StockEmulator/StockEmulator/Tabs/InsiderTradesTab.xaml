@@ -7,8 +7,8 @@
   <StackLayout BackgroundColor="White">
     <!--<ActivityIndicator x:Name="loadingTransaction" Color="Green"/>-->
 
-    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="#FFC107">
-      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" >
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="#FFC107" >
+      <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="5,0,0,0">
         <Label Text="Tick" FontSize="11" VerticalOptions="Center" TextColor="#007FFF"/>
         <Label Text="Insider Name and Details" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
       </StackLayout>
@@ -36,7 +36,7 @@
 
             <StackLayout Orientation="Vertical" Spacing="0">
 
-              <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+              <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,0,0">
                 <Label Text="{Binding Tick}" HorizontalOptions="FillAndExpand" FontSize="12" TextColor="#007FFF"/>
                 <Label Text="{Binding CompanyName}" HorizontalOptions="FillAndExpand" FontSize="12" FontAttributes="Bold"/>
                 <Label Text="{Binding Type}" HorizontalOptions="FillAndExpand" FontSize="12" TextColor="#297c29"/>

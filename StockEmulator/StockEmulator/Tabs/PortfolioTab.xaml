@@ -34,13 +34,13 @@
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="5,0,0,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="5,0,0,0" >
                 <Label Text="{Binding Ticker}" FontSize="12" VerticalOptions="Center" TextColor="#007FFF"/>
                 <Label Text="{Binding EquityName}" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
               </StackLayout>
-              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
-                <Label Text="{Binding Price}" Font="Bold,11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
+              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" >
+                <Label Text="{Binding Price}" Font="Bold,11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" />
               </StackLayout>
               <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
                 <Label Text="{Binding Cost}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
