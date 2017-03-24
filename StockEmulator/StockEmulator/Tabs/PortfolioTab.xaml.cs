@@ -1,63 +1,84 @@
 ﻿using StockEmulator.Models;
 using StockEmulator.Pages;
 using StockEmulator.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace StockEmulator.Tabs
 {
     public partial class PortfolioTab : ContentPage
     {
+        StockModel StockInfo = new StockModel();
+
         public PortfolioTab()
         {
             InitializeComponent();
-            listView.ItemSelected += (sender, e) =>
+            listPortfolios.ItemSelected += async (sender, e) =>
             {
 
                 var item = e.SelectedItem as PortfolioModel;
 
                 if (item == null) return; // don't do anything if we just de-selected the row
 
-                ContentPage page = null;    // do something with e.SelectedItem
+                ((ListView)sender).SelectedItem = null; // de-select the row
+                StockInfo = await App.stockRestServiceManager.GetStockDataByTickerTaskAsync(item.Ticker);
 
-                page = new StockInfoPage(item.Ticker);
+                ContentPage page = null;    // do something with e.SelectedItem
+                page = new StockInfoPage(StockInfo);
 
                 page.BindingContext = item;
-                Navigation.PushAsync(page);
-
-
-                ((ListView)sender).SelectedItem = null; // de-select the row
+                await Navigation.PushAsync(page);
             };
-            loadingPortfolio.IsVisible = true;
-            loadingPortfolio.IsRunning = true;
+            //loadingPortfolio.IsVisible = true;
+            //loadingPortfolio.IsRunning = true;
+            GetNewData();
         }
 
-        protected async override void OnAppearing()
+        public async void GetNewData()
         {
-            List<PortfolioModel> items = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
+            while (true)
+            {
+                loadingPortfolio.IsVisible = true;
+                loadingPortfolio.IsRunning = true;
 
-            //List<PortfolioListViewModel> portfolioList = new List<PortfolioListViewModel>();
-            //foreach (var item in items)
-            //{
-            //    portfolioList.Add(new PortfolioListViewModel
-            //    {
-            //        Ticker = item.Ticker,
-            //        Price = item.Price,
-            //        Cost = item.Cost,
-            //        Num = item.NumStocks,
-            //        Value = item.Value,
-            //        EquityName = item.Name,
-            //        GainLossMoney = item.GainLossMoney,
-            //        DollarCHG = item.ChangeMoney,
-            //        PerCentCHG = item.ChangePercent
-            //    });
-            //}
+                List<PortfolioModel> items = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
+                listPortfolios.ItemsSource = items;
 
-            listView.ItemsSource = items;
+                loadingPortfolio.IsRunning = false;
+                loadingPortfolio.IsVisible = false;
 
-            loadingPortfolio.IsRunning = false;
-            loadingPortfolio.IsVisible = false;
+                await Task.Delay(TimeSpan.FromSeconds(10));
+            }
         }
+
+        //protected async override void OnAppearing()
+        //{
+        //    List<PortfolioModel> items = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
+
+        //    //List<PortfolioListViewModel> portfolioList = new List<PortfolioListViewModel>();
+        //    //foreach (var item in items)
+        //    //{
+        //    //    portfolioList.Add(new PortfolioListViewModel
+        //    //    {
+        //    //        Ticker = item.Ticker,
+        //    //        Price = item.Price,
+        //    //        Cost = item.Cost,
+        //    //        Num = item.NumStocks,
+        //    //        Value = item.Value,
+        //    //        EquityName = item.Name,
+        //    //        GainLossMoney = item.GainLossMoney,
+        //    //        DollarCHG = item.ChangeMoney,
+        //    //        PerCentCHG = item.ChangePercent
+        //    //    });
+        //    //}
+
+        //    listPortfolios.ItemsSource = items;
+
+        //    loadingPortfolio.IsRunning = false;
+        //    loadingPortfolio.IsVisible = false;
+        //}
 
        
     }

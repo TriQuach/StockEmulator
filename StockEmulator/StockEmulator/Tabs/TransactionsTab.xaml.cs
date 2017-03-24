@@ -9,6 +9,8 @@ namespace StockEmulator.Tabs
 {
     public partial class TransactionsTab : ContentPage
     {
+        StockModel StockInfo = new StockModel();
+
         //public ObservableCollection<TransactionListViewModel> TransListView { get; set; }
         public TransactionsTab()
         {
@@ -26,17 +28,19 @@ namespace StockEmulator.Tabs
             //TransListView.Add(new TransactionListViewModel { Ticker = "GOOGL", EnquityName = "Alphabet Inc.", TransactionDate = (new DateTime(2017, 2, 14)).ToString("dd-MM-yyyy"), GainsLossesMoney = 8.13f, TransactionType = "Sell", NumOfStocks = 3, GainsLossesPercent = 0.323f.ToString("0.000") + "%", UnitPrice = "$" + 837.32f.ToString("0.000"), TotalPrice = "$" + 2501.96f.ToString("0.000") });
 
             //listTransaction.ItemsSource = TransListView;
-            listTransaction.ItemSelected += (sender, e) =>
+            listTransaction.ItemSelected += async (sender, e) =>
             {
                 var item = e.SelectedItem as TransactionModel;
                 if (item == null) return; // don't do anything if we just de-selected the row
 
+                ((ListView)sender).SelectedItem = null; // de-select the row
+                StockInfo = await App.stockRestServiceManager.GetStockDataByTickerTaskAsync(item.Ticker);
+
                 ContentPage page = null;    // do something with e.SelectedItem
-                
-                page = new StockInfoPage(item.Ticker);
+                page = new StockInfoPage(StockInfo);
                 
                 page.BindingContext = item;
-                Navigation.PushAsync(page);
+                await Navigation.PushAsync(page);
                 ((ListView)sender).SelectedItem = null; // de-select the row
             };
 

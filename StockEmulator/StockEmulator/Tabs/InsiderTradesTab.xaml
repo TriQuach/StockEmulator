@@ -28,24 +28,22 @@
       </StackLayout>
     </StackLayout>
 
-    <ListView x:Name="lstView"
-            >
+    <ListView x:Name="listInsiderTrades">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-
             <StackLayout Orientation="Vertical" Spacing="0">
 
               <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,0,0">
-                <Label Text="{Binding Tick}" HorizontalOptions="FillAndExpand" FontSize="12" TextColor="#007FFF"/>
+                <Label Text="{Binding Ticker}" HorizontalOptions="FillAndExpand" FontSize="12" TextColor="#007FFF"/>
                 <Label Text="{Binding CompanyName}" HorizontalOptions="FillAndExpand" FontSize="12" FontAttributes="Bold"/>
                 <Label Text="{Binding Type}" HorizontalOptions="FillAndExpand" FontSize="12" TextColor="#297c29"/>
-                <Label Text="{Binding Quant}" HorizontalOptions="FillAndExpand" FontSize="12"/>
+                <Label Text="{Binding Quantity}" HorizontalOptions="FillAndExpand" FontSize="12"/>
                 <Label Text="{Binding Price}" HorizontalOptions="FillAndExpand" FontSize="12"/>
               </StackLayout>
 
               <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Label Text="{Binding InsiderName}" HorizontalOptions="FillAndExpand" FontSize="12"/>
+                <Label Text="{Binding InsiderNameAndDetails}" HorizontalOptions="FillAndExpand" FontSize="12"/>
                 <Label Text="{Binding Total}" HorizontalOptions="FillAndExpand" FontSize="12"/>
                 <Label Text="{Binding Time}" HorizontalOptions="FillAndExpand" FontSize="12"/>
               </StackLayout>

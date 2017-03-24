@@ -8,12 +8,12 @@ namespace StockEmulator.Models
 {
     public class InsiderTradeModel
     {
-        public string Tick { get; set; }
+        public string Ticker { get; set; }
         public string CompanyName { get; set; }
         public string Type { get; set; }
-        public int Quant { get; set; }
+        public int Quantity { get; set; }
         public double Price { get; set; }
-        public string InsiderName { get; set; }
+        public string InsiderNameAndDetails { get; set; }
         public int Total { get; set; }
         public string Time { get; set; }
     }

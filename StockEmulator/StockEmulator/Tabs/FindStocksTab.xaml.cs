@@ -16,42 +16,41 @@ namespace StockEmulator.Tabs
         //{
         //    "AAA","AAC","BBC","BBE","CTD"
         //};
-        List<string> source = new List<string>();
-        StockModel stock = new StockModel();
+        //List<string> source = new List<string>();
+        List<StockModel> ListStockInfo = new List<StockModel>();
 
         public FindStocksTab()
         {
             InitializeComponent();
-            //listView.ItemsSource = source;
-            listView.ItemSelected += (sender, e) =>
-                {
-                    var item = e.SelectedItem as string;
-                    if (item == null) return; // don't do anything if we just de-selected the row
+            //listResults.ItemsSource = source;
+            listResults.ItemSelected += (sender, e) =>
+            {
+                var item = e.SelectedItem as StockModel;
+                if (item == null) return; // don't do anything if we just de-selected the row
 
-                    ContentPage page = null;    // do something with e.SelectedItem
-                    
-                    page = new StockInfoPage(item);
-                    
-                    page.BindingContext = item;
-                    Navigation.PushAsync(page);
-                    ((ListView)sender).SelectedItem = null; // de-select the row
-                };
+                ContentPage page = null;    // do something with e.SelectedItem
+                page = new StockInfoPage(item);
+
+                page.BindingContext = item;
+                Navigation.PushAsync(page);
+                ((ListView)sender).SelectedItem = null; // de-select the row
+            };
 
         }
         
-        async void search_button(object sender, EventArgs e)
+        async void PressSearch(object sender, EventArgs e)
         {
             string searchText = searchBar.Text.ToUpper();
             //IEnumerable<string> result = source.Where(x => x.ToLower().Contains(search_text));
             //if (result.Count() > 0)
-            //    listView.ItemsSource = result;
+            //    listResults.ItemsSource = result;
             //else
-            //    listView.ItemsSource = new List<string>() { "Not found" };
+            //    listResults.ItemsSource = new List<string>() { "Not found" };
 
-            stock = await App.stockRestServiceManager.GetStockTaskAsync(searchText);
-            if (stock != null)
+            ListStockInfo = await App.stockRestServiceManager.SearchStockByTickerOrEquityNameTaskAsync(searchText);
+            if (ListStockInfo != null)
             {
-                listView.ItemsSource = new List<string>() { stock.Ticker };
+                listResults.ItemsSource = ListStockInfo;
             }
             else
             {
