@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockEmulator", "StockEmulator\StockEmulator\StockEmulator.csproj", "{CD243E69-1096-4503-8946-616C01DFCB7D}"
 EndProject
@@ -159,7 +159,6 @@ Global
 		{5B0F908D-5A6C-4D0B-9AFF-FF86C70877AC}.Release|iPhone.ActiveCfg = Release|iPhone
 		{5B0F908D-5A6C-4D0B-9AFF-FF86C70877AC}.Release|iPhone.Build.0 = Release|iPhone
 		{5B0F908D-5A6C-4D0B-9AFF-FF86C70877AC}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{5B0F908D-5A6C-4D0B-9AFF-FF86C70877AC}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{5B0F908D-5A6C-4D0B-9AFF-FF86C70877AC}.Release|Mixed Platforms.ActiveCfg = Release|iPhone
 		{5B0F908D-5A6C-4D0B-9AFF-FF86C70877AC}.Release|Mixed Platforms.Build.0 = Release|iPhone
 		{5B0F908D-5A6C-4D0B-9AFF-FF86C70877AC}.Release|x64.ActiveCfg = Release|iPhone
