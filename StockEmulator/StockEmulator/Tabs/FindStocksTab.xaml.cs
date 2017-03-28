@@ -48,7 +48,7 @@ namespace StockEmulator.Tabs
             //    listResults.ItemsSource = new List<string>() { "Not found" };
 
             ListStockInfo = await App.stockRestServiceManager.SearchStockByTickerOrEquityNameTaskAsync(searchText);
-            if (ListStockInfo != null)
+            if (ListStockInfo.Count > 0)
             {
                 listResults.ItemsSource = ListStockInfo;
             }

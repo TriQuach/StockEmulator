@@ -10,20 +10,20 @@ namespace StockEmulator.Utilities
 {
     public class HTMLChartBuilder
     {
-        public static string BuildHTMLLineChartFor1DayHistory(string ChartName, List<ChartDataModel> chartData)
+        public static string BuildHTMLLineChartFor1DayHistory(string ChartName, List<History1DayModel> chartData)
         {
-            string htmlPart1 = @"<html>
-  <head>
-    <script type=""text/javascript"" src=""jsapi.js""></script>
-    <script type=""text/javascript"">
-       google.load(""visualization"", ""1"", { packages:[""corechart""]});
-       google.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-        
-                  ['Time', 'Price', 'Previous Close'],
-        
-                  ";
+            //          string htmlPart1 = @"<html>
+            //<head>
+            //  <script type=""text/javascript"" src=""jsapi.js""></script>
+            //  <script type=""text/javascript"">
+            //     google.load(""visualization"", ""1"", { packages:[""corechart""]});
+            //     google.setOnLoadCallback(drawChart);
+            //          function drawChart() {
+            //              var data = google.visualization.arrayToDataTable([
+
+            //                ['Time', 'Price', 'Previous Close'],
+
+            //                ";
             //string htmlPart2ChartData = @"['2010', 1000, 600],
 
             //      ['2011', 1170, 600],
@@ -31,6 +31,22 @@ namespace StockEmulator.Utilities
             //      ['2012', 660, 600],
 
             //      ['2013', 1030, 600]";
+
+            string htmlPart1 = @"<html>
+  <head>
+    <script type='text/javascript' src='jsapi.js'></script>
+    <script type='text/javascript'>
+       google.load('visualization', '1', { packages:['corechart']});
+       google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('timeofday', 'Time of Day');
+                data.addColumn('number', 'Price');
+                data.addColumn('number', 'Previous Close Price');
+                
+                data.addRows([
+
+        ";
 
             string htmlPart2ChartData = LineChartDataToJavascriptAdapter(chartData);
 
@@ -74,20 +90,24 @@ namespace StockEmulator.Utilities
             return sb.ToString();
         }
 
-        static string LineChartDataToJavascriptAdapter(List<ChartDataModel> chartData)
+        static string LineChartDataToJavascriptAdapter(List<History1DayModel> chartData)
         {
             StringBuilder sb = new StringBuilder();
             CustomDateTime cdt;
             foreach (var item in chartData)
             {
-                PropertyInfo prop = typeof(ChartDataModel).GetRuntimeProperty("Time");
+                PropertyInfo prop = typeof(History1DayModel).GetRuntimeProperty("Time");
 
                 cdt = new CustomDateTime((DateTime)prop.GetValue(item));
-                sb.Append("['");
-                sb.Append(cdt.ToHourString());
-                sb.Append("',");
+                sb.Append("[[");
+                sb.Append(cdt.Hours);
+                sb.Append(",");
+                sb.Append(cdt.Minutes);
+                sb.Append(",");
+                sb.Append(cdt.Seconds);
+                sb.Append("],");
 
-                foreach (PropertyInfo properties in typeof(ChartDataModel).GetRuntimeProperties().ToList())
+                foreach (PropertyInfo properties in typeof(History1DayModel).GetRuntimeProperties().ToList())
                 {
                     if (properties.Name == "Time")
                     {
