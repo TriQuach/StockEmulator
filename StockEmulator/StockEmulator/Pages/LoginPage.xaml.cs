@@ -29,11 +29,11 @@ namespace StockEmulator.Pages
             {
                 Constants.currentUsername = thisUser.Username;
 
-                var page = new MainPage();
-                NavigationPage.SetHasNavigationBar(page, false);
-                Navigation.InsertPageBefore(page, this);
-                await Navigation.PopAsync();
-
+                //var page = new MainPage();
+                //NavigationPage.SetHasNavigationBar(page, false);
+                //Navigation.InsertPageBefore(page, this);
+                //await Navigation.PopAsync();
+                await Navigation.PushModalAsync(new MainPage());
             }        
             else
             {
