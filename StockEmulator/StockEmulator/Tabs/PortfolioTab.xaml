@@ -39,14 +39,14 @@
                 <Label Text="{Binding Ticker}" FontSize="12" VerticalOptions="Center" TextColor="#007FFF"/>
                 <Label Text="{Binding EquityName}" FontSize="11" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#666666"/>
               </StackLayout>
-              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" >
-                <Label Text="{Binding Price}" Font="Bold,11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" />
-              </StackLayout>
               <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
+                <Label Text="{Binding Price}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" />
+              </StackLayout>
+              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" >
                 <Label Text="{Binding Cost}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
                 <Label Text="{Binding GainLossMoney}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
               </StackLayout>
-              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
+              <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" >
                 <Label Text="{Binding NumStocks}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000"/>
                 <Label Text="{Binding ChangeMoney}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode="TailTruncation" TextColor="#000000"/>
               </StackLayout>
