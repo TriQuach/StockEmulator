@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace StockEmulator.Models
 {
-    public class History1DayModel
+    public class HistoryPriceModel
     {
         public DateTime Time { get; set; }
         public decimal Price { get; set; }
-        public decimal PreviousClosePrice { get; set; }
 
-        public History1DayModel(DateTime Time, decimal Price, decimal PreviousClosePrice)
+        public HistoryPriceModel(DateTime Time, decimal Price)
         {
             this.Time = Time;
             this.Price = Price;
-            this.PreviousClosePrice = PreviousClosePrice;
         }
     }
 }

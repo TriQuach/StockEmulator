@@ -69,7 +69,7 @@ namespace StockEmulator.Tabs
 
         protected async override void OnAppearing()
         {
-            AccountModel accountInfo = await App.accountRestServiceManager.GetAccountInfoByUsernameAsync(Constants.currentUsername);
+            AccountModel accountInfo = await App.accountRestServiceManager.GetAccountInfoByUsernameTaskAsync(Constants.currentUsername);
 
             startingInvestment.Text = accountInfo.StartingInvestment.ToString();
             stocksValue.Text = "Stocks Value?";

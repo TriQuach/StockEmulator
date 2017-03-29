@@ -1,5 +1,6 @@
 ﻿using StockEmulator.Data;
 using StockEmulator.Data.AccountRestService;
+using StockEmulator.Data.HistoryRestService;
 using StockEmulator.Data.PortfolioRestService;
 using StockEmulator.Data.StockRestService;
 using StockEmulator.Data.TransactionRestService;
@@ -16,6 +17,7 @@ namespace StockEmulator
     {
         public static PortfolioRestServiceManager portfolioRestServiceManager { get; private set; }
         public static StockRestServiceManager stockRestServiceManager { get; private set; }
+        public static HistoryRestServiceManager historyRestServiceManager { get; private set; }
         public static AccountRestServiceManager accountRestServiceManager { get; private set; }
         public static TransactionRestServiceManager transactionRestServiceManager { get; private set; }
 
@@ -25,6 +27,7 @@ namespace StockEmulator
 
             portfolioRestServiceManager = new PortfolioRestServiceManager(new PortfolioRestService());
             stockRestServiceManager = new StockRestServiceManager(new StockRestService());
+            historyRestServiceManager = new HistoryRestServiceManager(new HistoryRestService());
             accountRestServiceManager = new AccountRestServiceManager(new AccountRestService());
             transactionRestServiceManager = new TransactionRestServiceManager(new TransactionRestService());
 

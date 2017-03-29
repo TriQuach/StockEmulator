@@ -9,6 +9,9 @@ namespace StockEmulator.Utilities
     public class CustomDateTime
     {
         public DateTime Date { get; private set; }
+        public int Year { get; private set; }
+        public int Month { get; private set; }
+        public int Day { get; private set; }
         public int Hours { get; private set; }
         public int Minutes { get; private set; }
         public int Seconds { get; private set; }
@@ -16,6 +19,9 @@ namespace StockEmulator.Utilities
         public CustomDateTime(DateTime dt)
         {
             Date = dt;
+            Year = dt.Year;
+            Month = dt.Month;
+            Day = dt.Day;
             Hours = dt.Hour;
             Minutes = dt.Minute;
             Seconds = dt.Second;

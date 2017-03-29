@@ -11,13 +11,13 @@ namespace StockEmulator.Tabs
     public partial class PortfolioTab : ContentPage
     {
         StockModel StockInfo = new StockModel();
+        List<PortfolioModel> Portfolios = new List<PortfolioModel>();
 
         public PortfolioTab()
         {
             InitializeComponent();
             listPortfolios.ItemSelected += async (sender, e) =>
             {
-
                 var item = e.SelectedItem as PortfolioModel;
 
                 if (item == null) return; // don't do anything if we just de-selected the row
@@ -42,9 +42,9 @@ namespace StockEmulator.Tabs
             {
                 loadingPortfolio.IsVisible = true;
                 loadingPortfolio.IsRunning = true;
-
-                List<PortfolioModel> items = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
-                listPortfolios.ItemsSource = items;
+                
+                Portfolios = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
+                listPortfolios.ItemsSource = Portfolios;
            
                 loadingPortfolio.IsRunning = false;
                 loadingPortfolio.IsVisible = false;
