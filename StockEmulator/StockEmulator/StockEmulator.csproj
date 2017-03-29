@@ -37,11 +37,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\HistoryRestService\HistoryRestService.cs" />
+    <Compile Include="Data\HistoryRestService\HistoryRestServiceManager.cs" />
+    <Compile Include="Data\HistoryRestService\IHistoryRestService.cs" />
     <Compile Include="Data\StockRestService\IStockRestService.cs" />
     <Compile Include="Data\StockRestService\StockRestService.cs" />
     <Compile Include="Data\StockRestService\StockRestServiceManager.cs" />
     <Compile Include="Models\BuyStockModel.cs" />
-    <Compile Include="Models\History1DayModel.cs" />
+    <Compile Include="Models\HistoryPriceModel.cs" />
     <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Models\StockModel.cs" />
     <Compile Include="Pages\SignUpPage.xaml.cs">
@@ -101,6 +104,7 @@
     </Compile>
     <Compile Include="Utilities\CustomDateTime.cs" />
     <Compile Include="Utilities\HTMLChartBuilder.cs" />
+    <Compile Include="Utilities\Pair.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

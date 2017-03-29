@@ -16,6 +16,11 @@ namespace StockEmulator.Utilities
         public static string SearchStockDataByTickerOrEquityNameRequest = "?searchData={0}";
         public static string GetStockDataByTickerRequest = "?ticker={0}";
 
+        //URL of History REST service
+        public static string RestUrl_History = "http://lmtri.somee.com/api/history{0}";
+        public static string GetPreviousClosePriceRequest = "?ticker={0}";
+        public static string GetHistoryPriceRequest = "?ticker={0}&historyType={1}";
+
         //URL of Account REST service
         public static string RestUrl_Account = "http://lmtri.somee.com/api/account{0}";
         public static string LoginRequest = "?username={0}&password={1}";

@@ -15,44 +15,43 @@ namespace StockEmulator.Pages
         public interface IBaseUrl { string Get(); }
 
         string ticker;
-        List<Button> listHistoryOptionButton = new List<Button>();
+        List<Pair<Button, bool>> listHistoryOptionButton = new List<Pair<Button, bool>>();
+        List<HistoryPriceModel> chartData = new List<HistoryPriceModel>();
+        HtmlWebViewSource htmlSource = new HtmlWebViewSource();
+
+        bool history1Day = true;
 
         public StockInfoPage(StockModel stockModel)
         {
             InitializeComponent();
+
             ticker = stockModel.Ticker;
             Ticker.Text = stockModel.Ticker;
 
-            listHistoryOptionButton.Add(Button1Day);
-            listHistoryOptionButton.Add(Button1Week);
-            listHistoryOptionButton.Add(Button1Month);
-            listHistoryOptionButton.Add(Button3Months);
-            listHistoryOptionButton.Add(Button6Months);
-            listHistoryOptionButton.Add(Button1Year);
-            listHistoryOptionButton.Add(Button2Years);
-            listHistoryOptionButton.Add(Button5Years);
-            listHistoryOptionButton.Add(ButtonMax);
+            listHistoryOptionButton.Add(new Pair<Button, bool>(Button1Day, true));
+            listHistoryOptionButton.Add(new Pair<Button, bool>(Button1Week, false));
+            listHistoryOptionButton.Add(new Pair<Button, bool>(Button1Month, false));
+            listHistoryOptionButton.Add(new Pair<Button, bool>(Button3Months, false));
+            listHistoryOptionButton.Add(new Pair<Button, bool>(Button6Months, false));
+            listHistoryOptionButton.Add(new Pair<Button, bool>(Button1Year, false));
+            listHistoryOptionButton.Add(new Pair<Button, bool>(Button2Years, false));
+            listHistoryOptionButton.Add(new Pair<Button, bool>(Button5Years, false));
+            listHistoryOptionButton.Add(new Pair<Button, bool>(ButtonMax, false));
 
             ChangeClickedButtonColor(Button1Day);
-
-            var htmlSource = new HtmlWebViewSource();
-
-            List<History1DayModel> chartData = new List<History1DayModel>();
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 11, 6, 20), 463.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 12, 15, 46), 353.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 13, 20, 14), 573.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 13, 49, 33), 393.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 14, 10, 18), 503.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 15, 17, 59), 643.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 16, 33, 28), 613.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 16, 44, 47), 663.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 17, 17, 38), 763.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 18, 28, 33), 633.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 19, 38, 29), 763.37m, 757.8m));
-            chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 20, 26, 40), 863.37m, 757.8m));
-
-            string html = HTMLChartBuilder.BuildHTMLLineChartFor1DayHistory("GOOGL (Alphabet Inc.)", chartData);
-            htmlSource.Html = html;
+            
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 11, 6, 20), 463.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 12, 15, 46), 353.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 13, 20, 14), 573.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 13, 49, 33), 393.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 14, 10, 18), 503.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 15, 17, 59), 643.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 16, 33, 28), 613.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 16, 44, 47), 663.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 17, 17, 38), 763.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 18, 28, 33), 633.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 19, 38, 29), 763.37m, 757.8m));
+            //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 20, 26, 40), 863.37m, 757.8m));
 
 //            htmlSource.Html = @"<html>
 //  <head>
@@ -148,20 +147,87 @@ namespace StockEmulator.Pages
             //</html>";
             htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
 
-            ChartView.Source = htmlSource;
+            UpdateChartData();
+        }
+
+        public async void UpdateChartData()
+        {
+            string historyType = "1d";
+            while (true)
+            {
+                if (history1Day)
+                {
+                    historyType = "1d";
+                    chartData = await App.historyRestServiceManager.GetHistoryPriceTaskAsync(ticker, historyType);
+                    decimal previousClosePrice = await App.historyRestServiceManager.GetPreviousClosePriceTaskAsync(ticker);
+
+                    if (chartData.Count > 0)
+                    {
+                        htmlSource.Html = HTMLChartBuilder.BuildHTMLLineChartFor1DayHistoryPrice(ticker, chartData, previousClosePrice);
+                    }
+                    else
+                    {
+                        htmlSource.Html = @"<html>
+                                                <body>
+                                                    <p style='text-align:center;'>No Chart Data!</p>
+                                                </body>
+                                            </html>";
+                    }
+                    ChartView.Source = htmlSource;
+                }
+                else
+                {
+                    foreach (var item in listHistoryOptionButton)
+                    {
+                        if (item.Second == true)
+                        {
+                            historyType = item.First.Text;
+                            break;
+                        }
+                    }
+
+                    chartData = await App.historyRestServiceManager.GetHistoryPriceTaskAsync(ticker, historyType);
+
+                    if (chartData.Count > 0)
+                    {
+                        htmlSource.Html = HTMLChartBuilder.BuildHTMLLineChartHistoryPrice(ticker, chartData);
+                    }
+                    else
+                    {
+                        htmlSource.Html = @"<html>
+                                                <body>
+                                                    <p style='text-align:center;'>No Chart Data!</p>
+                                                </body>
+                                            </html>";
+                    }
+
+                    ChartView.Source = htmlSource;
+                }
+                await Task.Delay(TimeSpan.FromSeconds(2));
+            }
         }
 
         void ChangeClickedButtonColor(Button clickedButton)
         {
-            foreach (var button in listHistoryOptionButton)
+            if (clickedButton == Button1Day)
             {
-                if (button == clickedButton)
+                history1Day = true;
+            }
+            else
+            {
+                history1Day = false;
+            }
+            foreach (var item in listHistoryOptionButton)
+            {
+                if (item.First == clickedButton)
                 {
-                    button.BackgroundColor = Color.Yellow;
+                    item.First.BackgroundColor = Color.Yellow;
+                    item.Second = true;
                 }
                 else
                 {
-                    button.BackgroundColor = Color.FromHex("#2196F3");
+                    item.First.BackgroundColor = Color.FromHex("#2196F3");
+                    item.Second = false;
                 }
             }
         }

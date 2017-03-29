@@ -10,7 +10,13 @@ namespace StockEmulator.Utilities
 {
     public class HTMLChartBuilder
     {
-        public static string BuildHTMLLineChartFor1DayHistory(string ChartName, List<History1DayModel> chartData)
+        /// <summary>
+        /// Create an HTML string to draw Google Line Chart for 1 Day History Price in WebView.
+        /// </summary>
+        /// <param name="chartName">Name of chart to show.</param>
+        /// <param name="chartData">List of History Price of <typeparamref name="HistoryPrice1DayModel"/>.</param>
+        /// <returns>An HTML string.</returns>
+        public static string BuildHTMLLineChartFor1DayHistoryPrice(string chartName, List<HistoryPriceModel> chartData, decimal previousClosePrice)
         {
             //          string htmlPart1 = @"<html>
             //<head>
@@ -45,17 +51,16 @@ namespace StockEmulator.Utilities
                 data.addColumn('number', 'Previous Close Price');
                 
                 data.addRows([
-
         ";
 
-            string htmlPart2ChartData = LineChartDataToJavascriptAdapter(chartData);
+            string htmlPart2ChartData = LineChart1DayHistoryPriceDataToJavascriptAdapter(chartData, previousClosePrice);
 
             string htmlPart3 = @"]);
 
                 var options = {
           title: '";
 
-            string htmlPart4ChartName = ChartName;
+            string htmlPart4ChartName = chartName;
 
             string htmlPart5 = @"',
           legend: { position: 'bottom' },
@@ -90,13 +95,97 @@ namespace StockEmulator.Utilities
             return sb.ToString();
         }
 
-        static string LineChartDataToJavascriptAdapter(List<History1DayModel> chartData)
+        /// <summary>
+        /// Create an HTML string to draw Google Line Chart of History Price earlier than 1 day in WebView.
+        /// </summary>
+        /// <param name="chartName">Name of chart to show.</param>
+        /// <param name="chartData">List of History Price of <typeparamref name="HistoryPriceModel"/>.</param>
+        /// <returns>An HTML string.</returns>
+        public static string BuildHTMLLineChartHistoryPrice(string chartName, List<HistoryPriceModel> chartData)
+        {
+            //          string htmlPart1 = @"<html>
+            //<head>
+            //  <script type=""text/javascript"" src=""jsapi.js""></script>
+            //  <script type=""text/javascript"">
+            //     google.load(""visualization"", ""1"", { packages:[""corechart""]});
+            //     google.setOnLoadCallback(drawChart);
+            //          function drawChart() {
+            //              var data = google.visualization.arrayToDataTable([
+
+            //                ['Time', 'Price', 'Previous Close'],
+
+            //                ";
+            //string htmlPart2ChartData = @"['2010', 1000, 600],
+
+            //      ['2011', 1170, 600],
+
+            //      ['2012', 660, 600],
+
+            //      ['2013', 1030, 600]";
+
+            string htmlPart1 = @"<html>
+  <head>
+    <script type='text/javascript' src='jsapi.js'></script>
+    <script type='text/javascript'>
+       google.load('visualization', '1', { packages:['corechart']});
+       google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('datetime', 'Date');
+                data.addColumn('number', 'Price');
+                
+                data.addRows([
+        ";
+
+            string htmlPart2ChartData = LineChartHistoryPriceDataToJavascriptAdapter(chartData);
+
+            string htmlPart3 = @"]);
+
+                var options = {
+          title: '";
+
+            string htmlPart4ChartName = chartName;
+
+            string htmlPart5 = @"',
+          legend: { position: 'bottom' },
+            animation: { duration: 1000,
+                        easing: 'out'},
+            chartArea: { width: '85%', 
+                        height: '75%',
+                        left: '10%',
+                        top: '10%',
+                        right: 0,
+                        bottom: '25%'},
+            series: { 1: { lineDashStyle: [2, 4], lineWidth: 2 } }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+  </head>
+  <body>
+    <div id=""chart_div""></div>
+  </body>
+</html>";
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(htmlPart1);
+            sb.Append(htmlPart2ChartData);
+            sb.Append(htmlPart3);
+            sb.Append(htmlPart4ChartName);
+            sb.Append(htmlPart5);
+
+            return sb.ToString();
+        }
+
+        static string LineChart1DayHistoryPriceDataToJavascriptAdapter(List<HistoryPriceModel> chartData, decimal previousClosePrice)
         {
             StringBuilder sb = new StringBuilder();
             CustomDateTime cdt;
             foreach (var item in chartData)
             {
-                PropertyInfo prop = typeof(History1DayModel).GetRuntimeProperty("Time");
+                PropertyInfo prop = typeof(HistoryPriceModel).GetRuntimeProperty("Time");
 
                 cdt = new CustomDateTime((DateTime)prop.GetValue(item));
                 sb.Append("[[");
@@ -107,7 +196,48 @@ namespace StockEmulator.Utilities
                 sb.Append(cdt.Seconds);
                 sb.Append("],");
 
-                foreach (PropertyInfo properties in typeof(History1DayModel).GetRuntimeProperties().ToList())
+                foreach (PropertyInfo properties in typeof(HistoryPriceModel).GetRuntimeProperties().ToList())
+                {
+                    if (properties.Name == "Time")
+                    {
+                        continue;
+                    }
+                    sb.Append(properties.GetValue(item) + ",");
+                    sb.Append(previousClosePrice + ",");
+                }
+                --sb.Length;
+                sb.Append("],");
+            }
+            --sb.Length;
+            return sb.ToString();
+        }
+
+
+
+        static string LineChartHistoryPriceDataToJavascriptAdapter(List<HistoryPriceModel> chartData)
+        {
+            StringBuilder sb = new StringBuilder();
+            CustomDateTime cdt;
+            foreach (var item in chartData)
+            {
+                PropertyInfo prop = typeof(HistoryPriceModel).GetRuntimeProperty("Time");
+
+                cdt = new CustomDateTime((DateTime)prop.GetValue(item));
+                sb.Append("[new Date(");
+                sb.Append(cdt.Year);
+                sb.Append(",");
+                sb.Append(cdt.Month);
+                sb.Append(",");
+                sb.Append(cdt.Day);
+                sb.Append(",");
+                sb.Append(cdt.Hours);
+                sb.Append(",");
+                sb.Append(cdt.Minutes);
+                sb.Append(",");
+                sb.Append(cdt.Seconds);
+                sb.Append("),");
+
+                foreach (PropertyInfo properties in typeof(HistoryPriceModel).GetRuntimeProperties().ToList())
                 {
                     if (properties.Name == "Time")
                     {

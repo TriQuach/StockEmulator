@@ -26,7 +26,7 @@ namespace StockEmulator.Data.AccountRestService
             return accountRestService.Login(thisUser);
         }
 
-        public Task<AccountModel> GetAccountInfoByUsernameAsync(string username)
+        public Task<AccountModel> GetAccountInfoByUsernameTaskAsync(string username)
         {
             return accountRestService.GetAccountInfoByUsernameAsync(username);
         }
