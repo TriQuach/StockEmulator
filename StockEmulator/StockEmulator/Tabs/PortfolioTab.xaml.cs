@@ -45,12 +45,13 @@ namespace StockEmulator.Tabs
 
                 List<PortfolioModel> items = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
                 listPortfolios.ItemsSource = items;
-
+           
                 loadingPortfolio.IsRunning = false;
                 loadingPortfolio.IsVisible = false;
 
                 await Task.Delay(TimeSpan.FromSeconds(10));
             }
+
         }
 
         //protected async override void OnAppearing()
