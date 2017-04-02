@@ -24,7 +24,7 @@ namespace StockEmulator.Utilities
         //URL of Account REST service
         public static string RestUrl_Account = "http://lmtri.somee.com/api/account{0}";
         public static string LoginRequest = "?username={0}&password={1}";
-        public static string GetAccountInfoByUsernameRequest = "?username={0}";
+        public static string GetAccountTabDataByUsernameRequest = "?username={0}";
 
         //URL of Portfolio REST service
         public static string RestUrl_Portfolio = "http://lmtri.somee.com/api/portfolio{0}";

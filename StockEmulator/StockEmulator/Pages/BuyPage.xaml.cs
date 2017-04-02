@@ -30,13 +30,16 @@ namespace StockEmulator.Pages
         async void PressBuy(object sender, EventArgs arg)
         {
             //TODO with ticker;
-            long buyQuantity = long.Parse(BuyQuantity.Text);
-            BuyStockModel buyingInfo = new BuyStockModel { Username = Constants.currentUsername, Ticker = ticker, NumStocks = buyQuantity };
-            bool success = await App.transactionRestServiceManager.BuyStockByUsernameTickerNumStocksTaskAsync(buyingInfo);
-
-            if (success)
+            if (BuyQuantity.Text != null)
             {
-                await Navigation.PopAsync();
+                long buyQuantity = long.Parse(BuyQuantity.Text);
+                BuyStockModel buyingInfo = new BuyStockModel { Username = Constants.currentUsername, Ticker = ticker, NumStocks = buyQuantity };
+                bool success = await App.transactionRestServiceManager.BuyStockByUsernameTickerNumStocksTaskAsync(buyingInfo);
+
+                if (success)
+                {
+                    await Navigation.PopAsync();
+                }
             }
         }
        

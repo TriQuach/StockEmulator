@@ -11,6 +11,6 @@ namespace StockEmulator.Data.AccountRestService
     {
         Task<bool> SignUp(SignUpModel signUpInfo);
         Task<bool> Login(LoginModel thisUser);
-        Task<AccountModel> GetAccountInfoByUsernameAsync(string username);
+        Task<AccountModel> GetAccountTabDataByUsernameAsync(string username);
     }
 }
