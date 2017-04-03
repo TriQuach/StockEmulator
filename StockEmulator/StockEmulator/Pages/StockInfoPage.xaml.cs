@@ -14,7 +14,7 @@ namespace StockEmulator.Pages
     {
         public interface IBaseUrl { string Get(); }
 
-        string ticker;
+        StockModel stockModel;
         List<Pair<Button, bool>> listHistoryOptionButton = new List<Pair<Button, bool>>();
         List<HistoryPriceModel> chartData = new List<HistoryPriceModel>();
         HtmlWebViewSource htmlSource = new HtmlWebViewSource();
@@ -25,8 +25,23 @@ namespace StockEmulator.Pages
         {
             InitializeComponent();
 
-            ticker = stockModel.Ticker;
+            this.stockModel = stockModel;
             Ticker.Text = stockModel.Ticker;
+
+            Price.Text = stockModel.Price.ToString();
+            HighPrice.Text = stockModel.HighPrice.ToString();
+            OpenPrice.Text = stockModel.OpenPrice.ToString();
+            Change.Text = stockModel.Change.ToString();
+            _52_week_High.Text = stockModel._52_week_High.ToString();
+            AskPrice.Text = stockModel.AskPrice.ToString();
+            AskSize.Text = stockModel.AskSize.ToString();
+
+            LowPrice.Text = stockModel.LowPrice.ToString();
+            Volume.Text = stockModel.Volume.ToString();
+            MarketCap.Text = stockModel.MarketCap.ToString();
+            _52_week_Low.Text = stockModel._52_week_Low.ToString();
+            BidPrice.Text = stockModel.BidPrice.ToString();
+            BidSize.Text = stockModel.BidSize.ToString();
 
             listHistoryOptionButton.Add(new Pair<Button, bool>(Button1Day, true));
             listHistoryOptionButton.Add(new Pair<Button, bool>(Button1Week, false));
@@ -216,12 +231,12 @@ namespace StockEmulator.Pages
                 if (history1Day)
                 {
                     historyType = "1d";
-                    chartData = await App.historyRestServiceManager.GetHistoryPriceTaskAsync(ticker, historyType);
-                    decimal previousClosePrice = await App.historyRestServiceManager.GetPreviousClosePriceTaskAsync(ticker);
+                    chartData = await App.historyRestServiceManager.GetHistoryPriceTaskAsync(stockModel.Ticker, historyType);
+                    decimal previousClosePrice = await App.historyRestServiceManager.GetPreviousClosePriceTaskAsync(stockModel.Ticker);
 
                     if (chartData.Count > 0)
                     {
-                        htmlSource.Html = HTMLChartBuilder.BuildHTMLLineChartFor1DayHistoryPrice(ticker, chartData, previousClosePrice);
+                        htmlSource.Html = HTMLChartBuilder.BuildHTMLLineChartFor1DayHistoryPrice(stockModel.Ticker, chartData, previousClosePrice);
                     }
                     else
                     {
@@ -244,11 +259,11 @@ namespace StockEmulator.Pages
                         }
                     }
 
-                    chartData = await App.historyRestServiceManager.GetHistoryPriceTaskAsync(ticker, historyType);
+                    chartData = await App.historyRestServiceManager.GetHistoryPriceTaskAsync(stockModel.Ticker, historyType);
 
                     if (chartData.Count > 0)
                     {
-                        htmlSource.Html = HTMLChartBuilder.BuildHTMLLineChartHistoryPrice(ticker, chartData);
+                        htmlSource.Html = HTMLChartBuilder.BuildHTMLLineChartHistoryPrice(stockModel.Ticker, chartData);
                     }
                     else
                     {
@@ -292,7 +307,7 @@ namespace StockEmulator.Pages
 
         async void PressBuy(object sender, EventArgs arg)
         {
-            await Navigation.PushAsync(new BuyPage(ticker));
+            await Navigation.PushAsync(new BuyPage(stockModel));
         }
 
         async public void PressSell(object sender, EventArgs arg)
