@@ -3,38 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StockEmulator.Pages.BuyPage"
              Title="Buy">
+  
   <StackLayout Padding="0,5,0,0">
+    <Label Text="Place Order" TextColor="#77d065" FontSize="30" />
     
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+      <Label x:Name="EquityName" FontSize="15" Margin="20"/>
+      <Label x:Name="Ticker" TextColor="#EB0921" FontSize="15" Margin="20"/>
+      <Label x:Name="Price" TextColor="#09B4EB" FontSize="15" Margin="20"/>
+    </StackLayout>
     
-      <Label Text="Place Order" TextColor="#77d065" FontSize="30" />
-    
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label x:Name="EquityName" FontSize = "15" Margin="20"/>
-      <Label x:Name="Ticker" TextColor="#EB0921" FontSize = "15" Margin="20"/>
-      <Label TextColor="#09B4EB" FontSize = "15" Text="118.97" Margin="20"/>
-     </StackLayout>
-    
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="Buy quantity" Margin="20"/>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+      <Label TextColor="#09B4EB" FontSize="15" Text="Buy quantity" Margin="20"/>
       <Entry x:Name="BuyQuantity" HorizontalOptions="FillAndExpand" />
     </StackLayout>
     
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="Available Funds" Margin="20"/>
-      <Label x:Name="AvailableFunds" TextColor="#EB0921" FontSize = "15" Margin="20"/>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+      <Label Text="Available Funds" TextColor="#09B4EB" FontSize="15" Margin="20"/>
+      <Label x:Name="AvailableFunds" TextColor="#EB0921" FontSize="15" Margin="20"/>
     </StackLayout>
     
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="Buying Capacity" Margin="20"/>
-      <Label TextColor="#EB0921" FontSize = "15" Text="155" Margin="20"/>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+      <Label Text="Buying Capacity" TextColor="#09B4EB" FontSize="15" Margin="20"/>
+      <Label x:Name="BuyingCapacity" TextColor="#EB0921" FontSize="15" Margin="20"/>
     </StackLayout>
     
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="*Total debit" Margin="20"/>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+      <Label Text="*Total debit" TextColor="#09B4EB" FontSize="15" Margin="20"/>
     </StackLayout>
     
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="*Transactions total includes trade commission fees" Margin="20"/>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+      <Label Text="*Transactions total includes trade commission fees" TextColor="#09B4EB" FontSize="15" Margin="20"/>
     </StackLayout>
     
     <StackLayout Orientation="Horizontal ">

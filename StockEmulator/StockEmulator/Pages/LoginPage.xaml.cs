@@ -12,7 +12,7 @@ namespace StockEmulator.Pages
             InitializeComponent();
             SignUp.GestureRecognizers.Add(new TapGestureRecognizer
             {
-               Command = new Command(() =>Navigation.PushModalAsync(new SignUpPage()))
+               Command = new Command(() => Navigation.PushModalAsync(new SignUpPage()))
             });
 
         }

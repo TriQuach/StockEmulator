@@ -1,5 +1,6 @@
 ﻿using StockEmulator.Models;
 using StockEmulator.Utilities;
+using System;
 using Xamarin.Forms;
 
 namespace StockEmulator.Tabs
@@ -76,6 +77,22 @@ namespace StockEmulator.Tabs
             startingInvestment.Text = accountData.StartingInvestment.ToString();
             stocksValue.Text = accountData.StocksValue.ToString();
             availableCash.Text = accountData.AvailableCash.ToString();
+            if (accountData.Position < 0)
+            {
+                accountData.Position = Math.Abs(accountData.Position);
+                totalValue.TextColor = Color.FromRgb(139, 0, 0);
+                position.TextColor = Color.FromRgb(139, 0, 0);
+            }
+            else if (accountData.Position > 0)
+            {
+                totalValue.TextColor = Color.FromRgb(0, 100, 0);
+                position.TextColor = Color.FromRgb(0, 100, 0);
+            }
+            else
+            {
+                totalValue.TextColor = Color.FromRgb(25, 118, 210);
+                position.TextColor = Color.FromRgb(25, 118, 210);
+            }
             totalValue.Text = accountData.TotalValue.ToString();
             position.Text = accountData.Position.ToString();
             totalTransactions.Text = accountData.TotalTrans.ToString();

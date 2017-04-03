@@ -13,16 +13,29 @@ namespace StockEmulator.Pages
     
     public partial class BuyPage : ContentPage
     {
-        string ticker;
-        public BuyPage(string param)
+        StockModel stockModel = new StockModel();
+
+        public BuyPage(StockModel stockModel)
         {
             InitializeComponent();
-            ticker = param;
-            AvailableFunds.Text = "1234";
-            EquityName.Text = "Apple Inc.";
-            Ticker.Text = param;
 
+            this.stockModel = stockModel;
+
+            EquityName.Text = stockModel.EquityName;
+            Ticker.Text = stockModel.Ticker;
+            Price.Text = stockModel.Price.ToString();
         }
+
+        protected async override void OnAppearing()
+        {
+            AccountModel accountData = await App.accountRestServiceManager.GetAccountTabDataByUsernameTaskAsync(Constants.currentUsername);
+
+            AvailableFunds.Text = accountData.AvailableCash.ToString();
+
+            int buyingCapacity = Convert.ToInt32(Math.Floor(accountData.AvailableCash / stockModel.Price));
+            BuyingCapacity.Text = buyingCapacity.ToString();
+        }
+
         async void PressCancel(object sender, EventArgs arg)
         {
             await Navigation.PopAsync();
@@ -33,7 +46,7 @@ namespace StockEmulator.Pages
             if (BuyQuantity.Text != null)
             {
                 long buyQuantity = long.Parse(BuyQuantity.Text);
-                BuyStockModel buyingInfo = new BuyStockModel { Username = Constants.currentUsername, Ticker = ticker, NumStocks = buyQuantity };
+                BuyStockModel buyingInfo = new BuyStockModel { Username = Constants.currentUsername, Ticker = stockModel.Ticker, NumStocks = buyQuantity };
                 bool success = await App.transactionRestServiceManager.BuyStockByUsernameTickerNumStocksTaskAsync(buyingInfo);
 
                 if (success)

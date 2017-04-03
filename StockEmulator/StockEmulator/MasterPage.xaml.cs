@@ -30,12 +30,12 @@ namespace StockEmulator
                 "Privacy Policy and Discaimer",
                 "About us"
             };
-            logOut.GestureRecognizers.Add(new TapGestureRecognizer((view) => OnLabelClicked()));
-
-
+            logOut.GestureRecognizers.Add(new TapGestureRecognizer {
+                Command = new Command(() => OnLabelClicked())
+            });
         }
 
-        private async void OnLabelClicked()
+        async void OnLabelClicked()
         {
             var accepted = await DisplayAlert("Warning!", "Do you want to Logout?", "Yes", "No");
             if (accepted)
