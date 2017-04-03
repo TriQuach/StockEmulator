@@ -20,7 +20,7 @@ namespace StockEmulator
         public static HistoryRestServiceManager historyRestServiceManager { get; private set; }
         public static AccountRestServiceManager accountRestServiceManager { get; private set; }
         public static TransactionRestServiceManager transactionRestServiceManager { get; private set; }
-
+        public static int ScreenWidth;
         public App()
         {
             InitializeComponent();
@@ -34,6 +34,7 @@ namespace StockEmulator
             var page = new LoginPage();
             NavigationPage.SetHasNavigationBar(page, false);
             MainPage = new NavigationPage(page);
+
         }
 
         protected override void OnStart()
