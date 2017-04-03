@@ -8,9 +8,9 @@
     <StackLayout Margin="10,0,10,0">
       <StackLayout Orientation="Vertical">
     
-        <Label Text="Username"/>
+        <Label Text="Username" FontAttributes="Bold" FontSize="15"/>
         <Entry x:Name="username" Placeholder="email@gmail.com" />
-        <Label Text="Password"/>
+        <Label Text="Password" FontAttributes="Bold" FontSize="15"/>
         <Entry x:Name="password" IsPassword="True" Placeholder="Password" />
 
         <Button Text="Login" Clicked="PressLogin" BackgroundColor="#2196f3"/>

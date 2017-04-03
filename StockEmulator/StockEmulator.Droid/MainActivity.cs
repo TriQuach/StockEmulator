@@ -19,6 +19,7 @@ namespace StockEmulator.Droid
 
             base.OnCreate(bundle);
 
+            App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
 
