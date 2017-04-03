@@ -5,37 +5,37 @@
              Title="My Account">
 
   <StackLayout Orientation="Vertical" >
-    <Label TextColor="#297c29" FontSize = "20" Margin="10,10,10,10" Text="TriQuach's Account Summary" />
+    <Label x:Name="accountTitle" TextColor="#297c29" FontSize="20" Margin="10,10,10,10" />
     <ScrollView>
-     <StackLayout Orientation="Vertical">
-      <StackLayout Orientation="Horizontal">
-        <StackLayout Orientation="Vertical" Margin="10,0,0,0">
-          <Label TextColor="#11A9E6" FontSize = "15" Text="Starting Investement"  VerticalOptions="Center"   />
-          <Label FontSize = "15" Text="Stocks Value" VerticalOptions="Center" />
-          <Label TextColor="#11A9E6" FontSize = "15" Text="Available cash" VerticalOptions="Center"/>
-          <Label FontSize = "15" Text="Total value" VerticalOptions="Center"/>
-          <Label TextColor="#11A9E6" FontSize = "15" Text="Position" VerticalOptions="Center"/>
-          <Label FontSize = "15" Text="Total Transactions" VerticalOptions="Center"/>
-          <Label TextColor="#11A9E6" FontSize = "15" Text="Positive Transactions" VerticalOptions="Center"/>
-          <Label FontSize = "15" Text="Negative Transactions" VerticalOptions="Center"/>
-        </StackLayout>
+      <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal">
+          <StackLayout Orientation="Vertical" Margin="10,0,0,0">
+            <Label TextColor="#11A9E6" FontSize="15" Text="Starting Investement" VerticalOptions="Center"/>
+            <Label FontSize="15" Text="Stocks Value" VerticalOptions="Center"/>
+            <Label TextColor="#11A9E6" FontSize="15" Text="Available cash" VerticalOptions="Center"/>
+            <Label FontSize="15" Text="Total value" VerticalOptions="Center"/>
+            <Label TextColor="#11A9E6" FontSize="15" Text="Position" VerticalOptions="Center"/>
+            <Label FontSize="15" Text="Total Transactions" VerticalOptions="Center"/>
+            <Label TextColor="#11A9E6" FontSize="15" Text="Positive Transactions" VerticalOptions="Center"/>
+            <Label FontSize="15" Text="Negative Transactions" VerticalOptions="Center"/>
+          </StackLayout>
 
-        <StackLayout Orientation="Vertical" Margin="40,0,0,0">
-          <Label x:Name="startingInvestment" TextColor="#11A9E6" VerticalOptions="Center" FontSize = "15"/>
-          <Label x:Name="stocksValue" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize = "15"/>
-          <Label x:Name="availableCash" TextColor="#11A9E6" VerticalOptions="Center" FontSize = "15"/>
-          <Label x:Name="totalValue" VerticalOptions="Center" FontSize = "15"/>
-          <Label x:Name="position" TextColor="#11A9E6" VerticalOptions="Center" FontSize = "15"/>
-          <Label x:Name="totalTransactions" VerticalOptions="Center" FontSize = "15"/>
-          <Label x:Name="positiveTransactions" TextColor="#11A9E6" VerticalOptions="Center" FontSize = "15"/>
-          <Label x:Name="negativeTransactions" VerticalOptions="Center" FontSize = "15"/>
-        </StackLayout>
+          <StackLayout Orientation="Vertical" Margin="40,0,0,0">
+            <Label x:Name="startingInvestment" TextColor="#11A9E6" VerticalOptions="Center" FontSize="15"/>
+            <Label x:Name="stocksValue" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="15"/>
+            <Label x:Name="availableCash" TextColor="#11A9E6" VerticalOptions="Center" FontSize="15"/>
+            <Label x:Name="totalValue" VerticalOptions="Center" FontSize="15"/>
+            <Label x:Name="position" TextColor="#11A9E6" VerticalOptions="Center" FontSize="15"/>
+            <Label x:Name="totalTransactions" VerticalOptions="Center" FontSize="15"/>
+            <Label x:Name="positiveTransactions" TextColor="#11A9E6" VerticalOptions="Center" FontSize="15"/>
+            <Label x:Name="negativeTransactions" VerticalOptions="Center" FontSize="15"/>
+          </StackLayout>
        
-      </StackLayout>
-      <StackLayout Orientation="Vertical" Margin="5,20,0,0">
-        <WebView x:Name="ChartView" HeightRequest="300" WidthRequest="1000"/>
-      </StackLayout>
-    </StackLayout>   
+        </StackLayout>
+        <StackLayout Orientation="Vertical" Margin="5,20,0,0">
+          <WebView x:Name="ChartView" HeightRequest="300" WidthRequest="1000"/>
+        </StackLayout>
+      </StackLayout>   
     </ScrollView>
  
   </StackLayout>

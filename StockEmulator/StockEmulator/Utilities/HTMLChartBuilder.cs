@@ -14,76 +14,84 @@ namespace StockEmulator.Utilities
         /// Create an HTML string to draw Google Line Chart for 1 Day History Price in WebView.
         /// </summary>
         /// <param name="chartName">Name of chart to show.</param>
-        /// <param name="chartData">List of History Price of <typeparamref name="HistoryPrice1DayModel"/>.</param>
+        /// <param name="chartData">List of History Prices of <typeparamref name="HistoryPriceModel"/>.</param>
+        /// <param name="previousClosePrice">Previous Close Price of Current Stock Symbol.</param>
         /// <returns>An HTML string.</returns>
         public static string BuildHTMLLineChartFor1DayHistoryPrice(string chartName, List<HistoryPriceModel> chartData, decimal previousClosePrice)
         {
-            //          string htmlPart1 = @"<html>
-            //<head>
-            //  <script type=""text/javascript"" src=""jsapi.js""></script>
-            //  <script type=""text/javascript"">
-            //     google.load(""visualization"", ""1"", { packages:[""corechart""]});
-            //     google.setOnLoadCallback(drawChart);
-            //          function drawChart() {
-            //              var data = google.visualization.arrayToDataTable([
+            //  string htmlPart1 = @"
+            //      <html>
+            //          <head>
+            //              <script type=""text/javascript"" src=""jsapi.js""></script>
+            //              <script type=""text/javascript"">
+            //                  google.load(""visualization"", ""1"", { packages:[""corechart""]});
+            //                  google.setOnLoadCallback(drawChart);
 
-            //                ['Time', 'Price', 'Previous Close'],
+            //                  function drawChart() {
+            //                      var data = google.visualization.arrayToDataTable([
 
-            //                ";
-            //string htmlPart2ChartData = @"['2010', 1000, 600],
+            //                          ['Time', 'Price', 'Previous Close'],
 
-            //      ['2011', 1170, 600],
+            //  ";
+            //  string htmlPart2ChartData = @"
 
-            //      ['2012', 660, 600],
+            //                          ['2010', 1000, 600],
 
-            //      ['2013', 1030, 600]";
+            //                          ['2011', 1170, 600],
 
-            string htmlPart1 = @"<html>
-  <head>
-    <script type='text/javascript' src='jsapi.js'></script>
-    <script type='text/javascript'>
-       google.load('visualization', '1', { packages:['corechart']});
-       google.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var data = new google.visualization.DataTable();
-                data.addColumn('timeofday', 'Time of Day');
-                data.addColumn('number', 'Price');
-                data.addColumn('number', 'Previous Close Price');
-                
-                data.addRows([
-        ";
+            //                          ['2012', 660, 600],
+
+            //                          ['2013', 1030, 600]";
+
+            string htmlPart1 = @"
+                <html>
+                    <head>
+                        <script type='text/javascript' src='jsapi.js'></script>
+                        <script type='text/javascript'>
+                            google.load('visualization', '1', { packages:['corechart']});
+                            google.setOnLoadCallback(drawChart);
+
+                            function drawChart() {
+                                var data = new google.visualization.DataTable();
+                                
+                                data.addColumn('timeofday', 'Time of Day');
+                                data.addColumn('number', 'Price');
+                                data.addColumn('number', 'Previous Close Price');
+                                
+                                data.addRows([
+            ";
 
             string htmlPart2ChartData = LineChart1DayHistoryPriceDataToJavascriptAdapter(chartData, previousClosePrice);
 
             string htmlPart3 = @"]);
 
-                var options = {
-          title: '";
+                                var options = {
+                                    title: '";
 
             string htmlPart4ChartName = chartName;
 
             string htmlPart5 = @"',
-          legend: { position: 'bottom' },
-            animation: { duration: 1000,
-                        easing: 'out'},
-            chartArea: { width: '85%', 
-                        height: '75%',
-                        left: '10%',
-                        top: '10%',
-                        right: 0,
-                        bottom: '25%'},
-            series: { 1: { lineDashStyle: [2, 4], lineWidth: 2 } }
-            };
+                                    legend: { position: 'bottom' },
+                                    animation: { duration: 1000,
+                                                easing: 'out'},
+                                    chartArea: { width: '85%', 
+                                                height: '75%',
+                                                left: '10%',
+                                                top: '10%',
+                                                right: 0,
+                                                bottom: '25%'},
+                                    series: { 1: { lineDashStyle: [2, 4], lineWidth: 2 } }
+                                };
 
-            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
-    </script>
-  </head>
-  <body>
-    <div id=""chart_div""></div>
-  </body>
-</html>";
+                                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                                chart.draw(data, options);
+                            }
+                        </script>
+                    </head>
+                    <body>
+                        <div id=""chart_div""></div>
+                    </body>
+                </html>";
 
             StringBuilder sb = new StringBuilder();
             sb.Append(htmlPart1);
@@ -99,75 +107,81 @@ namespace StockEmulator.Utilities
         /// Create an HTML string to draw Google Line Chart of History Price earlier than 1 day in WebView.
         /// </summary>
         /// <param name="chartName">Name of chart to show.</param>
-        /// <param name="chartData">List of History Price of <typeparamref name="HistoryPriceModel"/>.</param>
+        /// <param name="chartData">List of History Prices of <typeparamref name="HistoryPriceModel"/>.</param>
         /// <returns>An HTML string.</returns>
         public static string BuildHTMLLineChartHistoryPrice(string chartName, List<HistoryPriceModel> chartData)
         {
-            //          string htmlPart1 = @"<html>
-            //<head>
-            //  <script type=""text/javascript"" src=""jsapi.js""></script>
-            //  <script type=""text/javascript"">
-            //     google.load(""visualization"", ""1"", { packages:[""corechart""]});
-            //     google.setOnLoadCallback(drawChart);
-            //          function drawChart() {
-            //              var data = google.visualization.arrayToDataTable([
+            //  string htmlPart1 = @"
+            //      <html>
+            //          <head>
+            //              <script type=""text/javascript"" src=""jsapi.js""></script>
+            //              <script type=""text/javascript"">
+            //                  google.load(""visualization"", ""1"", { packages:[""corechart""]});
+            //                  google.setOnLoadCallback(drawChart);
 
-            //                ['Time', 'Price', 'Previous Close'],
+            //                  function drawChart() {
+            //                      var data = google.visualization.arrayToDataTable([
 
-            //                ";
-            //string htmlPart2ChartData = @"['2010', 1000, 600],
+            //                          ['Time', 'Price', 'Previous Close'],
 
-            //      ['2011', 1170, 600],
+            //  ";
+            //string htmlPart2ChartData = @"
+            //                          ['2010', 1000, 600],
 
-            //      ['2012', 660, 600],
+            //                          ['2011', 1170, 600],
 
-            //      ['2013', 1030, 600]";
+            //                          ['2012', 660, 600],
 
-            string htmlPart1 = @"<html>
-  <head>
-    <script type='text/javascript' src='jsapi.js'></script>
-    <script type='text/javascript'>
-       google.load('visualization', '1', { packages:['corechart']});
-       google.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var data = new google.visualization.DataTable();
-                data.addColumn('datetime', 'Date');
-                data.addColumn('number', 'Price');
+            //                          ['2013', 1030, 600]";
+
+            string htmlPart1 = @"
+                <html>
+                    <head>
+                        <script type='text/javascript' src='jsapi.js'></script>
+                        <script type='text/javascript'>
+                            google.load('visualization', '1', { packages:['corechart']});
+                            google.setOnLoadCallback(drawChart);
+
+                            function drawChart() {
+                                var data = new google.visualization.DataTable();
+                                
+                                data.addColumn('datetime', 'Date');
+                                data.addColumn('number', 'Price');
                 
-                data.addRows([
-        ";
+                                data.addRows([
+            ";
 
             string htmlPart2ChartData = LineChartHistoryPriceDataToJavascriptAdapter(chartData);
 
             string htmlPart3 = @"]);
 
-                var options = {
-          title: '";
+                                var options = {
+                                    title: '";
 
             string htmlPart4ChartName = chartName;
 
             string htmlPart5 = @"',
-          legend: { position: 'bottom' },
-            animation: { duration: 1000,
-                        easing: 'out'},
-            chartArea: { width: '85%', 
-                        height: '75%',
-                        left: '10%',
-                        top: '10%',
-                        right: 0,
-                        bottom: '25%'},
-            series: { 1: { lineDashStyle: [2, 4], lineWidth: 2 } }
-            };
+                                    legend: { position: 'bottom' },
+                                    animation: { duration: 1000,
+                                                easing: 'out'},
+                                    chartArea: { width: '85%', 
+                                                height: '75%',
+                                                left: '10%',
+                                                top: '10%',
+                                                right: 0,
+                                                bottom: '25%'},
+                                    series: { 1: { lineDashStyle: [2, 4], lineWidth: 2 } }
+                                };
 
-            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
-    </script>
-  </head>
-  <body>
-    <div id=""chart_div""></div>
-  </body>
-</html>";
+                                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                                chart.draw(data, options);
+                            }
+                        </script>
+                    </head>
+                    <body>
+                        <div id=""chart_div""></div>
+                    </body>
+                </html>";
 
             StringBuilder sb = new StringBuilder();
             sb.Append(htmlPart1);

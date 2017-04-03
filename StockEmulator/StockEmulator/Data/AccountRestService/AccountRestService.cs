@@ -73,14 +73,14 @@ namespace StockEmulator.Data.AccountRestService
 
         }
 
-        public async Task<AccountModel> GetAccountInfoByUsernameAsync(string username)
+        public async Task<AccountModel> GetAccountTabDataByUsernameAsync(string username)
         {
             AccountInfo = new AccountModel();
 
             // RestURL_Account = http://lmtri.somee.com/api/account{0}
-            // GetAccountInfoByUsernameRequest = "?username={0}"
-            string GetAccountInfoByUsernameRequest = string.Format(Constants.GetAccountInfoByUsernameRequest, username);
-            var uri = new Uri(string.Format(Constants.RestUrl_Account, GetAccountInfoByUsernameRequest));
+            // GetAccountTabDataByUsernameRequest = "?username={0}"
+            string GetAccountTabDataByUsernameRequest = string.Format(Constants.GetAccountTabDataByUsernameRequest, username);
+            var uri = new Uri(string.Format(Constants.RestUrl_Account, GetAccountTabDataByUsernameRequest));
 
             try
             {
