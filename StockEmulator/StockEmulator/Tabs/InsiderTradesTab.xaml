@@ -5,7 +5,7 @@
              Title="Insider Trades">
 
   <StackLayout BackgroundColor="White">
-    <!--<ActivityIndicator x:Name="loadingTransaction" Color="Green"/>-->
+    <ActivityIndicator x:Name="loadingInsiderTrade" Color="Green"/>
 
     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="#FFC107" >
       <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" Margin="5,0,0,0">

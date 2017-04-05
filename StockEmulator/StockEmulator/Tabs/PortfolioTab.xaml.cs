@@ -33,37 +33,35 @@ namespace StockEmulator.Tabs
             };
             //loadingPortfolio.IsVisible = true;
             //loadingPortfolio.IsRunning = true;
-            listPortfolios.ItemTemplate = new DataTemplate(typeof(CustomVeggieCell));
-            GetNewData();
+            listPortfolios.ItemTemplate = new DataTemplate(typeof(CustomPortfolioCell));
+
             StackLayout1.WidthRequest = App.ScreenWidth / 5;
             StackLayout2.WidthRequest = App.ScreenWidth / 5;
             StackLayout3.WidthRequest = App.ScreenWidth / 5;
             StackLayout4.WidthRequest = App.ScreenWidth / 5;
             StackLayout5.WidthRequest = App.ScreenWidth / 5;
 
-            
-
-
+            GetNewData();
         }
-        public class CustomVeggieCell : ViewCell
+
+        public class CustomPortfolioCell : ViewCell
         {
-            public CustomVeggieCell()
+            public CustomPortfolioCell()
             {
-               
-                var verticaLayout1 = new StackLayout() {
+                var verticaLayout1 = new StackLayout()
+                {
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     Orientation = StackOrientation.Vertical,
                     Spacing = 0,
                     Margin = new Thickness(5,0,0,0),
                     WidthRequest = App.ScreenWidth / 5
-            };
-
+                };
                 var verticaLayout2 = new StackLayout()
                 {
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     Orientation = StackOrientation.Vertical,
                     Spacing = 0,
-                    WidthRequest = App.ScreenWidth /5
+                    WidthRequest = App.ScreenWidth / 5
 
                 };
                 var verticaLayout3 = new StackLayout()
@@ -97,70 +95,59 @@ namespace StockEmulator.Tabs
                     FontSize = 11,
                     VerticalOptions = LayoutOptions.Center,
                     TextColor = Color.FromHex("007FFF")
-                }
-                    ;
-
+                };
                 var EquityLabel = new Label()
                 {
                     VerticalOptions = LayoutOptions.Center,
                     LineBreakMode = LineBreakMode.TailTruncation,
                     FontSize = 11,
                     TextColor = Color.FromHex("666666")
-                }
-                    ;
+                };
                 var PriceLabel = new Label()
                 {
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
-                    Font = Font.SystemFontOfSize(11,FontAttributes.Bold)
-                }
-                    ;
+                    FontSize = 11,
+                    FontAttributes = FontAttributes.Bold
+                };
                 var CostLabel = new Label()
                 {
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
                     FontSize = 11
-                }
-                    ;
+                };
                 var GainLossMoneyLabel = new Label()
                 {
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
                     FontSize = 11,
-                }
-                    ;
+                };
                 var NumStocksLabel = new Label()
                 {
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
                     FontSize = 11,
-                }
-                    ;
+                };
                 var ChangeMoneyLabel = new Label()
                 {
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
                     FontSize = 11,
-                }
-                    ;
+                };
                 var ValueLabel = new Label()
                 {
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.End,
                     FontSize = 11,
-                }
-                    ;
+                };
                 var ChangePercentLabel = new Label()
                 {
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.End,
                     FontSize = 11,
                     LineBreakMode = LineBreakMode.TailTruncation
-                }
-                    ;
-
-
-
+                };
+                
                 TickerLabel.SetBinding(Label.TextProperty, new Binding("Ticker"));
                 EquityLabel.SetBinding(Label.TextProperty, new Binding("EquityName"));
                 PriceLabel.SetBinding(Label.TextProperty, new Binding("Price"));
@@ -185,8 +172,6 @@ namespace StockEmulator.Tabs
 
                 verticaLayout5.Children.Add(ValueLabel);
                 verticaLayout5.Children.Add(ChangePercentLabel);
-
-
                 
                 var horizontalLayout = new StackLayout()
                 {
@@ -203,7 +188,7 @@ namespace StockEmulator.Tabs
             }
         }
 
-        public async void GetNewData()
+        async void GetNewData()
         {
             while (true)
             {
@@ -218,8 +203,6 @@ namespace StockEmulator.Tabs
 
                 await Task.Delay(TimeSpan.FromSeconds(10));
             }
-
         }
-
     }
 }

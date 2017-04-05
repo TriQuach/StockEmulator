@@ -2,44 +2,49 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StockEmulator.Pages.BuyPage"
-             Title="Buy">
+             Title="Place Order">
   
-  <StackLayout Padding="0,5,0,0">
-    <Label Text="Place Order" TextColor="#77d065" FontSize="30" />
+  <StackLayout Margin="5,5,5,0" VerticalOptions="FillAndExpand">
     
-    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-      <Label x:Name="EquityName" FontSize="15" Margin="20"/>
-      <Label x:Name="Ticker" TextColor="#EB0921" FontSize="15" Margin="20"/>
-      <Label x:Name="Price" TextColor="#09B4EB" FontSize="15" Margin="20"/>
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <StackLayout x:Name="StackLayoutEquityName" Orientation="Horizontal">
+        <Label x:Name="EquityName" FontSize="15" LineBreakMode="WordWrap"/>
+      </StackLayout>
+      <StackLayout x:Name="StackLayoutTickerPrice" Orientation="Horizontal">
+        <Label x:Name="Ticker" TextColor="#EB0921" FontSize="15" HorizontalTextAlignment="Center"/>
+        <Label x:Name="Price" TextColor="#09B4EB" FontSize="15" HorizontalTextAlignment="Center"/>
+      </StackLayout>
     </StackLayout>
     
-    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize="15" Text="Buy quantity" Margin="20"/>
-      <Entry x:Name="BuyQuantity" HorizontalOptions="FillAndExpand" />
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <Label x:Name="BuyQuantityLabel" Text="Buy Quantity" FontSize="15" TextColor="#09B4EB"/>
+      <StackLayout>
+        <Entry x:Name="BuyQuantity"/>
+      </StackLayout>
     </StackLayout>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <Label x:Name="AvailableFundsLabel" Text="Available Funds" FontSize="15" TextColor="#09B4EB"/>
+      <Label x:Name="AvailableFunds" FontSize="15" TextColor="#EB0921"/>
+    </StackLayout>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <Label x:Name="BuyingCapacityLabel" Text="Buying Capacity" FontSize="15" TextColor="#09B4EB"/>
+      <Label x:Name="BuyingCapacity" TextColor="#EB0921" FontSize="15"/>
+    </StackLayout>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <Label x:Name="TotalDebitLabel" Text="* Total Debit" FontSize="15" TextColor="#09B4EB"/>
+      <Label x:Name="TotalDebit" FontSize="15" TextColor="#09B4EB"/>
+    </StackLayout>
+
+    <Label Text="* Transaction total includes trade commission fees." FontSize="15" TextColor="#09B4EB"/>
     
-    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-      <Label Text="Available Funds" TextColor="#09B4EB" FontSize="15" Margin="20"/>
-      <Label x:Name="AvailableFunds" TextColor="#EB0921" FontSize="15" Margin="20"/>
+    <StackLayout Orientation="Horizontal">
+      <Button Text="Cancel" Clicked = "PressCancel"/>
+	    <Button Text="Buy" Clicked = "PressBuy"/>
     </StackLayout>
-    
-    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-      <Label Text="Buying Capacity" TextColor="#09B4EB" FontSize="15" Margin="20"/>
-      <Label x:Name="BuyingCapacity" TextColor="#EB0921" FontSize="15" Margin="20"/>
-    </StackLayout>
-    
-    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-      <Label Text="*Total debit" TextColor="#09B4EB" FontSize="15" Margin="20"/>
-    </StackLayout>
-    
-    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-      <Label Text="*Transactions total includes trade commission fees" TextColor="#09B4EB" FontSize="15" Margin="20"/>
-    </StackLayout>
-    
-    <StackLayout Orientation="Horizontal ">
-      <Button Text="Cancel" Margin ="0,0,0,20" Clicked = "PressCancel"/>
-	    <Button Text="Buy" Margin ="0,0,0,20" Clicked = "PressBuy"/>
-    </StackLayout>
-   
+
+    <Label Text="" VerticalOptions="FillAndExpand"/>
   </StackLayout>
 </ContentPage>

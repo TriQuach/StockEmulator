@@ -24,6 +24,23 @@ namespace StockEmulator.Pages
             EquityName.Text = stockModel.EquityName;
             Ticker.Text = stockModel.Ticker;
             Price.Text = stockModel.Price.ToString();
+
+            StackLayoutEquityName.WidthRequest = App.ScreenWidth / 2;
+            StackLayoutTickerPrice.WidthRequest = App.ScreenWidth / 2;
+            Ticker.WidthRequest = App.ScreenWidth / 4;
+            Price.WidthRequest = App.ScreenWidth / 4;
+
+            BuyQuantityLabel.WidthRequest = App.ScreenWidth / 2;
+            BuyQuantity.WidthRequest = App.ScreenWidth / 2;
+
+            AvailableFundsLabel.WidthRequest = App.ScreenWidth / 2;
+            AvailableFunds.WidthRequest = App.ScreenWidth / 2;
+
+            BuyingCapacityLabel.WidthRequest = App.ScreenWidth / 2;
+            BuyingCapacity.WidthRequest = App.ScreenWidth / 2;
+
+            TotalDebitLabel.WidthRequest = App.ScreenWidth / 2;
+            TotalDebit.WidthRequest = App.ScreenWidth / 2;
         }
 
         protected async override void OnAppearing()

@@ -38,5 +38,8 @@ namespace StockEmulator.Utilities
         public static string RestUrl_Transaction = "http://lmtri.somee.com/api/transaction{0}";
         public static string GetTransactionListByUsernameRequest = "?username={0}";
         public static string BuyStockByUsernameTickerNumStocksRequest = "?username={0}&ticker={1}&numstocks={2}";
+
+        //URL of Insider Trade REST service
+        public static string RestUrl_InsiderTrade = "http://lmtri.somee.com/api/insidertrade{0}";
     }
 }
