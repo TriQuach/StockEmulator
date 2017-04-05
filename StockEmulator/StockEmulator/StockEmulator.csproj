@@ -40,6 +40,9 @@
     <Compile Include="Data\HistoryRestService\HistoryRestService.cs" />
     <Compile Include="Data\HistoryRestService\HistoryRestServiceManager.cs" />
     <Compile Include="Data\HistoryRestService\IHistoryRestService.cs" />
+    <Compile Include="Data\InsiderTradeRestService\IInsiderTradeRestService.cs" />
+    <Compile Include="Data\InsiderTradeRestService\InsiderTradeRestService.cs" />
+    <Compile Include="Data\InsiderTradeRestService\InsiderTradeRestServiceManager.cs" />
     <Compile Include="Data\StockRestService\IStockRestService.cs" />
     <Compile Include="Data\StockRestService\StockRestService.cs" />
     <Compile Include="Data\StockRestService\StockRestServiceManager.cs" />

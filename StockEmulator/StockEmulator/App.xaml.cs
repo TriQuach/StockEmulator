@@ -1,6 +1,7 @@
 ﻿using StockEmulator.Data;
 using StockEmulator.Data.AccountRestService;
 using StockEmulator.Data.HistoryRestService;
+using StockEmulator.Data.InsiderTradeRestService;
 using StockEmulator.Data.PortfolioRestService;
 using StockEmulator.Data.StockRestService;
 using StockEmulator.Data.TransactionRestService;
@@ -20,6 +21,7 @@ namespace StockEmulator
         public static HistoryRestServiceManager historyRestServiceManager { get; private set; }
         public static AccountRestServiceManager accountRestServiceManager { get; private set; }
         public static TransactionRestServiceManager transactionRestServiceManager { get; private set; }
+        public static InsiderTradeRestServiceManager insiderTradeRestServiceManager { get; private set; }
         public static int ScreenWidth;
         public App()
         {
@@ -30,6 +32,7 @@ namespace StockEmulator
             historyRestServiceManager = new HistoryRestServiceManager(new HistoryRestService());
             accountRestServiceManager = new AccountRestServiceManager(new AccountRestService());
             transactionRestServiceManager = new TransactionRestServiceManager(new TransactionRestService());
+            insiderTradeRestServiceManager = new InsiderTradeRestServiceManager(new InsiderTradeRestService());
 
             var page = new LoginPage();
             NavigationPage.SetHasNavigationBar(page, false);
