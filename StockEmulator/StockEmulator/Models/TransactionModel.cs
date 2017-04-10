@@ -13,7 +13,7 @@ namespace StockEmulator.Models
         public DateTime Date { get; set; }
         public string Type { get; set; }
         public long NumStocks { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         //double? default1 = 0;
         //public double? GainLossMoney {
@@ -37,11 +37,11 @@ namespace StockEmulator.Models
         //    }
         //}
 
-        public double? GainLossMoney { get; set; }
-        public double? GainLossPercent { get; set; }
+        public decimal? GainLossMoney { get; set; }
+        public decimal? GainLossPercent { get; set; }
 
-        double default2 = 0;
-        public double Total {
+        decimal default2 = 0;
+        public decimal Total {
             get
             {
                 return default2;

@@ -14,7 +14,7 @@ namespace StockEmulator.Models
         public string Type { get; set; }
         public int Total { get; set; }
         public int Quantity { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public DateTime Time { get; set; }
     }
 }
