@@ -46,7 +46,7 @@
     <Compile Include="Data\StockRestService\IStockRestService.cs" />
     <Compile Include="Data\StockRestService\StockRestService.cs" />
     <Compile Include="Data\StockRestService\StockRestServiceManager.cs" />
-    <Compile Include="Models\BuyStockModel.cs" />
+    <Compile Include="Models\BuySellStockModel.cs" />
     <Compile Include="Models\HistoryPriceModel.cs" />
     <Compile Include="Models\PieChartModel.cs" />
     <Compile Include="Models\SignUpModel.cs" />

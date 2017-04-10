@@ -312,7 +312,7 @@ namespace StockEmulator.Pages
 
         async public void PressSell(object sender, EventArgs arg)
         {
-            await Navigation.PushAsync(new SellPage());
+            await Navigation.PushAsync(new SellPage(stockModel));
         }
 
         async void Show1DayHistoryLineChart(object sender, EventArgs arg)

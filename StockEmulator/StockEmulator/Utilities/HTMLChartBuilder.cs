@@ -289,13 +289,7 @@ namespace StockEmulator.Utilities
                 PropertyInfo prop = typeof(HistoryPriceModel).GetRuntimeProperty("Time");
 
                 cdt = new CustomDateTime((DateTime)prop.GetValue(item));
-                sb.Append("[[");
-                sb.Append(cdt.Hours);
-                sb.Append(",");
-                sb.Append(cdt.Minutes);
-                sb.Append(",");
-                sb.Append(cdt.Seconds);
-                sb.Append("],");
+                sb.Append("[[" + cdt.Hours + "," + cdt.Minutes + "," + cdt.Seconds + "],");
 
                 foreach (PropertyInfo properties in typeof(HistoryPriceModel).GetRuntimeProperties().ToList())
                 {
@@ -303,8 +297,7 @@ namespace StockEmulator.Utilities
                     {
                         continue;
                     }
-                    sb.Append(properties.GetValue(item) + ",");
-                    sb.Append(previousClosePrice + ",");
+                    sb.Append(properties.GetValue(item) + "," + previousClosePrice + ",");
                 }
                 --sb.Length;
                 sb.Append("],\n");
@@ -324,19 +317,7 @@ namespace StockEmulator.Utilities
                 PropertyInfo prop = typeof(HistoryPriceModel).GetRuntimeProperty("Time");
 
                 cdt = new CustomDateTime((DateTime)prop.GetValue(item));
-                sb.Append("[new Date(");
-                sb.Append(cdt.Year);
-                sb.Append(",");
-                sb.Append(cdt.Month);
-                sb.Append(",");
-                sb.Append(cdt.Day);
-                sb.Append(",");
-                sb.Append(cdt.Hours);
-                sb.Append(",");
-                sb.Append(cdt.Minutes);
-                sb.Append(",");
-                sb.Append(cdt.Seconds);
-                sb.Append("),");
+                sb.Append("[new Date(" + cdt.Year + "," + cdt.Month + "," + cdt.Day + "," + cdt.Hours + "," + cdt.Minutes + "," + cdt.Seconds + "),");
 
                 foreach (PropertyInfo properties in typeof(HistoryPriceModel).GetRuntimeProperties().ToList())
                 {
@@ -358,9 +339,7 @@ namespace StockEmulator.Utilities
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i <= numChartData; ++i)
             {
-                sb.Append("var percent");
-                sb.Append(i);
-                sb.Append(" = 0;\n");
+                sb.Append("var percent" + i + " = 0;\n");
             }
             return sb.ToString();
         }
@@ -476,7 +455,7 @@ namespace StockEmulator.Utilities
 
             sb.Append("if (percent1 < " + percentage[0].Value + ")\n");
             sb.Append("animateDrawing();\n");
-            sb.Append("}, 10);\n");
+            sb.Append("}, 5);\n");
             sb.Append("}");
 
             return sb.ToString();

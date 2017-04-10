@@ -10,6 +10,6 @@ namespace StockEmulator.Data.TransactionRestService
     public interface ITransactionRestService
     {
         Task<List<TransactionModel>> GetTransactionListByUsernameAsync(string username);
-        Task<bool> BuyStockByUsernameTickerNumStocksAsync(BuyStockModel buyingInfo);
+        Task<bool> BuySellStockByUsernameTickerNumStocksAsync(BuySellStockModel buySellInfo);
     }
 }

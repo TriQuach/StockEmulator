@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StockEmulator.Utilities
 {
-    public class Constants
+    public static class Constants
     {
         //Current User Info
         public static string currentUsername;
@@ -37,7 +37,9 @@ namespace StockEmulator.Utilities
         //URL of Transaction REST service
         public static string RestUrl_Transaction = "http://lmtri.somee.com/api/transaction{0}";
         public static string GetTransactionListByUsernameRequest = "?username={0}";
-        public static string BuyStockByUsernameTickerNumStocksRequest = "?username={0}&ticker={1}&numstocks={2}";
+        public static string BuySellStockByUsernameTickerNumStocksRequest = "?username={0}&ticker={1}&numstocks={2}&transactionType={3}";
+        public const string BUY = "Buy";
+        public const string SELL = "Sell";
 
         //URL of Insider Trade REST service
         public static string RestUrl_InsiderTrade = "http://lmtri.somee.com/api/insidertrade{0}";
