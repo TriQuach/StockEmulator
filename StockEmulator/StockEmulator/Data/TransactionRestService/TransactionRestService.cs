@@ -49,17 +49,17 @@ namespace StockEmulator.Data.TransactionRestService
             return TransactionItems;
         }
 
-        public async Task<bool> BuyStockByUsernameTickerNumStocksAsync(BuyStockModel buyingInfo)
+        public async Task<bool> BuySellStockByUsernameTickerNumStocksAsync(BuySellStockModel buySellInfo)
         {
             // RestUrl_Transactions = "http://lmtri.somee.com/api/transaction{0}"
-            // BuyStockByUsernameTickerNumStocksRequest = "?username={0}&ticker={1}&numstocks={2}"
-            string BuyStockByUsernameTickerNumStocksRequest = string.Format(Constants.BuyStockByUsernameTickerNumStocksRequest, buyingInfo.Username, buyingInfo.Ticker, buyingInfo.NumStocks);
-            var uri = new Uri(string.Format(Constants.RestUrl_Transaction, BuyStockByUsernameTickerNumStocksRequest));
+            // BuySellStockByUsernameTickerNumStocksRequest = "?username={0}&ticker={1}&numstocks={2}&transactionType={3}"
+            string BuySellStockByUsernameTickerNumStocksRequest = string.Format(Constants.BuySellStockByUsernameTickerNumStocksRequest, buySellInfo.Username, buySellInfo.Ticker, buySellInfo.NumStocks, buySellInfo.TransactionType);
+            var uri = new Uri(string.Format(Constants.RestUrl_Transaction, BuySellStockByUsernameTickerNumStocksRequest));
 
             bool success = false;
             try
             {
-                var json = JsonConvert.SerializeObject(buyingInfo);
+                var json = JsonConvert.SerializeObject(buySellInfo);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await client.PostAsync(uri, content);

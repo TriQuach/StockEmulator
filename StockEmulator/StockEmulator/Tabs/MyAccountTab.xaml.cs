@@ -111,7 +111,7 @@ namespace StockEmulator.Tabs
             //                   	    sliceVisibilityThreshold: 0.01,
             //                   	    legend: { position: 'labeled' },
             //                   	    pieStartAngle: 90,
-		    							//height: 300
+		    //							height: 300
             //                   	};
                                	
             //                   	chart = new google.visualization.PieChart(document.getElementById('piechart'));

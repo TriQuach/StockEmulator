@@ -40,7 +40,6 @@ namespace StockEmulator.Data.PortfolioRestService
                     var content = await response.Content.ReadAsStringAsync();
                     PortfolioItems = JsonConvert.DeserializeObject<List<PortfolioModel>>(content);
                 }
-
             }
             catch (Exception ex)
             {
@@ -48,6 +47,31 @@ namespace StockEmulator.Data.PortfolioRestService
             }
 
             return PortfolioItems;
+        }
+
+        public async Task<PortfolioModel> GetPortfolioByUsernameAndTickerAsync(string username, string ticker)
+        {
+            PortfolioModel Portfolio = new PortfolioModel();
+
+            // RestURL_Portfolio = "http://lmtri.somee.com/api/portfolio{0}"
+            // GetPortfolioByUsernameAndTickerRequest = "?username={0}&ticker={1}"
+            string GetPortfolioByUsernameAndTickerRequest = string.Format(Constants.GetPortfolioByUsernameAndTickerRequest, username, ticker);
+            var uri = new Uri(string.Format(Constants.RestUrl_Portfolio, GetPortfolioByUsernameAndTickerRequest));
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    Portfolio = JsonConvert.DeserializeObject<PortfolioModel>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"              ERROR {0}", ex.Message);
+            }
+            return Portfolio;
         }
     }
 }

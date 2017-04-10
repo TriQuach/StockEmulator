@@ -14,6 +14,7 @@ namespace StockEmulator.Pages
     public partial class BuyPage : ContentPage
     {
         StockModel stockModel = new StockModel();
+        int buyingCapacity = 0;
 
         public BuyPage(StockModel stockModel)
         {
@@ -49,7 +50,7 @@ namespace StockEmulator.Pages
 
             AvailableFunds.Text = accountData.AvailableCash.ToString();
 
-            int buyingCapacity = Convert.ToInt32(Math.Floor(accountData.AvailableCash / stockModel.Price));
+            buyingCapacity = Convert.ToInt32(Math.Floor(accountData.AvailableCash / stockModel.Price));
             BuyingCapacity.Text = buyingCapacity.ToString();
         }
 
@@ -63,15 +64,21 @@ namespace StockEmulator.Pages
             if (BuyQuantity.Text != null)
             {
                 long buyQuantity = long.Parse(BuyQuantity.Text);
-                BuyStockModel buyingInfo = new BuyStockModel { Username = Constants.currentUsername, Ticker = stockModel.Ticker, NumStocks = buyQuantity };
-                bool success = await App.transactionRestServiceManager.BuyStockByUsernameTickerNumStocksTaskAsync(buyingInfo);
-
-                if (success)
+                if (buyQuantity <= buyingCapacity)
                 {
-                    await Navigation.PopAsync();
+                    BuySellStockModel buySellInfo = new BuySellStockModel { Username = Constants.currentUsername, Ticker = stockModel.Ticker, NumStocks = buyQuantity, TransactionType = Constants.BUY };
+                    bool success = await App.transactionRestServiceManager.BuySellStockByUsernameTickerNumStocksTaskAsync(buySellInfo);
+
+                    if (success)
+                    {
+                        await Navigation.PopAsync();
+                    }
                 }
+                else
+                {
+                    await DisplayAlert("Error - Buy Stock", "You cannot buy shares because you do not have enough funds. Please reduce the quantity and retry.", "DISMISS");
+                }   
             }
         }
-       
     }
 }

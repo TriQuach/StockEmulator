@@ -2,45 +2,49 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StockEmulator.Pages.SellPage"
-             Title="Sell">
-  <StackLayout Padding="0,5,0,0">
-    
-    
-      <Label TextColor="#77d065" FontSize = "30" Text="Place Order" />
-    
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label FontSize = "15" Text="Apple Lnc." Margin="20"/>
-      <Label TextColor="#EB0921" FontSize = "15" Text="AAPL" Margin="20"/>
-      <Label TextColor="#09B4EB" FontSize = "15" Text="118.97" Margin="20"/>
-     </StackLayout>
-    
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="Sell quantity" Margin="20"/>
-      <Entry HorizontalOptions="FillAndExpand" />
+             Title="Place Order">
+  
+  <StackLayout Margin="5,5,5,0" VerticalOptions="FillAndExpand">
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <StackLayout x:Name="StackLayoutEquityName" Orientation="Horizontal">
+        <Label x:Name="EquityName" FontSize="15" LineBreakMode="WordWrap"/>
+      </StackLayout>
+      <StackLayout x:Name="StackLayoutTickerPrice" Orientation="Horizontal">
+        <Label x:Name="Ticker" TextColor="#EB0921" FontSize="15" HorizontalTextAlignment="Center"/>
+        <Label x:Name="Price" TextColor="#09B4EB" FontSize="15" HorizontalTextAlignment="Center"/>
+      </StackLayout>
     </StackLayout>
-    
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="Available Funds" Margin="20"/>
-      <Label TextColor="#EB0921" FontSize = "15" Text="118,213.45" Margin="20"/>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <Label x:Name="SellQuantityLabel" Text="Sell Quantity" FontSize="15" TextColor="#09B4EB"/>
+      <StackLayout>
+        <Entry x:Name="SellQuantity"/>
+      </StackLayout>
     </StackLayout>
-    
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="Shares Available" Margin="20"/>
-      <Label TextColor="#EB0921" FontSize = "15" Text="155" Margin="20"/>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <Label x:Name="AvailableFundsLabel" Text="Available Funds" FontSize="15" TextColor="#09B4EB"/>
+      <Label x:Name="AvailableFunds" FontSize="15" TextColor="#EB0921"/>
     </StackLayout>
-    
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="*Total Proceeds" Margin="20"/>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <Label x:Name="SharesAvailableLabel" Text="Shares Available" FontSize="15" TextColor="#09B4EB"/>
+      <Label x:Name="SharesAvailable" TextColor="#EB0921" FontSize="15"/>
     </StackLayout>
-    
-    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-      <Label TextColor="#09B4EB" FontSize = "15" Text="*Transactions total includes trade commission fees" Margin="20"/>
+
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+      <Label x:Name="TotalProceedsLabel" Text="* Total Proceeds" FontSize="15" TextColor="#09B4EB"/>
+      <Label x:Name="TotalProceeds" FontSize="15" TextColor="#09B4EB"/>
     </StackLayout>
-    
-    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-      <Button Text="Cancle" Margin ="0,0,0,20"/>
-	    <Button Text="Sell" Margin ="0,0,0,20"/>
+
+    <Label Text="* Transaction total includes trade commission fees." FontSize="15" TextColor="#09B4EB"/>
+
+    <StackLayout Orientation="Horizontal">
+      <Button Text="Cancel" Clicked = "PressCancel"/>
+      <Button Text="Sell" Clicked = "PressSell"/>
     </StackLayout>
-   
+
+    <Label Text="" VerticalOptions="FillAndExpand"/>
   </StackLayout>
 </ContentPage>
