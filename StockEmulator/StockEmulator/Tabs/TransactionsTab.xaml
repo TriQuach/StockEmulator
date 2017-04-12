@@ -5,7 +5,7 @@
              Title="Transactions">
   <StackLayout BackgroundColor="White">
     
-    <ActivityIndicator x:Name="loadingTransaction" Color="Green"/>
+    <ActivityIndicator x:Name="loadingTransactions" Color="Green"/>
     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="#FFC107">
       <StackLayout x:Name="StackLayout1" Spacing="0" HorizontalOptions="FillAndExpand" Margin="5,0,0,0">
         <Label Text="Ticker" FontSize="11" VerticalOptions="Center" TextColor="#007FFF"/>
@@ -28,7 +28,7 @@
       </StackLayout>
     </StackLayout>
 
-    <ListView x:Name="listTransaction">
+    <ListView x:Name="listTransactions">
       <!--<ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>

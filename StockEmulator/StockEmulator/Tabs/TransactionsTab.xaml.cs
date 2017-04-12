@@ -4,6 +4,7 @@ using StockEmulator.Utilities;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using System.Globalization;
 
 namespace StockEmulator.Tabs
 {
@@ -16,7 +17,7 @@ namespace StockEmulator.Tabs
         {
             InitializeComponent();
 
-            listTransaction.ItemSelected += async (sender, e) =>
+            listTransactions.ItemSelected += async (sender, e) =>
             {
                 var item = e.SelectedItem as TransactionModel;
                 if (item == null) return; // don't do anything if we just de-selected the row
@@ -32,144 +33,124 @@ namespace StockEmulator.Tabs
                 ((ListView)sender).SelectedItem = null; // de-select the row
             };
 
-            loadingTransaction.IsVisible = true;
-            loadingTransaction.IsRunning = true;
-            listTransaction.ItemTemplate = new DataTemplate(typeof(CustomVeggieCell));
+            listTransactions.ItemTemplate = new DataTemplate(typeof(CustomTransactionCell));
+
             StackLayout1.WidthRequest = App.ScreenWidth / 5;
             StackLayout2.WidthRequest = App.ScreenWidth / 5;
             StackLayout3.WidthRequest = App.ScreenWidth / 5;
             StackLayout4.WidthRequest = App.ScreenWidth / 5;
             StackLayout5.WidthRequest = App.ScreenWidth / 5;
         }
-        public class CustomVeggieCell : ViewCell
+
+        public class CustomTransactionCell : ViewCell
         {
-            public CustomVeggieCell()
+            StackLayout verticaLayout1 = new StackLayout()
             {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Orientation = StackOrientation.Vertical,
+                Spacing = 0,
+                Margin = new Thickness(5, 0, 0, 0),
+                WidthRequest = App.ScreenWidth / 5
+            };
 
-                var verticaLayout1 = new StackLayout()
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    Orientation = StackOrientation.Vertical,
-                    Spacing = 0,
-                    Margin = new Thickness(5, 0, 0, 0),
-                    WidthRequest = App.ScreenWidth / 5
-                };
+            StackLayout verticaLayout2 = new StackLayout()
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Orientation = StackOrientation.Vertical,
+                Spacing = 0,
+                WidthRequest = App.ScreenWidth / 5
+            };
+            StackLayout verticaLayout3 = new StackLayout()
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Orientation = StackOrientation.Vertical,
+                Spacing = 0,
+                WidthRequest = App.ScreenWidth / 5
+            };
+            StackLayout verticaLayout4 = new StackLayout()
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Orientation = StackOrientation.Vertical,
+                Spacing = 0,
+                WidthRequest = App.ScreenWidth / 5
+            };
 
-                var verticaLayout2 = new StackLayout()
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    Orientation = StackOrientation.Vertical,
-                    Spacing = 0,
-                    WidthRequest = App.ScreenWidth / 5
+            Label TickerLabel = new Label()
+            {
+                FontSize = 13,
+                VerticalOptions = LayoutOptions.Center,
+                TextColor = Color.FromHex("007FFF")
+            };
+            Label EquityNameLabel = new Label()
+            {
+                FontSize = 12,
+                VerticalOptions = LayoutOptions.Center,
+                LineBreakMode = LineBreakMode.TailTruncation,
+                TextColor = Color.FromHex("666666")
+            };
+            Label DateLabel = new Label()
+            {
+                FontSize = 11,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                TextColor = Color.FromHex("000000")
+            };
+            Label GainLossMoneyLabel = new Label()
+            {
+                FontSize = 12,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                TextColor = Color.FromHex("000000")
+            };
+            Label TypeLabel = new Label()
+            {
+                FontSize = 12,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                TextColor = Color.FromHex("000000")
+            };
+            Label NumStocksLabel = new Label()
+            {
+                FontSize = 12,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                TextColor = Color.FromHex("000000")
+            };
+            Label GainLossPercentLabel = new Label()
+            {
+                FontSize = 12,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                TextColor = Color.FromHex("000000")
+            };
+            Label PriceLabel = new Label()
+            {
+                FontSize = 12,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.End,
+                TextColor = Color.FromHex("000000")
+            };
+            Label TotalLabel = new Label()
+            {
+                FontSize = 12,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.End,
+                TextColor = Color.FromHex("000000")
+            };
 
-                };
-                var verticaLayout3 = new StackLayout()
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    Orientation = StackOrientation.Vertical,
-                    Spacing = 0,
-                    WidthRequest = App.ScreenWidth / 5
-
-                };
-                var verticaLayout4 = new StackLayout()
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    Orientation = StackOrientation.Vertical,
-                    Spacing = 0,
-                    WidthRequest = App.ScreenWidth / 5
-
-                };
-                var verticaLayout5 = new StackLayout()
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    Orientation = StackOrientation.Vertical,
-                    Spacing = 0,
-                    Margin = new Thickness(0, 0, 5, 0),
-                    WidthRequest = App.ScreenWidth / 5
-
-                };
-
-                var TickerLabel = new Label()
-                {
-                    FontSize = 11,
-                    VerticalOptions = LayoutOptions.Center,
-                    TextColor = Color.FromHex("007FFF")
-                }
-                    ;
-
-                var EquityNameLabel = new Label()
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    LineBreakMode = LineBreakMode.TailTruncation,
-                    FontSize = 11,
-                    TextColor = Color.FromHex("666666")
-                }
-                    ;
-                var DateLabel = new Label()
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    HorizontalOptions = LayoutOptions.Center,
-                    Font = Font.SystemFontOfSize(10, FontAttributes.Bold),
-                    FormattedText = "{0:dd-MM-yyyy}"
-                }
-                    ;
-                var GainLossMoneyLabel = new Label()
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    HorizontalOptions = LayoutOptions.Center,
-                    FontSize = 11,
-                   
-                }
-                    ;
-                var TypeLabel = new Label()
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    HorizontalOptions = LayoutOptions.Center,
-                    FontSize = 11,
-                }
-                    ;
-                var NumStocksLabel = new Label()
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    HorizontalOptions = LayoutOptions.Center,
-                    FontSize = 11,
-                }
-                    ;
-                var GainLossPercentLabel = new Label()
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    HorizontalOptions = LayoutOptions.Center,
-                    FontSize = 11,
-                }
-                    ;
-                var PriceLabel = new Label()
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    HorizontalOptions = LayoutOptions.End,
-                    FontSize = 11,
-                }
-                    ;
-                var TotalLabel = new Label()
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    HorizontalOptions = LayoutOptions.End,
-                    FontSize = 11,
-                    LineBreakMode = LineBreakMode.TailTruncation
-                }
-                    ;
-
-
-
+            public CustomTransactionCell()
+            {
                 TickerLabel.SetBinding(Label.TextProperty, new Binding("Ticker"));
                 EquityNameLabel.SetBinding(Label.TextProperty, new Binding("EquityName"));
-                PriceLabel.SetBinding(Label.TextProperty, new Binding("Price"));
-                DateLabel.SetBinding(Label.TextProperty, new Binding("Date"));
-                GainLossMoneyLabel.SetBinding(Label.TextProperty, new Binding("GainLossMoney"));
-                NumStocksLabel.SetBinding(Label.TextProperty, new Binding("NumStocks"));
-                TotalLabel.SetBinding(Label.TextProperty, new Binding("Total"));
-                GainLossPercentLabel.SetBinding(Label.TextProperty, new Binding("GainLossPercent"));
+                DateLabel.SetBinding(Label.TextProperty, new Binding("Date", BindingMode.Default, new DateConverter()));
+                GainLossMoneyLabel.SetBinding(Label.TextProperty, new Binding("GainLossMoney", BindingMode.Default, new GainLossMoneyTextConverter()));
+                GainLossMoneyLabel.SetBinding(Label.TextColorProperty, new Binding("GainLossMoney", BindingMode.Default, new GainLossMoneyColorConverter()));
                 TypeLabel.SetBinding(Label.TextProperty, new Binding("Type"));
-
+                NumStocksLabel.SetBinding(Label.TextProperty, new Binding("NumStocks"));
+                GainLossPercentLabel.SetBinding(Label.TextProperty, new Binding("GainLossPercent", BindingMode.Default, new GainLossPercentTextConverter()));
+                GainLossPercentLabel.SetBinding(Label.TextColorProperty, new Binding("GainLossPercent", BindingMode.Default, new GainLossPercentColorConverter()));
+                PriceLabel.SetBinding(Label.TextProperty, new Binding("Price", BindingMode.Default, new PriceTextConverter()));
+                TotalLabel.SetBinding(Label.TextProperty, new Binding("Total", BindingMode.Default, new TotalTextConverter()));
 
                 verticaLayout1.Children.Add(TickerLabel);
                 verticaLayout1.Children.Add(EquityNameLabel);
@@ -181,17 +162,48 @@ namespace StockEmulator.Tabs
 
                 verticaLayout4.Children.Add(NumStocksLabel);
                 verticaLayout4.Children.Add(GainLossPercentLabel);
+            }
 
-                verticaLayout5.Children.Add(PriceLabel);
-                verticaLayout5.Children.Add(TotalLabel);
+            protected override void OnBindingContextChanged()
+            {
+                base.OnBindingContextChanged();
 
+                dynamic c = BindingContext;
 
+                var verticaLayout5 = new StackLayout()
+                {
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    Orientation = StackOrientation.Vertical,
+                    Spacing = 0,
+                    Margin = new Thickness(0, 0, 5, 0),
+                    WidthRequest = App.ScreenWidth / 5
+                };
 
                 var horizontalLayout = new StackLayout()
                 {
                     HorizontalOptions = LayoutOptions.FillAndExpand,
-                    Orientation = StackOrientation.Horizontal,
+                    Orientation = StackOrientation.Horizontal
                 };
+
+                if (c.Type == Constants.BUY)
+                {
+                    PriceLabel.TextColor = Color.FromRgb(0, 0, 0);
+                    TotalLabel.TextColor = Color.FromRgb(0, 0, 0);
+                }
+                else if (c.GainLossMoney < 0)
+                {
+                    PriceLabel.TextColor = Color.FromRgb(139, 0, 0);
+                    TotalLabel.TextColor = Color.FromRgb(139, 0, 0);
+                }
+                else
+                {
+                    PriceLabel.TextColor = Color.FromRgb(0, 100, 0);
+                    TotalLabel.TextColor = Color.FromRgb(0, 100, 0);
+                }
+
+                verticaLayout5.Children.Add(PriceLabel);
+                verticaLayout5.Children.Add(TotalLabel);
+
                 horizontalLayout.Children.Add(verticaLayout1);
                 horizontalLayout.Children.Add(verticaLayout2);
                 horizontalLayout.Children.Add(verticaLayout3);
@@ -201,21 +213,156 @@ namespace StockEmulator.Tabs
                 View = horizontalLayout;
             }
         }
+
+        class DateConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                if (value != null)
+                {
+                    return string.Format("{0:dd-MM-yyyy}", value);
+                }
+                return value;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        class GainLossMoneyTextConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                if (value != null)
+                {
+                    return string.Format("${0:0.000}", Math.Abs((decimal)value));
+                }
+                return value;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        class GainLossMoneyColorConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                if (value != null)
+                {
+                    if ((decimal)value < 0)
+                    {
+                        return Color.FromRgb(139, 0, 0);
+                    }
+                    if ((decimal)value >= 0)
+                    {
+                        return Color.FromRgb(0, 100, 0);
+                    }
+                }
+                return Color.Default;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        class GainLossPercentTextConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                if (value != null)
+                {
+                    return string.Format("{0:0.000}%", Math.Abs((decimal)value));
+                }
+                return value;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        class GainLossPercentColorConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                if (value != null)
+                {
+                    if ((decimal)value < 0)
+                    {
+                        return Color.FromRgb(139, 0, 0);
+                    }
+                    if ((decimal)value >= 0)
+                    {
+                        return Color.FromRgb(0, 100, 0);
+                    }
+                }
+                return Color.Default;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        class PriceTextConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                if (value != null)
+                {
+                    return string.Format("${0:0.000}", Math.Abs((decimal)value));
+                }
+                return value;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        class TotalTextConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                if (value != null)
+                {
+                    return string.Format("${0:0.000}", Math.Abs((decimal)value));
+                }
+                return value;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         protected async override void OnAppearing()
         {
-            List<TransactionModel> items = await App.transactionRestServiceManager.GetTransactionListByUsernameTaskAsync(Constants.currentUsername);
+            loadingTransactions.IsVisible = true;
+            loadingTransactions.IsRunning = true;
 
-            //List<TransactionModel> items = new List<TransactionModel>();
-            //items.Add(new TransactionModel { Ticker = "GOOGL", EquityName = "Alphabet Inc.", Date = new DateTime(2017, 2, 14), Type = "Sell", NumStocks = 3, GainLossPercent = 0.323f, Price = 837.32f, Total = 2501.96f });
+            List<TransactionModel> items = await App.transactionRestServiceManager.GetTransactionListByUsernameTaskAsync(Constants.currentUsername);
+            
             foreach (var item in items)
             {
                 item.Total = item.Price * item.NumStocks;
             }
 
-            listTransaction.ItemsSource = items;
+            listTransactions.ItemsSource = items;
 
-            loadingTransaction.IsRunning = false;
-            loadingTransaction.IsVisible = false;
+            loadingTransactions.IsRunning = false;
+            loadingTransactions.IsVisible = false;
         }
     }
 }
