@@ -53,6 +53,18 @@ namespace StockEmulator.Pages
             SharesAvailable.Text = sharesAvailable.ToString();
         }
 
+        void SellQuantity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (e.NewTextValue != "")
+            {
+                TotalProceeds.Text = (Math.Floor(decimal.Parse(e.NewTextValue)) * stockModel.Price).ToString();
+            }
+            else
+            {
+                TotalProceeds.Text = "0";
+            }
+        }
+
         async void PressCancel(object sender, EventArgs arg)
         {
             await Navigation.PopAsync();
@@ -60,7 +72,7 @@ namespace StockEmulator.Pages
         async void PressSell(object sender, EventArgs arg)
         {
             //TODO with ticker;
-            if (SellQuantity.Text != null)
+            if (SellQuantity.Text != "")
             {
                 long sellQuantity = long.Parse(SellQuantity.Text);
                 if (sellQuantity <= sharesAvailable)
