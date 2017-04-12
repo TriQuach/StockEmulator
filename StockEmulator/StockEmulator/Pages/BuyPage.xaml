@@ -3,48 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StockEmulator.Pages.BuyPage"
              Title="Place Order">
-  
-  <StackLayout Margin="5,5,5,0" VerticalOptions="FillAndExpand">
+  <ScrollView>
+    <StackLayout Margin="5,5,5,0" VerticalOptions="FillAndExpand">
     
-    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-      <StackLayout x:Name="StackLayoutEquityName" Orientation="Horizontal">
-        <Label x:Name="EquityName" FontSize="15" LineBreakMode="WordWrap"/>
+      <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+        <StackLayout x:Name="StackLayoutEquityName" Orientation="Horizontal">
+          <Label x:Name="EquityName" FontSize="15" LineBreakMode="WordWrap"/>
+        </StackLayout>
+        <StackLayout x:Name="StackLayoutTickerPrice" Orientation="Horizontal">
+          <Label x:Name="Ticker" TextColor="#EB0921" FontSize="15" HorizontalTextAlignment="Center"/>
+          <Label x:Name="Price" TextColor="#09B4EB" FontSize="15" HorizontalTextAlignment="Center"/>
+        </StackLayout>
       </StackLayout>
-      <StackLayout x:Name="StackLayoutTickerPrice" Orientation="Horizontal">
-        <Label x:Name="Ticker" TextColor="#EB0921" FontSize="15" HorizontalTextAlignment="Center"/>
-        <Label x:Name="Price" TextColor="#09B4EB" FontSize="15" HorizontalTextAlignment="Center"/>
-      </StackLayout>
-    </StackLayout>
     
-    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-      <Label x:Name="BuyQuantityLabel" Text="Buy Quantity" FontSize="15" TextColor="#09B4EB"/>
-      <StackLayout>
-        <Entry x:Name="BuyQuantity"/>
+      <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+        <Label x:Name="BuyQuantityLabel" Text="Buy Quantity" FontSize="15" TextColor="#09B4EB"/>
+        <StackLayout>
+          <Entry x:Name="BuyQuantity" Keyboard="Numeric" TextChanged="BuyQuantity_TextChanged"/>
+        </StackLayout>
       </StackLayout>
-    </StackLayout>
 
-    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-      <Label x:Name="AvailableFundsLabel" Text="Available Funds" FontSize="15" TextColor="#09B4EB"/>
-      <Label x:Name="AvailableFunds" FontSize="15" TextColor="#EB0921"/>
-    </StackLayout>
+      <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+        <Label x:Name="AvailableFundsLabel" Text="Available Funds" FontSize="15" TextColor="#09B4EB"/>
+        <Label x:Name="AvailableFunds" FontSize="15" TextColor="#EB0921"/>
+      </StackLayout>
 
-    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-      <Label x:Name="BuyingCapacityLabel" Text="Buying Capacity" FontSize="15" TextColor="#09B4EB"/>
-      <Label x:Name="BuyingCapacity" TextColor="#EB0921" FontSize="15"/>
-    </StackLayout>
+      <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+        <Label x:Name="BuyingCapacityLabel" Text="Buying Capacity" FontSize="15" TextColor="#09B4EB"/>
+        <Label x:Name="BuyingCapacity" TextColor="#EB0921" FontSize="15"/>
+      </StackLayout>
 
-    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-      <Label x:Name="TotalDebitLabel" Text="* Total Debit" FontSize="15" TextColor="#09B4EB"/>
-      <Label x:Name="TotalDebit" FontSize="15" TextColor="#09B4EB"/>
-    </StackLayout>
+      <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+        <Label x:Name="TotalDebitLabel" Text="* Total Debit" FontSize="15" TextColor="#09B4EB"/>
+        <Label x:Name="TotalDebit" Text="0" FontSize="15" TextColor="#09B4EB"/>
+      </StackLayout>
 
-    <Label Text="* Transaction total includes trade commission fees." FontSize="15" TextColor="#09B4EB"/>
+      <Label Text="* Transaction total includes trade commission fees." FontSize="15" TextColor="#09B4EB"/>
     
-    <StackLayout Orientation="Horizontal">
-      <Button Text="Cancel" Clicked = "PressCancel"/>
-	    <Button Text="Buy" Clicked = "PressBuy"/>
-    </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Button Text="Cancel" Clicked = "PressCancel"/>
+	      <Button Text="Buy" Clicked = "PressBuy"/>
+      </StackLayout>
 
-    <Label Text="" VerticalOptions="FillAndExpand"/>
-  </StackLayout>
+      <Label Text="" VerticalOptions="FillAndExpand"/>
+    </StackLayout>
+  </ScrollView>
 </ContentPage>

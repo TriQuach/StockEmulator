@@ -54,6 +54,18 @@ namespace StockEmulator.Pages
             BuyingCapacity.Text = buyingCapacity.ToString();
         }
 
+        void BuyQuantity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (e.NewTextValue != "")
+            {
+                TotalDebit.Text = (Math.Floor(decimal.Parse(e.NewTextValue)) * stockModel.Price).ToString();
+            }
+            else
+            {
+                TotalDebit.Text = "0";
+            }
+        }
+
         async void PressCancel(object sender, EventArgs arg)
         {
             await Navigation.PopAsync();
@@ -61,7 +73,7 @@ namespace StockEmulator.Pages
         async void PressBuy(object sender, EventArgs arg)
         {
             //TODO with ticker;
-            if (BuyQuantity.Text != null)
+            if (BuyQuantity.Text != "")
             {
                 long buyQuantity = long.Parse(BuyQuantity.Text);
                 if (buyQuantity <= buyingCapacity)
