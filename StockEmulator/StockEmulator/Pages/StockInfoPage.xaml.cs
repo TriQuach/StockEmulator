@@ -2,6 +2,7 @@
 using StockEmulator.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,22 +27,50 @@ namespace StockEmulator.Pages
             InitializeComponent();
 
             this.stockModel = stockModel;
+            EquityName.Text = stockModel.EquityName;
             Ticker.Text = stockModel.Ticker;
 
-            Price.Text = stockModel.Price.ToString();
-            HighPrice.Text = stockModel.HighPrice.ToString();
-            OpenPrice.Text = stockModel.OpenPrice.ToString();
-            Change.Text = stockModel.Change.ToString();
-            _52_week_High.Text = stockModel._52_week_High.ToString();
-            AskPrice.Text = stockModel.AskPrice.ToString();
-            AskSize.Text = stockModel.AskSize.ToString();
+            Price.Text = stockModel.Price.ToString(CultureInfo.InvariantCulture);
+            if (stockModel.Change < 0)
+            {
+                ChangePrice.TextColor = Color.FromRgb(183, 62, 62);
+                ChangePercent.TextColor = Color.FromRgb(183, 62, 62);
+            }
+            else
+            {
+                ChangePrice.TextColor = Color.FromRgb(14, 124, 17);
+                ChangePercent.TextColor = Color.FromRgb(14, 124, 17);
+            }
+            ChangePrice.Text = stockModel.Change.ToString(CultureInfo.InvariantCulture);
+            ChangePercent.Text = string.Format("{0}%", Math.Round((stockModel.Change / stockModel.PrevClosePrice) * 100, 2, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture));
 
-            LowPrice.Text = stockModel.LowPrice.ToString();
-            Volume.Text = stockModel.Volume.ToString();
-            MarketCap.Text = stockModel.MarketCap.ToString();
-            _52_week_Low.Text = stockModel._52_week_Low.ToString();
-            BidPrice.Text = stockModel.BidPrice.ToString();
-            BidSize.Text = stockModel.BidSize.ToString();
+            //AfterHoursPrice.Text = stockModel.AfterHoursPrice.ToString(CultureInfo.InvariantCulture);
+            //if (stockModel.AfterHoursPrice - stockModel.Price < 0)
+            //{
+            //    AfterHoursChangePrice.TextColor = Color.FromRgb(183, 62, 62);
+            //    AfterHoursChangePercent.TextColor = Color.FromRgb(183, 62, 62);
+            //}
+            //else
+            //{
+            //    AfterHoursChangePrice.TextColor = Color.FromRgb(14, 124, 17);
+            //    AfterHoursChangePercent.TextColor = Color.FromRgb(14, 124, 17);
+            //}
+            //AfterHoursChangePrice.Text = (stockModel.AfterHoursPrice - stockModel.Price).ToString(CultureInfo.InvariantCulture);
+            //AfterHoursChangePercent.Text = string.Format("({0}%)", Math.Round((stockModel.AfterHoursPrice - stockModel.Price) / stockModel.Price, 2, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture));
+
+            HighPrice.Text = stockModel.HighPrice.ToString(CultureInfo.InvariantCulture);
+            OpenPrice.Text = stockModel.OpenPrice.ToString(CultureInfo.InvariantCulture);
+            Change.Text = stockModel.Change.ToString(CultureInfo.InvariantCulture);
+            _52_week_High.Text = stockModel._52_week_High.ToString(CultureInfo.InvariantCulture);
+            AskPrice.Text = stockModel.AskPrice.ToString(CultureInfo.InvariantCulture);
+            AskSize.Text = stockModel.AskSize.ToString(CultureInfo.InvariantCulture);
+
+            LowPrice.Text = stockModel.LowPrice.ToString(CultureInfo.InvariantCulture);
+            Volume.Text = stockModel.Volume.ToString(CultureInfo.InvariantCulture);
+            MarketCap.Text = stockModel.MarketCap.ToString(CultureInfo.InvariantCulture);
+            _52_week_Low.Text = stockModel._52_week_Low.ToString(CultureInfo.InvariantCulture);
+            BidPrice.Text = stockModel.BidPrice.ToString(CultureInfo.InvariantCulture);
+            BidSize.Text = stockModel.BidSize.ToString(CultureInfo.InvariantCulture);
 
             listHistoryOptionButton.Add(new Pair<Button, bool>(Button1Day, true));
             listHistoryOptionButton.Add(new Pair<Button, bool>(Button1Week, false));
@@ -68,7 +97,7 @@ namespace StockEmulator.Pages
             //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 19, 38, 29), 763.37m, 757.8m));
             //chartData.Add(new History1DayModel(new DateTime(2017, 3, 11, 20, 26, 40), 863.37m, 757.8m));
 
-            //            htmlSource.Html = @"
+            //htmlSource.Html = @"
             //<html>
             //  <head>
             //    <script type='text/javascript' src='jsapi.js'></script>
@@ -121,7 +150,7 @@ namespace StockEmulator.Pages
             //  </body>
             //</html>";
 
-            //            htmlSource.Html = @"
+            //htmlSource.Html = @"
             //<html>
             //  <head>
             //    <script type='text/javascript' src='jsapi.js'></script>
@@ -172,7 +201,7 @@ namespace StockEmulator.Pages
             //  </body>
             //</html>";
 
-            //            htmlSource.Html = @"
+            //htmlSource.Html = @"
             //<html>
             //  <head>
             //    <script type='text/javascript' src='jsapi.js'></script>
@@ -273,7 +302,6 @@ namespace StockEmulator.Pages
                                                 </body>
                                             </html>";
                     }
-
                     ChartView.Source = htmlSource;
                 }
                 await Task.Delay(TimeSpan.FromSeconds(2));

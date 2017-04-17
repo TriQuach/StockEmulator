@@ -35,7 +35,7 @@
 
       <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
         <Label x:Name="TotalDebitLabel" Text="* Total Debit" FontSize="15" TextColor="#09B4EB"/>
-        <Label x:Name="TotalDebit" Text="0" FontSize="15" TextColor="#09B4EB"/>
+        <Label x:Name="TotalDebit" Text="$0" FontSize="15" TextColor="#09B4EB"/>
       </StackLayout>
 
       <Label Text="* Transaction total includes trade commission fees." FontSize="15" TextColor="#09B4EB"/>

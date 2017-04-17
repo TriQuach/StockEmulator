@@ -1,4 +1,5 @@
 ﻿using StockEmulator.Pages;
+using StockEmulator.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,13 @@ namespace StockEmulator
         {
             InitializeComponent();
 
+            Username.Text = Constants.currentUsername;
+
+            Logout.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => OnLogoutClicked())
+            });
+
             listMenu.ItemsSource = new string[]
             {
                 "Portfolio",
@@ -30,12 +38,9 @@ namespace StockEmulator
                 "Privacy Policy and Discaimer",
                 "About us"
             };
-            logOut.GestureRecognizers.Add(new TapGestureRecognizer {
-                Command = new Command(() => OnLabelClicked())
-            });
         }
 
-        async void OnLabelClicked()
+        async void OnLogoutClicked()
         {
             var accepted = await DisplayAlert("Warning!", "Do you want to Logout?", "Yes", "No");
             if (accepted)

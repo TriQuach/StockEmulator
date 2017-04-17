@@ -152,7 +152,7 @@
     <AndroidAsset Include="Assets\jsapi.js" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\b.jpg" />
+    <AndroidResource Include="Resources\drawable\NavigationDrawerImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splashscreen.jpg" />

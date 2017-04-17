@@ -14,7 +14,7 @@ namespace StockEmulator.Pages
     public partial class BuyPage : ContentPage
     {
         StockModel stockModel = new StockModel();
-        int buyingCapacity = 0;
+        int buyingCapacity;
 
         public BuyPage(StockModel stockModel)
         {
@@ -58,11 +58,11 @@ namespace StockEmulator.Pages
         {
             if (e.NewTextValue != "")
             {
-                TotalDebit.Text = (Math.Floor(decimal.Parse(e.NewTextValue)) * stockModel.Price).ToString();
+                TotalDebit.Text = string.Format("${0}", (Math.Floor(decimal.Parse(e.NewTextValue)) * stockModel.Price));
             }
             else
             {
-                TotalDebit.Text = "0";
+                TotalDebit.Text = "$0";
             }
         }
 
