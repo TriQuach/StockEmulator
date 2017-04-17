@@ -7,11 +7,11 @@
 
     <ScrollView>
       <StackLayout>
-        <Image Source="b.jpg"></Image>
+        <Image Source="NavigationDrawerImage.jpg"></Image>
         <StackLayout Margin="18">
           <Label Text="Manage Account" FontAttributes="Bold" />
-          <Label x:Name="username" Text="qmtri@apcs.vn"/>
-          <Label x:Name="logOut" Text="Logout" TextColor="#f44242" />
+          <Label x:Name="Username"/>
+          <Label x:Name="Logout" Text="Log Out" TextColor="#f44242" />
         </StackLayout>
         <BoxView HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand" Margin="0,10,0,0"/>
         <Label Text="Navigation" Margin="18" FontAttributes="Bold"/>

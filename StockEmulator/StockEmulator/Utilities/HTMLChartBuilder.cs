@@ -1,6 +1,7 @@
 ﻿using StockEmulator.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -48,7 +49,7 @@ namespace StockEmulator.Utilities
                     <head>
                         <script type='text/javascript' src='jsapi.js'></script>
                         <script type='text/javascript'>
-                            google.load('visualization', '1', { packages:['corechart']});
+                            google.load('visualization', '1', { packages:['corechart'], 'language': 'en'});
                             google.setOnLoadCallback(drawChart);
 
                             function drawChart() {
@@ -89,7 +90,7 @@ namespace StockEmulator.Utilities
                         </script>
                     </head>
                     <body>
-                        <div id=""chart_div""></div>
+                        <div id='chart_div'></div>
                     </body>
                 </html>";
 
@@ -139,7 +140,7 @@ namespace StockEmulator.Utilities
                     <head>
                         <script type='text/javascript' src='jsapi.js'></script>
                         <script type='text/javascript'>
-                            google.load('visualization', '1', { packages:['corechart']});
+                            google.load('visualization', '1', { packages:['corechart'], 'language': 'en'});
                             google.setOnLoadCallback(drawChart);
 
                             function drawChart() {
@@ -147,7 +148,7 @@ namespace StockEmulator.Utilities
                                 
                                 data.addColumn('datetime', 'Date');
                                 data.addColumn('number', 'Price');
-                
+                                
                                 data.addRows([
             ";
 
@@ -179,7 +180,7 @@ namespace StockEmulator.Utilities
                         </script>
                     </head>
                     <body>
-                        <div id=""chart_div""></div>
+                        <div id='chart_div'></div>
                     </body>
                 </html>";
 
@@ -207,7 +208,7 @@ namespace StockEmulator.Utilities
                     <head>
                         <script type='text/javascript' src='jsapi.js'></script>
                         <script type='text/javascript'>
-                            google.load('visualization', '1', { packages:['corechart']});
+                            google.load('visualization', '1', { packages:['corechart'], 'language': 'en'});
                             google.setOnLoadCallback(drawChart);
                             
                             var data, options, chart;
@@ -297,7 +298,22 @@ namespace StockEmulator.Utilities
                     {
                         continue;
                     }
-                    sb.Append(properties.GetValue(item) + "," + previousClosePrice + ",");
+                    if (properties.PropertyType == typeof(decimal))
+                    {
+                        sb.Append(((decimal)properties.GetValue(item)).ToString(CultureInfo.InvariantCulture) + "," + previousClosePrice + ",");
+                    }
+                    else if (properties.PropertyType == typeof(float))
+                    {
+                        sb.Append(((float)properties.GetValue(item)).ToString(CultureInfo.InvariantCulture) + "," + previousClosePrice + ",");
+                    }
+                    else if (properties.PropertyType == typeof(double))
+                    {
+                        sb.Append(((double)properties.GetValue(item)).ToString(CultureInfo.InvariantCulture) + "," + previousClosePrice + ",");
+                    }
+                    else
+                    {
+                        sb.Append(properties.GetValue(item) + "," + previousClosePrice + ",");
+                    }
                 }
                 --sb.Length;
                 sb.Append("],\n");
@@ -325,7 +341,22 @@ namespace StockEmulator.Utilities
                     {
                         continue;
                     }
-                    sb.Append(properties.GetValue(item) + ",");
+                    if (properties.PropertyType == typeof(decimal))
+                    {
+                        sb.Append(((decimal)properties.GetValue(item)).ToString(CultureInfo.InvariantCulture) + ",");
+                    }
+                    else if (properties.PropertyType == typeof(float))
+                    {
+                        sb.Append(((float)properties.GetValue(item)).ToString(CultureInfo.InvariantCulture) + ",");
+                    }
+                    else if (properties.PropertyType == typeof(double))
+                    {
+                        sb.Append(((double)properties.GetValue(item)).ToString(CultureInfo.InvariantCulture) + ",");
+                    }
+                    else
+                    {
+                        sb.Append(properties.GetValue(item) + ",");
+                    }
                 }
                 --sb.Length;
                 sb.Append("],\n");
@@ -354,12 +385,9 @@ namespace StockEmulator.Utilities
 
             foreach (var item in chartData)
             {
-                sb.Append("['");
-                sb.Append(item.Ticker);
-                sb.Append("',");
-                sb.Append("0],\n");
+                sb.Append("['" + item.Ticker + "'," + "0],\n");
             }
-            --sb.Length;
+            sb.Length -= 2;
 
             return sb.ToString();
         }
@@ -380,61 +408,61 @@ namespace StockEmulator.Utilities
             {
                 if (i == percentage.Count)
                 {
-                    sb.Append("if (percent" + i + " < " + percentage[i - 1].Value + ") {\n");
+                    sb.Append("if (percent" + i + " < " + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + ") {\n");
                 }
                 else
                 {
-                    sb.Append("else if (percent" + i + " < " + percentage[i - 1].Value + ") {\n");
+                    sb.Append("else if (percent" + i + " < " + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + ") {\n");
                 }
 
                 if (percentage[i - 1].Value <= 10)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 1)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 1)\n");
                     sb.Append("percent" + i + " += 1;\n");
                 }
                 else if (percentage[i - 1].Value <= 20)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 2)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 2)\n");
                     sb.Append("percent" + i + " += 2;\n");
                 }
                 else if (percentage[i - 1].Value <= 30)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 3)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 3)\n");
                     sb.Append("percent" + i + " += 3;\n");
                 }
                 else if (percentage[i - 1].Value <= 40)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 4)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 4)\n");
                     sb.Append("percent" + i + " += 4;\n");
                 }
                 else if (percentage[i - 1].Value <= 50)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 5)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 5)\n");
                     sb.Append("percent" + i + " += 5;\n");
                 }
                 else if (percentage[i - 1].Value <= 60)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 6)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 6)\n");
                     sb.Append("percent" + i + " += 6;\n");
                 }
                 else if (percentage[i - 1].Value <= 70)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 7)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 7)\n");
                     sb.Append("percent" + i + " += 7;\n");
                 }
                 else if (percentage[i - 1].Value <= 80)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 8)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 8)\n");
                     sb.Append("percent" + i + " += 8;\n");
                 }
                 else if (percentage[i - 1].Value <= 90)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 9)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 9)\n");
                     sb.Append("percent" + i + " += 9;\n");
                 }
                 else if (percentage[i - 1].Value <= 100)
                 {
-                    sb.Append("if (" + percentage[i - 1].Value + " - percent" + i + " > 10)\n");
+                    sb.Append("if (" + percentage[i - 1].Value.ToString(CultureInfo.InvariantCulture) + " - percent" + i + " > 10)\n");
                     sb.Append("percent" + i + " += 10;\n");
                 }
                 sb.Append("else\n");
@@ -450,10 +478,10 @@ namespace StockEmulator.Utilities
 
             sb.Append("chart.draw(data, options);\n");
 
-            sb.Append("if (percent1 >= " + percentage[0].Value + ")\n");
+            sb.Append("if (percent1 >= " + percentage[0].Value.ToString(CultureInfo.InvariantCulture) + ")\n");
             sb.Append("clearTimeout(handler);\n");
 
-            sb.Append("if (percent1 < " + percentage[0].Value + ")\n");
+            sb.Append("if (percent1 < " + percentage[0].Value.ToString(CultureInfo.InvariantCulture) + ")\n");
             sb.Append("animateDrawing();\n");
             sb.Append("}, 5);\n");
             sb.Append("}");

@@ -47,6 +47,11 @@ namespace StockEmulator.Pages
                 await DisplayAlert("Register Failed!", "Confirmed Password Does NOT Match Your Password!", "OK");
                 return;
             }
+            if (string.IsNullOrWhiteSpace(password.Text))
+            {
+                await DisplayAlert("Register Failed!", "Password CANNOT be Empty OR contain Only White Spaces!", "OK");
+                return;
+            }
 
             SignUpModel signUpInfo = new SignUpModel()
             {

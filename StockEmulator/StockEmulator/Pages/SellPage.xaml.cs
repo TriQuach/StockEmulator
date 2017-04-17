@@ -13,7 +13,7 @@ namespace StockEmulator.Pages
     public partial class SellPage : ContentPage
     {
         StockModel stockModel = new StockModel();
-        long sharesAvailable = 0;
+        long sharesAvailable;
 
         public SellPage(StockModel stockModel)
         {
@@ -57,11 +57,11 @@ namespace StockEmulator.Pages
         {
             if (e.NewTextValue != "")
             {
-                TotalProceeds.Text = (Math.Floor(decimal.Parse(e.NewTextValue)) * stockModel.Price).ToString();
+                TotalProceeds.Text = string.Format("${0}", (Math.Floor(decimal.Parse(e.NewTextValue)) * stockModel.Price));
             }
             else
             {
-                TotalProceeds.Text = "0";
+                TotalProceeds.Text = "$0";
             }
         }
 

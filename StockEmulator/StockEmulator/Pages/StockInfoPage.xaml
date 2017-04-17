@@ -7,20 +7,24 @@
   <StackLayout>
     <StackLayout Margin="5,5,5,5" Padding="5,5,5,5" BackgroundColor="#BBBBBB" VerticalOptions="Start">
       <StackLayout Orientation="Horizontal">
-        <Label x:Name="Ticker" Font="Bold,13" TextColor="Black"/>
-        <Label Text="NASDAQ" Font="11" TextColor="#5A5A5A" VerticalOptions="Center"/>
+        <Label x:Name="EquityName" Font="Bold,15" TextColor="Black"/>
+        <Label Text="HOSE" Font="13" TextColor="#5A5A5A" VerticalOptions="Center"/>
+      </StackLayout>
+      
+      <Label x:Name="Ticker" Font="Bold,16" TextColor="Black"/>
+      
+      <StackLayout Orientation="Horizontal">
+        <Label x:Name="Price" Font="Bold, 25" TextColor="Black"/>
+        <Label x:Name="ChangePrice" Font="Bold, 20" VerticalOptions="End"/>
+        <Label x:Name="ChangePercent" Font="Bold, 20" VerticalOptions="End"/>
       </StackLayout>
       <StackLayout Orientation="Horizontal">
-        <Label x:Name="Price" Text="840.03" Font="Bold, 23" TextColor="Black"/>
-        <Label Text="1.07" Font="Bold, 17" TextColor="Green" VerticalOptions="End"/>
-        <Label Text="0.13%" Font="Bold, 17" TextColor="Green" VerticalOptions="End"/>
+        <Label Text="After Hours:" Font="14" TextColor="#5A5A5A" VerticalOptions="Center"/>
+        <Label x:Name="AfterHoursPrice" Font="Bold, 15" TextColor="Black"/>
+        <Label x:Name="AfterHoursChangePrice" Font="13" VerticalOptions="Center"/>
+        <Label x:Name="AfterHoursChangePercent" Font="13" VerticalOptions="Center"/>
       </StackLayout>
-      <StackLayout Orientation="Horizontal">
-        <Label Text="After Hours:" Font="11" TextColor="#5A5A5A" VerticalOptions="Center"/>
-        <Label Text="" Font="Bold, 13" TextColor="Black"/>
-        <Label Text="" Font="11" TextColor="Maroon" VerticalOptions="Center"/>
-      </StackLayout>
-      <Label Text="Market Is Currently Closed" Font="11" TextColor="Maroon"/>
+      <Label x:Name="MarketCloseNotice" Text="Market Is Currently Closed" Font="12" TextColor="Maroon"/>
     </StackLayout>
 
     <ScrollView>
