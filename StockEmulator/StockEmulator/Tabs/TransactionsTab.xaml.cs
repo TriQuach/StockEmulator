@@ -44,6 +44,8 @@ namespace StockEmulator.Tabs
 
         public class CustomTransactionCell : ViewCell
         {
+            TransactionModel transactionModel;
+
             StackLayout verticaLayout1 = new StackLayout()
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -168,7 +170,12 @@ namespace StockEmulator.Tabs
             {
                 base.OnBindingContextChanged();
 
-                dynamic c = BindingContext;
+                if (BindingContext == null)
+                {
+                    return;
+                }
+
+                transactionModel = (TransactionModel)BindingContext;
 
                 var verticaLayout5 = new StackLayout()
                 {
@@ -185,12 +192,12 @@ namespace StockEmulator.Tabs
                     Orientation = StackOrientation.Horizontal
                 };
 
-                if (c.Type == Constants.BUY)
+                if (transactionModel.Type == Constants.BUY)
                 {
                     PriceLabel.TextColor = Color.FromRgb(0, 0, 0);
                     TotalLabel.TextColor = Color.FromRgb(0, 0, 0);
                 }
-                else if (c.GainLossMoney < 0)
+                else if (transactionModel.GainLossMoney < 0)
                 {
                     PriceLabel.TextColor = Color.FromRgb(139, 0, 0);
                     TotalLabel.TextColor = Color.FromRgb(139, 0, 0);
