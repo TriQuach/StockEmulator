@@ -13,6 +13,7 @@ namespace StockEmulator.Tabs
     {
         StockModel StockInfo = new StockModel();
         List<InsiderTradeModel> InsiderTrades = new List<InsiderTradeModel>();
+        bool keepUpdate = false;
 
         public InsiderTradesTab()
         {
@@ -59,13 +60,22 @@ namespace StockEmulator.Tabs
                 page.BindingContext = item;
                 await Navigation.PushAsync(page);
             };
+        }
 
+        protected async override void OnAppearing()
+        {
+            keepUpdate = true;
             GetNewData();
+        }
+
+        protected async override void OnDisappearing()
+        {
+            keepUpdate = false;
         }
 
         async void GetNewData()
         {
-            while (true)
+            while (keepUpdate)
             {
                 loadingInsiderTrade.IsVisible = true;
                 loadingInsiderTrade.IsRunning = true;
