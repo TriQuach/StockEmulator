@@ -25,22 +25,22 @@ namespace StockEmulator.Pages
             Ticker.Text = stockModel.Ticker;
             Price.Text = stockModel.Price.ToString();
 
-            StackLayoutEquityName.WidthRequest = App.ScreenWidth / 2;
-            StackLayoutTickerPrice.WidthRequest = App.ScreenWidth / 2;
-            Ticker.WidthRequest = App.ScreenWidth / 4;
-            Price.WidthRequest = App.ScreenWidth / 4;
+            //StackLayoutEquityName.WidthRequest = App.ScreenWidth / 2;
+            //StackLayoutTickerPrice.WidthRequest = App.ScreenWidth / 2;
+            //Ticker.WidthRequest = App.ScreenWidth / 4;
+            //Price.WidthRequest = App.ScreenWidth / 4;
 
-            SellQuantityLabel.WidthRequest = App.ScreenWidth / 2;
-            SellQuantity.WidthRequest = App.ScreenWidth / 2;
+            //SellQuantityLabel.WidthRequest = App.ScreenWidth / 2;
+            //SellQuantity.WidthRequest = App.ScreenWidth / 2;
 
-            AvailableFundsLabel.WidthRequest = App.ScreenWidth / 2;
-            AvailableFunds.WidthRequest = App.ScreenWidth / 2;
+            //AvailableFundsLabel.WidthRequest = App.ScreenWidth / 2;
+            //AvailableFunds.WidthRequest = App.ScreenWidth / 2;
 
-            SharesAvailableLabel.WidthRequest = App.ScreenWidth / 2;
-            SharesAvailable.WidthRequest = App.ScreenWidth / 2;
+            //SharesAvailableLabel.WidthRequest = App.ScreenWidth / 2;
+            //SharesAvailable.WidthRequest = App.ScreenWidth / 2;
 
-            TotalProceedsLabel.WidthRequest = App.ScreenWidth / 2;
-            TotalProceeds.WidthRequest = App.ScreenWidth / 2;
+            //TotalProceedsLabel.WidthRequest = App.ScreenWidth / 2;
+            //TotalProceeds.WidthRequest = App.ScreenWidth / 2;
         }
 
         protected async override void OnAppearing()

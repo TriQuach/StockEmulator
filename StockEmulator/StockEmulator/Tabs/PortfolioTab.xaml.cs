@@ -13,6 +13,7 @@ namespace StockEmulator.Tabs
     {
         StockModel StockInfo = new StockModel();
         List<PortfolioModel> Portfolios = new List<PortfolioModel>();
+        bool keepUpdate = false;
         
         public PortfolioTab()
         {
@@ -40,8 +41,6 @@ namespace StockEmulator.Tabs
             StackLayout3.WidthRequest = App.ScreenWidth / 5;
             StackLayout4.WidthRequest = App.ScreenWidth / 5;
             StackLayout5.WidthRequest = App.ScreenWidth / 5;
-
-            GetNewData();
         }
 
         class CustomPortfolioCell : ViewCell
@@ -391,9 +390,20 @@ namespace StockEmulator.Tabs
             }
         }
 
+        protected async override void OnAppearing()
+        {
+            keepUpdate = true;
+            GetNewData();
+        }
+
+        protected async override void OnDisappearing()
+        {
+            keepUpdate = false;
+        }
+
         async void GetNewData()
         {
-            while (true)
+            while (keepUpdate)
             {
                 loadingPortfolio.IsVisible = true;
                 loadingPortfolio.IsRunning = true;

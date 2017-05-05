@@ -1,7 +1,10 @@
-﻿using StockEmulator.Models;
+﻿using Newtonsoft.Json;
+using StockEmulator.Models;
 using StockEmulator.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
 using Xamarin.Forms;
 
 namespace StockEmulator.Tabs
@@ -229,7 +232,27 @@ namespace StockEmulator.Tabs
             positiveTransactions.Text = accountData.PositiveTrans.ToString();
             negativeTransactions.Text = accountData.NegativeTrans.ToString();
 
-            List<PortfolioModel> Portfolios = await App.portfolioRestServiceManager.GetPortfolioListByUsernameTaskAsync(Constants.currentUsername);
+            HttpClient client = new HttpClient();
+            client.MaxResponseContentBufferSize = 256000;
+
+            List<PortfolioModel> Portfolios = new List<PortfolioModel>();
+
+            string GetPortfolioListByUsernameRequest = string.Format(Constants.GetPortfolioListByUsernameRequest, Constants.currentUsername);
+            var uri = new Uri(string.Format(Constants.RestUrl_Portfolio, GetPortfolioListByUsernameRequest));
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    Portfolios = JsonConvert.DeserializeObject<List<PortfolioModel>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"              ERROR {0}", ex.Message);
+            }
 
             List<PieChartModel> pieChartData = new List<PieChartModel>();
             foreach (var item in Portfolios)
